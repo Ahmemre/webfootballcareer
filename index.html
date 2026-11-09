@@ -944,6 +944,25 @@ main .panel,main .grid2>*,main .wrap>*{min-width:0}.tw{display:block}.tw table{m
 .nb-cd{display:flex;align-items:center;padding:0 calc(var(--u)*.8);background:#000;color:#fff;font-size:calc(var(--u)*1.1);min-width:calc(var(--u)*4.4);justify-content:center;font-variant-numeric:tabular-nums}
 .nb-add{display:flex;align-items:center;padding:0 calc(var(--u)*.9);background:var(--acc);color:#fff;font-size:calc(var(--u)*1.2);animation:nbpop .5s cubic-bezier(.2,1.4,.4,1) both}@keyframes nbpop{from{transform:scale(.5);opacity:0}to{transform:none;opacity:1}}
 @media(max-width:700px){.tvsb.nb{--u:min(3.6vw,2.7vh);left:1.5vw;top:1.2vh}.nb-lg{display:none}.nb-t{min-width:0;padding:0 calc(var(--u)*.55)}.nb-info b{font-size:.8em}}
+
+/* yayın tarzı Avrupa skorbordu */
+.tvui{--bc1:#0a1a78;--bc2:#1740d8;--bcl:#7fb0ff}.tvui[data-c=el]{--bc1:#3a1700;--bc2:#d25f08;--bcl:#ffc27a}.tvui[data-c=ecl]{--bc1:#04301a;--bc2:#13a257;--bcl:#8af0b5}
+.tvsb.bc .nb-row{background:linear-gradient(180deg,var(--bc2),var(--bc1));box-shadow:0 0 0 1px rgba(255,255,255,.22) inset}
+.tvsb.bc .nb-lg{background:linear-gradient(180deg,var(--bc2),var(--bc1));border-right:0}
+.tvsb.bc .nb-clk{background:#fff;color:#0a1a5c;min-width:calc(var(--u)*4.2)}.tvsb.bc .nb-clk b{color:#0a1a5c}
+.tvsb.bc .nb-t{background:none;min-width:0;gap:calc(var(--u)*.45);padding:0 calc(var(--u)*.55);font-size:calc(var(--u)*1.45)}
+.tvsb.bc .nb-t.h::after{content:'\276F';font-size:.55em;opacity:.55;margin-left:calc(var(--u)*.15)}.tvsb.bc .nb-t.a::before{content:'\276E';font-size:.55em;opacity:.55;margin-right:calc(var(--u)*.15)}
+.tvsb.bc .nb-div,.tvsb.bc .nb-info{display:none}
+.tvsb.bc .nb-sc{background:none;color:#fff;border:0;min-width:calc(var(--u)*1.5);font-size:calc(var(--u)*1.6);margin:0}
+.tvsb.bc .nb-sc+.nb-sc{position:relative;margin-left:calc(var(--u)*.55)}.tvsb.bc .nb-sc+.nb-sc::before{content:'';position:absolute;left:calc(var(--u)*-.38);top:26%;bottom:26%;width:2px;background:rgba(255,255,255,.75)}
+.bc-tabs{display:flex;flex-direction:column;width:calc(var(--u)*.55)}.bc-tabs i{flex:1}.tvsb:not(.bc) .bc-tabs,.tvsb:not(.bc) .bc-sub{display:none}
+.bc-sub{margin-left:calc(var(--u)*2.3 + var(--u)*4.2);width:calc(var(--u)*13.5);display:flex;flex-direction:column;align-items:stretch;background:linear-gradient(180deg,var(--bc2),var(--bc1));position:relative;min-height:calc(var(--u)*1.5);justify-content:center;text-align:center;animation:bcsub .4s both}
+.bc-sub::after{content:'';position:absolute;left:0;right:0;bottom:0;height:calc(var(--u)*.1);background:linear-gradient(90deg,var(--bcl),#ff5ad1,var(--bcl))}
+.bc-sub small{font-size:calc(var(--u)*.62);letter-spacing:.14em;color:rgba(255,255,255,.85);padding:calc(var(--u)*.18) 0}
+.bc-sub div{display:flex;justify-content:space-between;padding:0 calc(var(--u)*1.2) calc(var(--u)*.22);font-size:calc(var(--u)*1.05)}
+@keyframes bcsub{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.tvsb.bc .nb-row2{margin-left:calc(var(--u)*2.3)}
+@media(max-width:700px){.bc-sub{margin-left:calc(var(--u)*4.2);width:calc(var(--u)*12)}.tvsb.bc .nb-row2{margin-left:0}}
 </style>
 </head>
 <body>
@@ -2127,7 +2146,8 @@ function askPrice(e){
  return +(val(p,e.lg)*f).toFixed(2);
 }
 const minPrice=e=>+(askPrice(e)*(.86+.08*h01(e.key+'m'+G.season))).toFixed(2);
-function demands(e){const p=e.p,mine=wageFor(p,WLG,WUC)*Math.pow(clamp(p.vm||1,.8,1.3),.7),cw=p.wg||mine;let w=e.free?clamp(Math.max(cw,mine)*1.3,mine*1.2,mine*2.1):clamp(cw*1.05,mine*.8,mine*1.5)*(.95+.15*h01(e.key+'w'));if(e.free&&!e.pre)w*=clamp(1-.03*Math.max(0,(p.fw||0)-1),.65,1);{const a=f5avg(p);if(a!==null&&a>=7.3)w*=1.08}if(mo(p)<40)w*=.94;if(p.age<=21)w=Math.min(w,youthCap(p)*(e.free?1.5:1.15));const b=w*(e.free?1.8:.4)*(.8+.4*h01(e.key+'b'));return{w:+w.toFixed(2),b:+b.toFixed(2)}}
+const lowCap=p=>{if(p.ovr>72)return Infinity;const g=(p.pot||p.ovr)-p.ovr>=8||p.age<=20?2:1;return Math.max(.12,interp(WTG,p.ovr)*1.6*g)};
+function demands(e){const p=e.p,mine=wageFor(p,WLG,WUC)*Math.pow(clamp(p.vm||1,.8,1.3),.7),cw=p.wg||mine;let w=e.free?clamp(Math.max(cw,mine)*1.3,mine*1.2,mine*2.1):clamp(cw*1.05,mine*.8,mine*1.5)*(.95+.15*h01(e.key+'w'));if(e.free&&!e.pre)w*=clamp(1-.03*Math.max(0,(p.fw||0)-1),.65,1);{const a=f5avg(p);if(a!==null&&a>=7.3)w*=1.08}if(mo(p)<40)w*=.94;if(p.age<=21)w=Math.min(w,youthCap(p)*(e.free?1.5:1.15));w=Math.min(w,lowCap(p));const b=w*(e.free?1.8:.4)*(.8+.4*h01(e.key+'b'));return{w:+w.toFixed(2),b:+b.toFixed(2)}}
 function loanTerms(e){const v=val(e.p,e.lg);return{fee:Math.max(.05,+(v*(e.rk<11?.08:.04)).toFixed(2)),ws:e.rk<11?100:e.rk<16?75:50,opt:+(askPrice(e)*1.05).toFixed(2)}}
 function negOf(e){G.neg=G.neg||{};let n=G.neg[e.key];if(!n||n.wk!==winKey())n=G.neg[e.key]={n:0,off:0,wk:winKey()};return n}
 function winOpen(){return !!(G.set&&G.set.win)||winDay(G.d||0)}
@@ -3696,6 +3716,10 @@ function abbr(n){if(ABB[n])return ABB[n];const a=n.normalize('NFD').replace(/[\u
 const pad2=n=>String(n).padStart(2,'0');
 function tvClock(){const M=LV&&LV.M;if(!M)return'00:00';let s=0;if(LV.tvt!==undefined&&!LV.paused&&!M.done&&LV.state==='play')s=Math.min(59,Math.floor((performance.now()-LV.tvt)/LSPD[LV.spd]*60));return pad2(M.m)+':'+pad2(s)}
 function tvSec(){const M=LV&&LV.M;if(!M||LV.tvt===undefined||LV.paused||M.done||LV.state!=='play')return 0;return Math.min(59,Math.floor((performance.now()-LV.tvt)/LSPD[LV.spd]*60))}
+function tvSubInfo(){const M=LV.M,st=M.st,p0=M.m?Math.round(M.pp[0]/M.m*100):50,pc=i=>st.pas[i]?Math.round(100*st.pasOk[i]/st.pas[i]):0;
+ if(M.done)return['MAÇ SONU','',''];if(M.half&&M.m===45&&LV.paused)return['DEVRE ARASI','',''];
+ const L=[['TOPA SAHİP OLMA',p0+'%',(100-p0)+'%'],['ŞUT',st.sh[0],st.sh[1]],['İSABETLİ ŞUT',st.sot[0],st.sot[1]],['PAS İSABETİ',pc(0)+'%',pc(1)+'%'],['KORNER',st.co[0],st.co[1]],['FAUL',st.fo[0],st.fo[1]]];
+ return L[Math.floor(performance.now()/5000)%L.length]}
 function tvAdd(){const M=LV&&LV.M;if(!M||M.add===undefined||M.m<89)return null;const rem=Math.max(0,(90+M.add-M.m)*60-tvSec());return{n:M.add,left:Math.floor(rem/60)+':'+pad2(rem%60),over:M.m>=90}}
 function tvHalf(){const M=LV.M;if(M.done)return'MAÇ SONU';if(M.half&&M.m===45&&LV.paused)return'DEVRE ARASI';return M.m>=45?'2. YARI':'1. YARI'}
 function tvGoals(){const M=LV.M,f=t=>M.tl.filter(e=>e.k==='g'&&e.t===t).map(e=>`<span>⚽ ${sn(e.n).split(' ').slice(-1)[0]} ${mlab(e.m)}'${e.pen?' (P)':''}</span>`).join('');return`<div>${f('h')}</div><div>${f('a')}</div>`}
@@ -3726,7 +3750,8 @@ function tvUi(){
   <div class="nb-t h">${crest(mn.hn,40)}<span>${abbr(mn.hn)}</span></div><i class="nb-div"></i>
   <div class="nb-sc"><b id="tvsc">${M.sc[0]}</b></div><div class="nb-sc"><b id="tvsc2">${M.sc[1]}</b></div>
   <div class="nb-t a"><span>${abbr(mn.an)}</span>${crest(mn.an,40)}</div>
-  <div class="nb-info"><b id="tvhalf">${tvHalf()}</b></div></div>
+  <div class="nb-info"><b id="tvhalf">${tvHalf()}</b></div><span class="bc-tabs"><i style="background:${K[0].bg}"></i><i style="background:${K[1].bg}"></i></span></div>
+  <div class="bc-sub" id="tvsub"></div>
   <div class="nb-row2" id="tvadd">${(()=>{const t=tvAdd();return t&&t.over?`<div class="nb-cd" id="tvcd">${t.left}</div><div class="nb-add">+${t.n}</div>`:''})()}</div></div>
   <div class="tvcap" id="tvcap"></div><div class="lrp" id="tvrp" data-act="lvrpskip" title="Tekrarı geç"><b>TEKRAR</b><span></span><i></i></div><div class="tvbug"><b>TD</b><span>SPOR<small>CANLI</small></span></div><div class="tvgb" id="tvgb"></div><div class="lvar tvvar" id="tvvar"><b>VAR</b><span></span></div><div class="tvtk" id="tvtk"></div>
  <div class="tvctl"><button data-act="lvgo">${LV.paused?'▶ Devam':'⏸'}</button>${['Çok yavaş','Yavaş','Normal','Hızlı'].map((l,i)=>`<button data-act="lvspd" data-s="${i}" aria-pressed="${LV.spd===i}">${l}</button>`).join('')}<button data-act="lvrpt">Tekrar: ${LV.noRp?'Kapalı':'Açık'}</button><button data-act="lvdrw" aria-pressed="${!!LV.tvd}">▦ Kadro</button><button data-act="lvend">⏭ Bitir</button><button data-act="lvtv">✕ Çık</button></div>
@@ -3736,6 +3761,7 @@ function lvTvUpd(){
  if(LV.tvm!==M.m){LV.tvm=M.m;LV.tvt=performance.now()}
  const a=q('tvsc'),b=q('tvsc2'),c=q('tvclk');if(a)a.textContent=M.sc[0];if(b)b.textContent=M.sc[1];if(c)c.textContent=tvClock();
  const hf=q('tvhalf');if(hf)hf.textContent=tvHalf();
+ const sb=q('tvsub');if(sb){const r=tvSubInfo(),k=r.join('|');if(sb.dataset.k!==k){sb.dataset.k=k;sb.innerHTML=r[1]===''?`<small>${r[0]}</small>`:`<small>${r[0]}</small><div><b>${r[1]}</b><b>${r[2]}</b></div>`}}
  const ad=q('tvadd');if(ad){const t=tvAdd(),k=t&&t.over?t.n+'|'+1:'';if(t&&t.over){if(ad.dataset.k!==String(t.n)){ad.dataset.k=String(t.n);ad.innerHTML=`<div class="nb-cd" id="tvcd">${t.left}</div><div class="nb-add">+${t.n}</div>`}else{const cd=q('tvcd');if(cd)cd.textContent=t.left}}else if(ad.dataset.k){ad.dataset.k='';ad.innerHTML=''}}
  const p0=M.m?Math.round(M.pp[0]/M.m*100):50,pe=q('tvp'),pt=q('tvpt');if(pe)pe.style.width=p0+'%';if(pt)pt.textContent='%'+p0+' - %'+(100-p0);
  const gl=q('tvgl');if(gl){const n=M.tl.filter(e=>e.k==='g').length;if(LV.tvg!==n){LV.tvg=n;gl.innerHTML=tvGoals()}}
@@ -3949,14 +3975,14 @@ function clubScore(name){
  const t=G.teams.find(x=>x.name===name),r=repOf(name);
  if(t){G.sq0=G.sq0||{};const q=clubSq(t);if(G.sq0[name]===undefined)G.sq0[name]=q;return .55*(t.base+q-G.sq0[name])+.45*r}
  const T=G.eu&&G.eu.T.find(x=>x.n===name);return .55*(T?T.s:r)+.45*r}
-const starVal=name=>stRound((clubScore(name)-58)/5.6);
+const starVal=name=>stRound((clubScore(name)-54)/5.6);
 const starsRaw=v=>`<span class="stars" style="--v:${(v/5*100).toFixed(0)}%" title="Kulüp itibarı: ${v.toFixed(1)} / 5 yıldız (kadro gücü, kulüp geçmişi ve başarılar)" aria-label="${v.toFixed(1)} yıldız">★★★★★</span>`;
 const starsH=name=>starsRaw(starVal(name));
-const starsStr=str=>starsRaw(stRound((str-58)/5.6));
+const starsStr=str=>starsRaw(stRound((str-54)/5.6));
 function repUpdate(st){
  G.rep=G.rep||{};const eu=G.eu,n=st.length;
- st.forEach((t,i)=>{let d=0;if(i===0)d+=2;else if(i<3)d+=.8;else if(i<n/2)d+=.2;else if(i>=n-3)d-=.8;const r=repOf(t.name);G.rep[t.name]=+clamp(r+d+(clubSq(t)-r)*.12,40,97).toFixed(2)});
- if(eu&&eu.comps)eu.comps.forEach((c,ci)=>{const w=[.35,.25,.15][ci],ch=[3,2,1.2][ci];c.teams.forEach(k=>{const T=eu.T[k];if(!T)return;const r=repOf(T.n);G.rep[T.n]=+clamp(r+w*(c.reach[k]||0)+(c.champ===k?ch:0),40,97).toFixed(2)})});
+ st.forEach((t,i)=>{let d=0;if(i===0)d+=3.6;else if(i<3)d+=1.5;else if(i<n/2)d+=.4;else if(i>=n-3)d-=.8;const r=repOf(t.name);G.rep[t.name]=+clamp(r+d+(clubSq(t)-r)*.15,40,97).toFixed(2)});
+ if(eu&&eu.comps)eu.comps.forEach((c,ci)=>{const w=[.55,.4,.25][ci],ch=[4.5,3.2,2][ci];c.teams.forEach(k=>{const T=eu.T[k];if(!T)return;const r=repOf(T.n);G.rep[T.n]=+clamp(r+w*(c.reach[k]||0)+(c.champ===k?ch:0),40,97).toFixed(2)})});
  eu&&eu.T.forEach(T=>{if(T.l!==G.lid&&G.rep[T.n]!==undefined)G.rep[T.n]=+(G.rep[T.n]+(T.s-G.rep[T.n])*.1).toFixed(2)});
 }
 function playRound(){
@@ -5120,7 +5146,7 @@ document.addEventListener('click',e=>{
    cleanP(p);p.club='Serbest';p.lg='';p.ct=0;p.pri=false;p.fw=0;G.free.push(p);news(p.n+' serbest bırakıldı ('+fm(c)+' tazminat).');UI.modal=null;UI.relc=null;save();toast(p.n+' serbest bırakıldı');break}
   case'setw':{const el=document.getElementById('wgv');if(el)el.value=d.v;break}
   case'submitwage':{const g=x=>document.getElementById(x),a=g('wgv'),b=g('yrs'),c=g('sbv'),r=g('rcv'),q=g('prv');tryWage(+d.id,parseFloat(a&&a.value),parseFloat(c&&c.value)||0,+(b&&b.value||3),r?+r.value:undefined,q?+q.value:undefined);break}
-  case'renew':{const p=U().pl.find(x=>x.id===+d.id);if(!p)break;const ask=+(Math.max(wageFor(p,G.lid,U().name)*1.02,p.wg*.95)*(mo(p)<40?1.1:1)).toFixed(2),ab=+(ask*.4).toFixed(2);UI.modal={t:'renew',id:p.id,ask,ab,v:ask,b:ab,y:3,msg:''};R();break}
+  case'renew':{const p=U().pl.find(x=>x.id===+d.id);if(!p)break;const ask=+Math.min(Math.max(wageFor(p,G.lid,U().name)*1.02,p.wg*.95)*(mo(p)<40?1.1:1),lowCap(p)*1.15).toFixed(2),ab=+(ask*.4).toFixed(2);UI.modal={t:'renew',id:p.id,ask,ab,v:ask,b:ab,y:3,msg:''};R();break}
   case'submitrenew':{const a=document.getElementById('wgv'),b=document.getElementById('yrs'),c=document.getElementById('sbv');tryRenew(+d.id,parseFloat(a&&a.value),parseFloat(c&&c.value)||0,+(b&&b.value||3));break}
   case'skipm':clearTicker();UI.tdone=true;R();break;
   case'setoff':{const el=document.getElementById('offv');if(el)el.value=d.v;offMeter();break}
