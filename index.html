@@ -77,6 +77,7 @@ main{padding-top:18px}
 .tnl{display:flex;flex-direction:column}.tnr{display:grid;grid-template-columns:auto 1fr auto auto auto;gap:12px;align-items:center;padding:8px 4px;border-top:1px solid var(--line);cursor:pointer}.tnr:hover{background:var(--soft)}.tnt{font-size:13px;white-space:nowrap}.tnf{font:700 15px/1 'Barlow Condensed',sans-serif;min-width:64px;text-align:right}@media(max-width:700px){.tnr{grid-template-columns:auto 1fr auto}.tnt{grid-column:1/-1;order:5}}
 .dzd{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}.dzd summary{cursor:pointer;font-weight:700;font-size:13px;color:var(--mute);list-style:none}.dzd summary::before{content:'▸ '}.dzd[open] summary::before{content:'▾ '}.pkt.bad{color:#c8352b;border-color:#c8352b}
 .tkgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:14px 8px}.bsl{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px;border-radius:12px;border:1px dashed var(--line);background:var(--soft)}.bsl em{font-size:10px;color:var(--mute);font-style:normal}.bsl.dt-over,.tkgrid.dt-over{outline:3px solid #f5b50a;outline-offset:1px}
+.dtb{margin-top:4px;padding:3px 9px;border-radius:99px;border:1px solid var(--line);background:var(--soft);color:var(--ink);font:700 11px 'Barlow Condensed',sans-serif;letter-spacing:.04em;cursor:pointer;touch-action:manipulation}
 .dtok{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;width:100%}.dtok .orb{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font:700 21px/1 'Barlow Condensed',Impact,sans-serif;border:3px solid rgba(255,255,255,.95);box-shadow:0 0 0 1px rgba(0,0,0,.12),0 8px 14px -6px rgba(0,0,0,.5);transition:transform .15s}.dtok:hover .orb{transform:scale(1.08)}.dtok .orb.emp{background:var(--soft);color:var(--mute);border:2px dashed var(--line);box-shadow:none;font-size:24px}
 .dtok .pn{font-size:12px;font-weight:700;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.dtok .pp{font:700 10.5px/1 'Barlow Condensed',sans-serif;letter-spacing:.04em;color:var(--mute);text-align:center}.dtok.hurt .orb{filter:grayscale(.8);opacity:.65}.dtok .pi{position:absolute;top:-2px;right:12px;color:#c8352b;font-size:13px;font-weight:700;background:#fff;border-radius:50%;width:16px;height:16px;display:grid;place-items:center;box-shadow:0 1px 3px rgba(0,0,0,.3)}.dtok.dragging{opacity:.35}
 .dd-ghost{position:fixed;z-index:9999;pointer-events:none;transform:translate(-50%,-60%);display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:700;font-size:12px;filter:drop-shadow(0 10px 14px rgba(0,0,0,.45))}.dd-ghost .orb{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font:700 23px/1 'Barlow Condensed',sans-serif;border:3px solid #fff}.dd-ghost span:last-child{background:rgba(5,20,12,.85);color:#fff;border-radius:5px;padding:1px 7px}
@@ -1939,6 +1940,7 @@ function dizilisView(){
   <div class="seg" style="margin-bottom:8px">${[['ALL','Tümü'],['GK','Kaleci'],['DEF','Defans'],['MID','Orta saha'],['ATT','Forvet']].map(([k,l])=>`<button data-act="dzg" data-k="${k}" aria-pressed="${dg===k}">${l}</button>`).join('')}</div>
   ${rest.length?`<div class="tkgrid" data-drop="ot">${rest.map(p=>dtok(p,'ot')).join('')}</div>`:'<p class="mute small">Bu grupta oyuncu yok.</p>'}
  </div>
+ ${(()=>{const bp=t.pl.filter(p=>p.b&&!p.loan);return bp.length?`<div class="panel"><h2>B takımdaki oyuncular <span class="small mute" style="font-weight:600">${bp.length} oyuncu · yedeğe ya da sahaya alınca A takıma geçer</span></h2><div class="tkgrid" data-drop="ot">${bp.map(p=>dtok(p,'ot')).join('')}</div></div>`:''})()}
  </div>`;
 }
 function monthRange(cm){const y=G.season+Math.floor((6+cm)/12),mo=(6+cm)%12,first=Date.UTC(y,mo,1),dim=new Date(Date.UTC(y,mo+1,0)).getUTCDate();return{y,mo,dim,d0:Math.round((first-Date.UTC(G.season,6,1))/864e5),wd:(new Date(first).getUTCDay()+6)%7}}
@@ -2146,8 +2148,9 @@ function askPrice(e){
  return +(val(p,e.lg)*f).toFixed(2);
 }
 const minPrice=e=>+(askPrice(e)*(.86+.08*h01(e.key+'m'+G.season))).toFixed(2);
+const wageCap=p=>{const m=interp(WTG,p.ovr)*clamp(calF(G.lid,U().name),.8,1.5)*(p.age>=31?.9:p.age<=20?.8:1);return Math.max(.12,Math.min(m,.1*(G.wb||100)))};
 const lowCap=p=>{if(p.ovr>72)return Infinity;const g=(p.pot||p.ovr)-p.ovr>=8||p.age<=20?2:1;return Math.max(.12,interp(WTG,p.ovr)*1.6*g)};
-function demands(e){const p=e.p,mine=wageFor(p,WLG,WUC)*Math.pow(clamp(p.vm||1,.8,1.3),.7),cw=p.wg||mine;let w=e.free?clamp(Math.max(cw,mine)*1.3,mine*1.2,mine*2.1):clamp(cw*1.05,mine*.8,mine*1.5)*(.95+.15*h01(e.key+'w'));if(e.free&&!e.pre)w*=clamp(1-.03*Math.max(0,(p.fw||0)-1),.65,1);{const a=f5avg(p);if(a!==null&&a>=7.3)w*=1.08}if(mo(p)<40)w*=.94;if(p.age<=21)w=Math.min(w,youthCap(p)*(e.free?1.5:1.15));w=Math.min(w,lowCap(p));const b=w*(e.free?1.8:.4)*(.8+.4*h01(e.key+'b'));return{w:+w.toFixed(2),b:+b.toFixed(2)}}
+function demands(e){const p=e.p,mine=wageFor(p,WLG,WUC)*Math.pow(clamp(p.vm||1,.8,1.3),.7),cw=p.wg||mine;let w=e.free?clamp(Math.max(cw,mine)*1.3,mine*1.2,mine*2.1):clamp(cw*1.05,mine*.8,mine*1.5)*(.95+.15*h01(e.key+'w'));if(e.free&&!e.pre)w*=clamp(1-.03*Math.max(0,(p.fw||0)-1),.65,1);{const a=f5avg(p);if(a!==null&&a>=7.3)w*=1.08}if(mo(p)<40)w*=.94;if(p.age<=21)w=Math.min(w,youthCap(p)*(e.free?1.5:1.15));w=Math.min(w,lowCap(p),wageCap(p));const b=w*(e.free?1.8:.4)*(.8+.4*h01(e.key+'b'));return{w:+w.toFixed(2),b:+b.toFixed(2)}}
 function loanTerms(e){const v=val(e.p,e.lg);return{fee:Math.max(.05,+(v*(e.rk<11?.08:.04)).toFixed(2)),ws:e.rk<11?100:e.rk<16?75:50,opt:+(askPrice(e)*1.05).toFixed(2)}}
 function negOf(e){G.neg=G.neg||{};let n=G.neg[e.key];if(!n||n.wk!==winKey())n=G.neg[e.key]={n:0,off:0,wk:winKey()};return n}
 function winOpen(){return !!(G.set&&G.set.win)||winDay(G.d||0)}
@@ -2926,16 +2929,18 @@ const benchOf=t=>benchSlots(t).map(x=>x.p).filter(Boolean);
 function bslotModal(i){
  const t=U(),{xi}=buildXI(t),inx=new Set(xi.filter(Boolean).map(p=>p.id)),cur=benchSlots(t)[i].p;
  const GL={GK:'Kaleciler',DEF:'Defans',MID:'Orta saha',ATT:'Forvet'};
- const pl=t.pl.filter(p=>!inx.has(p.id)&&(!p.b||p===cur)).sort((a,b)=>effO(b)-effO(a));
+ const pl=t.pl.filter(p=>!inx.has(p.id)).sort((a,b)=>effO(b)-effO(a));
  return `<div class="ov" data-act="closebg"><div class="md" role="dialog" aria-modal="true"><button class="close" data-act="close" aria-label="Kapat">×</button><h2>Yedek ${i+1}</h2><p class="small mute">Maça yedek olarak çıkacak oyuncuyu seç.</p>
- ${['GK','DEF','MID','ATT'].map(g=>{const L=pl.filter(p=>grpOf(p.pos)===g);return L.length?`<div class="bgh">${GL[g]}</div><ul class="list">${L.map(p=>`<li data-act="setbn" data-i="${i}" data-id="${p.id}" style="${cur===p?'font-weight:700':''}">${pbadges(p)}<span class="nm">${p.n} ${p.inj>0?'<span class="inj small">✚ sakat</span>':''}</span>${chip(p.ovr)}</li>`).join('')}</ul>`:''}).join('')}
+ ${['GK','DEF','MID','ATT'].map(g=>{const L=pl.filter(p=>grpOf(p.pos)===g);return L.length?`<div class="bgh">${GL[g]}</div><ul class="list">${L.map(p=>`<li data-act="setbn" data-i="${i}" data-id="${p.id}" style="${cur===p?'font-weight:700':''}">${pbadges(p)}<span class="nm">${p.n} ${p.b?'<span class="small mute">B takım</span>':''} ${p.inj>0?'<span class="inj small">✚ sakat</span>':''}</span>${chip(p.ovr)}</li>`).join('')}</ul>`:''}).join('')}
  <div class="row" style="margin-top:10px"><button class="btn alt" data-act="setbn" data-i="${i}" data-id="0">Bu slotu otomatiğe bırak</button><button class="btn alt" data-act="bnauto">Tüm yedekleri otomatik seç</button></div></div></div>`;
 }
 function posBest(p){
  const pr=POS.filter(x=>p.pos==='GK'?x==='GK':x!=='GK').map(x=>({x,e:p.ovr+fitP(p,x)})).sort((a,b)=>b.e-a.e);return pr}
 function dtok(p,kind,i){
  const sx=spOf(p),pl=[p.pos].concat(sx).map(x=>POSTR[x]).join(' · '),pb=posBest(p).filter(o=>o.e>=p.ovr-6).map(o=>POSTR[o.x]+' '+o.e).join(', ');
- return `<div class="dtok${p.inj>0?' hurt':''}" data-dd="${kind}" data-pid="${p.id}"${i!==undefined?` data-i="${i}"`:''} data-act="open" data-id="${p.id}" title="${p.n} · ${pb}"><span class="orb r${tier(p.ovr)}">${p.ovr}</span><span class="pn">${sn(p.n)}</span><span class="pp">${pl}</span>${p.inj>0?'<span class="pi">✚</span>':''}</div>`}
+ return `<div class="dtok${p.inj>0?' hurt':''}" data-dd="${kind}" data-pid="${p.id}"${i!==undefined?` data-i="${i}"`:''} data-act="open" data-id="${p.id}" title="${p.n} · ${pb}"><span class="orb r${tier(p.ovr)}">${p.ovr}</span><span class="pn">${sn(p.n)}</span><span class="pp">${pl}</span>${p.inj>0?'<span class="pi">✚</span>':''}${kind==='ot'&&p.inj<=0?`<button class="dtb" data-act="tobn" data-id="${p.id}">Yedeğe al</button>`:''}</div>`}
+function tobnModal(id){const t=U(),p=t.pl.find(x=>x.id===id);if(!p)return'';const bs=benchSlots(t);
+ return ov(`<h2>${p.n}</h2><p class="small mute" style="margin-top:0">Yedek kulübesinde hangi oyuncunun yerine geçsin?</p><ul class="list">${bs.map(({p:q},i)=>`<li data-act="tobn2" data-i="${i}" data-id="${id}">${q?pbadges(q):''}<span class="nm"><b class="mute">${i+1}.</b> ${q?q.n:'Boş yuva'}</span>${q?chip(q.ovr):''}</li>`).join('')}</ul>`)}
 function benchPanel(){
  const t=U(),sl=benchSlots(t);
  return `<div class="panel"><h2>Yedek kulübesi <span class="small mute" style="font-weight:600">${BENCHN} yedek · maçta ${SUBMAX} değişiklik</span></h2>
@@ -3971,16 +3976,22 @@ const SQC=new WeakMap();
 const stRound=x=>Math.round(clamp(x,.5,5)*2)/2;
 function clubSq(t){const k=G.week+':'+(G.d||0)+':'+t.pl.length+':'+t.pl.reduce((a,p)=>a+p.ovr,0),c=SQC.get(t);if(c&&c.k===k)return c.v;const v=ratings(t).ovr;SQC.set(t,{k,v});return v}
 function repOf(name){if(G.rep&&G.rep[name]!==undefined)return G.rep[name];const T=G.eu&&G.eu.T.find(x=>x.n===name);return T?T.s:60}
-function clubScore(name){
- const t=G.teams.find(x=>x.name===name),r=repOf(name);
- if(t){G.sq0=G.sq0||{};const q=clubSq(t);if(G.sq0[name]===undefined)G.sq0[name]=q;return .55*(t.base+q-G.sq0[name])+.45*r}
- const T=G.eu&&G.eu.T.find(x=>x.n===name);return .55*(T?T.s:r)+.45*r}
+const LPR={eng:1,esp:.95,ger:.9,ita:.88,fra:.82,por:.68,ned:.64,tur:.62,bel:.52,sco:.45,aut:.42,gre:.42,cze:.4,sui:.4,nor:.36,den:.38,pol:.36,cro:.36,swe:.34,rou:.34,ukr:.36,hun:.3,cyp:.28,aze:.27};
+const lpr=lid=>{const l=LGM[lid];return (LPR[lid]||.4)*((l&&l.low)?.5:1)};
+function famOf(name){if(G.fame&&G.fame[name]!==undefined)return G.fame[name];return clamp((repOf(name)-55)/35,0,1)*.9}
+function famSet(name,sc){G.fame=G.fame||{};G.fame[name]=+clamp(famOf(name)*.58+clamp(sc,0,1)*.42,0,1).toFixed(3)}
+function qOf(name){const t=G.teams.find(x=>x.name===name);if(t)return clubSq(t);const T=G.eu&&G.eu.T.find(x=>x.n===name);return T?T.s:60}
+const starRaw=(q,f)=>.5+4.5*clamp(.5*clamp((q-55)/30,0,1)+.5*f,0,1);
+function clubScore(name){return 54+5.6*starRaw(qOf(name),famOf(name))}
 const starVal=name=>stRound((clubScore(name)-54)/5.6);
-const starsRaw=v=>`<span class="stars" style="--v:${(v/5*100).toFixed(0)}%" title="Kulüp itibarı: ${v.toFixed(1)} / 5 yıldız (kadro gücü, kulüp geçmişi ve başarılar)" aria-label="${v.toFixed(1)} yıldız">★★★★★</span>`;
+const starsRaw=v=>`<span class="stars" style="--v:${(v/5*100).toFixed(0)}%" title="Tanınırlık: ${v.toFixed(1)} / 5 yıldız (oyuncuların gücü, lig başarısı, Avrupa performansı)" aria-label="${v.toFixed(1)} yıldız">★★★★★</span>`;
 const starsH=name=>starsRaw(starVal(name));
-const starsStr=str=>starsRaw(stRound((str-54)/5.6));
+const starsStr=str=>starsRaw(stRound(starRaw(str,clamp((str-55)/35,0,1)*.9)));
 function repUpdate(st){
  G.rep=G.rep||{};const eu=G.eu,n=st.length;
+ {const ep={};if(eu&&eu.comps)eu.comps.forEach((c,ci)=>c.teams.forEach(k=>{const T=eu.T[k];if(!T)return;ep[T.n]=(ep[T.n]||0)+[7,4.5,3][ci]*(c.reach[k]||0)+(c.champ===k?[30,18,10][ci]:0)}));
+  const L0=lpr(G.lid),seen=new Set();st.forEach((t,i)=>{seen.add(t.name);const fr=(n-1-i)/Math.max(1,n-1);famSet(t.name,(L0*(60*Math.pow(fr,1.4)+(i===0?12:0))+(ep[t.name]||0))/100)});
+  if(eu)eu.T.forEach(T=>{if(seen.has(T.n))return;const dom=lpr(T.l)*60*Math.pow(clamp((T.s-55)/35,0,1),1.2)*.85;famSet(T.n,(dom+(ep[T.n]||0))/100)})}
  st.forEach((t,i)=>{let d=0;if(i===0)d+=3.6;else if(i<3)d+=1.5;else if(i<n/2)d+=.4;else if(i>=n-3)d-=.8;const r=repOf(t.name);G.rep[t.name]=+clamp(r+d+(clubSq(t)-r)*.15,40,97).toFixed(2)});
  if(eu&&eu.comps)eu.comps.forEach((c,ci)=>{const w=[.55,.4,.25][ci],ch=[4.5,3.2,2][ci];c.teams.forEach(k=>{const T=eu.T[k];if(!T)return;const r=repOf(T.n);G.rep[T.n]=+clamp(r+w*(c.reach[k]||0)+(c.champ===k?ch:0),40,97).toFixed(2)})});
  eu&&eu.T.forEach(T=>{if(T.l!==G.lid&&G.rep[T.n]!==undefined)G.rep[T.n]=+(G.rep[T.n]+(T.s-G.rep[T.n])*.1).toFixed(2)});
@@ -4880,7 +4891,7 @@ function modalView(){
  if(UI.modal&&UI.modal.t==='mp'&&typeof mpModal==='function')return mpModal();
  if(UI.modal&&UI.modal.t==='svs')return svModal();
  if(!G||!UI.modal)return'';const m=UI.modal;
- if(m.t==='set')return setModal();if(m.t==='trim')return trimModal();if(m.t==='p')return playerModal(m.id);if(m.t==='loan')return loanModal();if(m.t==='counter')return counterModal();if(m.t==='slot')return slotModal(m.i);if(m.t==='bpick')return bpickModal(m.id);if(m.t==='match')return matchModal();if(m.t==='rep')return reportModal();if(m.t==='live')return liveModal();if(m.t==='bslot')return bslotModal(m.i);if(m.t==='offer')return offerModal();if(m.t==='wage')return wageModal();if(m.t==='renew')return renewModal();if(m.t==='bud')return budgetModal();if(m.t==='nt')return ntModal();if(m.t==='press')return pressModal();if(m.t==='team')return teamModal(m.i);if(m.t==='club')return clubModal(m);if(m.t==='menu')return menuModal();if(m.t==='draw')return drawModal();return'';
+ if(m.t==='set')return setModal();if(m.t==='trim')return trimModal();if(m.t==='p')return playerModal(m.id);if(m.t==='loan')return loanModal();if(m.t==='counter')return counterModal();if(m.t==='slot')return slotModal(m.i);if(m.t==='tobn')return tobnModal(m.id);if(m.t==='bpick')return bpickModal(m.id);if(m.t==='match')return matchModal();if(m.t==='rep')return reportModal();if(m.t==='live')return liveModal();if(m.t==='bslot')return bslotModal(m.i);if(m.t==='offer')return offerModal();if(m.t==='wage')return wageModal();if(m.t==='renew')return renewModal();if(m.t==='bud')return budgetModal();if(m.t==='nt')return ntModal();if(m.t==='press')return pressModal();if(m.t==='team')return teamModal(m.i);if(m.t==='club')return clubModal(m);if(m.t==='menu')return menuModal();if(m.t==='draw')return drawModal();return'';
 }
 function R(){
  const app=document.getElementById('app'),fx=UI.fx;UI.fx=false;
@@ -4917,7 +4928,7 @@ function ddPlace(t,slot,p){t.manual=t.manual||{};for(const k in t.manual)if(t.ma
 function ddBn(t){t.bn=t.bn||[];while(t.bn.length<BENCHN)t.bn.push(null);return t.bn}
 function ddDrop(s,d){
  const t=U(),{xi}=buildXI(t),bs=benchSlots(t),P=id=>t.pl.find(x=>x.id===id);
- const src=P(s.id);if(!src||!d)return;
+ const src=P(s.id);if(!src||!d)return;if(src.b&&(d.kind==='xi'||d.kind==='bn')){src.b=0;toast(src.n+' B takımdan A takıma alındı.')}
  const bad=p=>p&&p.inj>0;
  if(d.kind==='xi'){
   if(s.kind==='xi'&&s.i===d.i)return;
@@ -4948,7 +4959,7 @@ function ddDrop(s,d){
  }
  save();R();
 }
-function ddClean(){if(DD){if(DD.ghost)DD.ghost.remove();document.querySelectorAll('.dt-over').forEach(x=>x.classList.remove('dt-over'))}DD=null}
+function ddClean(){if(DD){if(DD.iv)clearInterval(DD.iv);if(DD.ghost)DD.ghost.remove();document.querySelectorAll('.dt-over').forEach(x=>x.classList.remove('dt-over'))}DD=null}
 document.addEventListener('pointerdown',e=>{
  if(UI.edit||e.button>0)return;const el=e.target.closest&&e.target.closest('[data-dd]');if(!el)return;
  DD={el,kind:el.dataset.dd,id:+el.dataset.pid,i:el.dataset.i!==undefined?+el.dataset.i:-1,sx:e.clientX,sy:e.clientY,moved:false,ghost:null,over:null};
@@ -4958,6 +4969,7 @@ document.addEventListener('pointermove',e=>{
  if(!DD.moved){if(Math.hypot(e.clientX-DD.sx,e.clientY-DD.sy)<7)return;DD.moved=true;
   const g=document.createElement('div');g.className='dd-ghost';const o=DD.el.querySelector('.orb');g.innerHTML=(o?o.outerHTML:'')+'<span>'+(DD.el.querySelector('.pn')?DD.el.querySelector('.pn').textContent:'')+'</span>';document.body.appendChild(g);DD.ghost=g;DD.el.classList.add('dragging')}
  DD.ghost.style.left=e.clientX+'px';DD.ghost.style.top=e.clientY+'px';
+ DD.sv=e.clientY<90?-1:e.clientY>innerHeight-90?1:0;if(!DD.iv)DD.iv=setInterval(()=>{if(DD&&DD.sv)window.scrollBy(0,DD.sv*18)},16);
  const t=document.elementFromPoint(e.clientX,e.clientY),dz=t&&t.closest?t.closest('[data-drop]'):null;
  if(DD.over!==dz){if(DD.over)DD.over.classList.remove('dt-over');if(dz)dz.classList.add('dt-over');DD.over=dz}
  e.preventDefault&&e.cancelable&&e.preventDefault();
@@ -5042,7 +5054,9 @@ document.addEventListener('click',e=>{
   case'tnf':UI.tnf=d.k;R();break;
   case'dzg':UI.dzg=d.k;R();break;
   case'bslot':if(UI.nodrag&&Date.now()-UI.nodrag<450)break;UI.modal={t:'bslot',i:+d.i};R();break;
-  case'setbn':{const t=U(),i=+d.i,id=+d.id;t.bn=t.bn||[];if(id){t.bn=t.bn.map(x=>x===id?null:x);t.bn[i]=id}else t.bn[i]=null;UI.modal=null;save();R();break}
+  case'setbn':{const t=U(),i=+d.i,id=+d.id;{const pp=t.pl.find(x=>x.id===id);if(pp&&pp.b)pp.b=0}t.bn=t.bn||[];if(id){t.bn=t.bn.map(x=>x===id?null:x);t.bn[i]=id}else t.bn[i]=null;UI.modal=null;save();R();break}
+  case'tobn':UI.modal={t:'tobn',id:+d.id};R();break;
+  case'tobn2':{const t=U(),p=t.pl.find(x=>x.id===+d.id);if(!p)break;const bn=ddBn(t);for(let k=0;k<bn.length;k++)if(bn[k]===p.id)bn[k]=null;bn[+d.i]=p.id;if(p.b){p.b=0}UI.modal=null;save();R();toast(p.n+' yedek kulübesine alındı.');break}
   case'bnauto':U().bn=[];UI.modal=null;save();R();break;
   case'day1':case'cont':if(!seasonOver()){const t=(G.d||0)+1;if(nextEvDay()<=t){if(stepNext(true)==='live'){R();break}afterPlay(true)}else withLoader('1 gün simüle ediliyor',800,()=>{advDay();afterPlay(false)})}break;
   case'simto':if(!seasonOver()){const n=Math.max(1,+d.d-(G.d||0));withLoader(n+' gün simüle ediliyor',Math.min(2400,700+n*45),()=>{UI.cday=undefined;simTo(+d.d);afterPlay(false)})}break;
@@ -5090,6 +5104,9 @@ document.addEventListener('click',e=>{
   case'playEnd':for(let i=0;i<200&&!seasonOver();i++)stepNext();afterPlay(false);break;
   case'ec':UI.ec=+d.i;UI.er=undefined;R();break;
   case'spon2':{spInit();const o=G.spn.inbox.find(x=>x.id===+d.id);if(o&&!G.spn.slots[o.k]){G.spn.slots[o.k]={n:o.n,a:o.a,b:o.b,g:o.g,y:o.y,ty:o.y,s:G.season,paid:0,fo:o.fo};G.spn.inbox=G.spn.inbox.filter(x=>x.k!==o.k);save();R();toast(o.n+' ile '+o.y+' yıllık anlaşma imzalandı.')}else if(o){toast('Bu yuvada zaten sponsor var.')}break}
+  case'mgacc':{const o=(G.mgoff||[]).find(x=>x.id===+d.id);if(!o)break;if(G.week!==0){toast('Teklifler yalnızca sezon başlamadan kabul edilir.');break}if(UI.mgc!==o.id){UI.mgc=o.id;R();break}UI.mgc=null;mgSwitch(o);UI.tab='ozet';R();toast(o.n+' takımının teknik direktörü oldun.');break}
+  case'mgrej':{G.mgoff=(G.mgoff||[]).filter(x=>x.id!==+d.id);UI.mgc=null;save();R();toast('Teklif reddedildi.');break}
+  case'mgname':{const m=mgInit(),v=prompt('Teknik direktör adı',m.n);if(v&&v.trim()){m.n=v.trim().slice(0,28);save();R()}break}
   case'sprej':{spInit();G.spn.inbox=G.spn.inbox.filter(x=>x.id!==+d.id);save();R();toast('Teklif reddedildi.');break}
   case'spend':{spInit();const c=G.spn.slots[d.k];if(c){const pen=+(c.a*c.y*.5).toFixed(1);if(pen>U().bud){toast('Ceza için bütçen yetersiz.');break}if(confirm(c.n+' sözleşmesi feshedilsin mi? Ceza '+fm(pen)+'.')){U().bud=+(U().bud-pen).toFixed(2);G.spn.slots[d.k]=null;save();R();toast('Sözleşme feshedildi.')}}break}
   case'eusq':UI.tt='g';UI.modal={t:'club',k:+d.i,id:'e'+d.i};R();break;
@@ -5146,7 +5163,7 @@ document.addEventListener('click',e=>{
    cleanP(p);p.club='Serbest';p.lg='';p.ct=0;p.pri=false;p.fw=0;G.free.push(p);news(p.n+' serbest bırakıldı ('+fm(c)+' tazminat).');UI.modal=null;UI.relc=null;save();toast(p.n+' serbest bırakıldı');break}
   case'setw':{const el=document.getElementById('wgv');if(el)el.value=d.v;break}
   case'submitwage':{const g=x=>document.getElementById(x),a=g('wgv'),b=g('yrs'),c=g('sbv'),r=g('rcv'),q=g('prv');tryWage(+d.id,parseFloat(a&&a.value),parseFloat(c&&c.value)||0,+(b&&b.value||3),r?+r.value:undefined,q?+q.value:undefined);break}
-  case'renew':{const p=U().pl.find(x=>x.id===+d.id);if(!p)break;const ask=+Math.min(Math.max(wageFor(p,G.lid,U().name)*1.02,p.wg*.95)*(mo(p)<40?1.1:1),lowCap(p)*1.15).toFixed(2),ab=+(ask*.4).toFixed(2);UI.modal={t:'renew',id:p.id,ask,ab,v:ask,b:ab,y:3,msg:''};R();break}
+  case'renew':{const p=U().pl.find(x=>x.id===+d.id);if(!p)break;const ask=+Math.max(p.wg*.95,Math.min(Math.max(wageFor(p,G.lid,U().name)*1.02,p.wg*.95)*(mo(p)<40?1.1:1),lowCap(p)*1.15,wageCap(p),Math.max(.15,p.wg*2.4))).toFixed(2),ab=+(ask*.4).toFixed(2);UI.modal={t:'renew',id:p.id,ask,ab,v:ask,b:ab,y:3,msg:''};R();break}
   case'submitrenew':{const a=document.getElementById('wgv'),b=document.getElementById('yrs'),c=document.getElementById('sbv');tryRenew(+d.id,parseFloat(a&&a.value),parseFloat(c&&c.value)||0,+(b&&b.value||3));break}
   case'skipm':clearTicker();UI.tdone=true;R();break;
   case'setoff':{const el=document.getElementById('offv');if(el)el.value=d.v;offMeter();break}
@@ -5855,7 +5872,7 @@ const ORIGL={},POOLT={};LG.forEach(l=>{ORIGL[l.id]=l.teams.slice();l.teams.forEa
 function memReset(){LG.forEach(l=>{if(ORIGL[l.id])l.teams=ORIGL[l.id].slice()})}
 function memFrom(m){if(!m)return;for(const id in m){const L=LGM[id];if(L)L.teams=m[id].map(n=>POOLT[n]).filter(Boolean)}}
 const _sgPR=startGame;startGame=function(){memReset();CURSLOT=UI.slot||CURSLOT;const r=_sgPR.apply(this,arguments);if(G){G.slot=CURSLOT;try{const pre=JSON.parse(localStorage.getItem('td27pre'+CURSLOT));if(pre){G.set={};['seeAll','win','noRef','sd','inj'].forEach(k=>{if(pre[k]!==undefined)G.set[k]=pre[k]});if(pre.bud>=0)G.teams.forEach(t=>{t.bud=+pre.bud});if(pre.wb>0)G.wb=+pre.wb}}catch(e){}try{localStorage.setItem('td27slot',CURSLOT)}catch(e){}save()}return r};
-const _mgPR=migrate;migrate=function(g){memReset();memFrom(g&&g.mem);return _mgPR.apply(this,arguments)};
+const _mgPR=migrate;migrate=function(g){memReset();memFrom(g&&g.mem);const r=_mgPR.apply(this,arguments);try{if(r&&r.teams&&!r.fame){r.fame={};const me=r.teams[r.ti].name,rp=r.rep&&r.rep[me]!==undefined?r.rep[me]:60,H=(r.hist||[]).slice(-6),ti=H.filter(h=>h.champ===me).length,tp=H.filter(h=>h.pos<=3).length;r.fame[me]=+clamp(clamp((rp-55)/35,0,1)*.9+ti*.1+tp*.04,0,1).toFixed(3)}}catch(e){}return r};
 function mkTeamObj(e,lid,i){const L=LGM[lid];const t={id:i,name:e.name,base:e.str,adj:e.a||0,form:rnd(['4-3-3','4-4-2','4-2-3-1','3-5-2','4-1-4-1','4-3-2-1','4-4-1-1','5-3-2','3-4-3']),pl:e.real?mkReal(e.real,lid,e.name):e.x?padX(e,L,lid):genSquad(e.str,L.nm),manual:{},bud:Math.max(3,Math.round(payTarget(lid,e.name)*.85*(.85+.3*h01(e.name+'bud')))),tab:blank()};ensureMin(t,L.nm);return t}
 function promoRel(stN){
  const my=G.lid,pr=PAIRS.find(p=>p[0]===my||p[1]===my);if(!pr)return;
@@ -5888,6 +5905,66 @@ function promoRel(stN){
  else mail('Lig Organizasyonu','Yükselen ve düşen takımlar','Yükselenler: '+nm(P)+'. Düşenler: '+nm(R)+'.','info',{tab:'lig'});
 }
 const _nsPR=newSeason;newSeason=function(){let stN=null;try{stN=standings().map(t=>t.name)}catch(e){}const r=_nsPR.apply(this,arguments);try{if(stN)promoRel(stN)}catch(e){console.error('promoRel',e)}return r};
+
+/* ===== Teknik direktör sistemi (v132) ===== */
+function mgInit(){if(!G.mg){const cs=clubScore(U().name);G.mg={n:'Teknik Direktör',rep:Math.round(clamp(30+(cs-54)*1.5,20,75)),hist:[{s:G.season,c:U().name}],cy:3};}G.mgrs=G.mgrs||{};return G.mg}
+function mgrOf(name){G.mgrs=G.mgrs||{};if(!G.mgrs[name]){const T=G.eu&&G.eu.T.find(x=>x.n===name),L=T&&LGM[T.l];let n='A. Yılmaz';try{n=genName(L&&L.nm?L.nm:['en'])}catch(e){}G.mgrs[name]={n}}return G.mgrs[name].n}
+const mgStars=r=>stRound(.5+4.5*clamp(r,0,100)/100);
+function mgCP(str,lid){return clamp((str-55)/35,0,1)*60+lpr(lid)*40}
+function mgSeasonEval(){
+ mgInit();const st=standings(),n=st.length,pos=st.indexOf(U())+1,exp=expRank(),eu=G.eu;
+ let d=clamp((exp-pos)*.9,-6,8);if(pos===1)d+=4;else if(pos<=3)d+=1;
+ if(eu.comp>=0){const c=eu.comps[eu.comp];d+=(c.reach[eu.me]||0)*.8;if(c.champ===eu.me)d+=6}
+ eu.comps.forEach(c=>{});
+ const m=G.mg;m.rep=+clamp(m.rep+d,10,98).toFixed(1);m.last={s:G.season,pos,exp,d:+d.toFixed(1)};
+ if(pos===1)m.t=(m.t||0)+1;
+ return {d,pos,exp,n}}
+function mgGen(ev){
+ mgInit();const m=G.mg,me=U().name;G.mgoff=[];
+ if(!ev)return;const cands=[];
+ LG.forEach(l=>{const L=LGM[l.id];if(!L)return;const ranked=L.teams.map(t=>t.str).sort((a,b)=>b-a);L.teams.forEach(t=>{if(t.name===me)return;const cp=mgCP(t.str,l.id);cands.push({n:t.name,lid:l.id,str:t.str,cp,rk:ranked.indexOf(t.str)+1,N:L.teams.length})})});
+ let pool=cands.filter(c=>c.cp>=m.rep-22&&c.cp<=m.rep+10);if(pool.length<3)pool=cands.filter(c=>c.cp>=m.rep-35&&c.cp<=m.rep+15);
+ let k=0;const pr=clamp(.4+ev.d/16,.12,.95);for(let i=0;i<3;i++)if(Math.random()<pr)k++;if(ev.d>=2&&!k)k=1;
+ const used=new Set();
+ for(let i=0;i<k&&pool.length;i++){let c=null;for(let t=0;t<20;t++){const x=rnd(pool);if(!used.has(x.n)){c=x;break}}if(!c)break;used.add(c.n);
+  const exp=c.rk<=3?'Şampiyonluk':c.rk<=Math.ceil(c.N/3)?'Avrupa kupalarına katılmak':c.rk<=Math.ceil(c.N*.65)?'Ligi üst yarıda bitirmek':'Ligde kalmak';
+  G.mgoff.push({id:(G.mgn=(G.mgn||0)+1),n:c.n,lid:c.lid,str:c.str,cp:c.cp,y:rnd([2,3,3,4]),exp,bud:Math.max(3,Math.round(payTarget(c.lid,c.n)*.85)),cur:mgrOf(c.n),by:G.d+30,s:G.season})}
+ if(G.mgoff.length){mail('Menajer','Teknik direktör teklifi',G.mgoff.map(o=>o.n+' ('+LGM[o.lid].name+')').join(', ')+' seni teknik direktör olarak istiyor. Kulüp sekmesinde ayrıntılar var; yeni sezon başlamadan karar ver.','offer',{tab:'kulup'});news(G.mgoff.length+' kulüpten teknik direktörlük teklifi geldi. Kulüp sekmesine bak.')}
+ // yapay zeka teknik direktör değişimleri
+ try{G.teams.forEach(t=>{if(t===U())return;const s=t.tab,pos=standings().indexOf(t)+1;});}catch(e){}
+}
+function mgSwitch(o){
+ const t0=U(),old=t0.name,m=mgInit(),oldM=mgrOf(o.n);
+ if(o.lid!==G.lid){const L=LGM[o.lid];G.teams=L.teams.map((e,i)=>mkTeamObj(e,o.lid,i));G.lid=o.lid;WLG=o.lid;G.fix=mkFix(G.teams.length);G.results=[];G.week=0;G.last=null;G.mem=G.mem||{};}
+ G.ti=G.teams.findIndex(t=>t.name===o.n);const t=U();WUC=t.name;
+ G.sq0={};G.teams.forEach(x=>{G.sq0[x.name]=ratings(x).ovr});btInit();
+ G.fac=facInit(t.base);G.bc=60;G.staff=staffInit();G.spn=null;G.neg={};G.offers=[];G.out=[];G.cap=null;G.pend=null;
+ G.wb=+(t.pl.reduce((a,p)=>a+p.wg,0)*1.12+.5).toFixed(2);t.bud=Math.max(t.bud,o.bud);t.form='4-3-3';
+ const eu=G.eu;eu.lw=[];for(let e=0;e<17;e++){let c=0;for(let w=0;w<G.fix.length;w++)if(dOfW(w)<EDAY[e])c++;eu.lw.push(Math.max(0,c-1))}
+ eu.T.forEach(x=>{x.m=-1});{const L=LGM[G.lid],of=eu.off[G.lid];L.teams.forEach((e,i)=>{const x=eu.T[of+i];if(x)x.m=G.teams.findIndex(y=>y.name===x.n)});const si=eu.T.findIndex(x=>x.l===G.lid&&x.n===t.name);if(si>=0)eu.me=si}
+ try{eu.comp=-1;initEurope(null)}catch(e){}
+ const nw=(()=>{try{return genName(LGM[LG.find(l=>l.id===o.lid)?o.lid:G.lid].nm)}catch(e){return 'M. Kaya'}})();
+ G.mgrs[old]={n:nw};m.hist.push({s:G.season,c:t.name});m.cy=o.y;m.moves=(m.moves||0)+1;
+ G.mgoff=[];VC=null;window._TVC=null;
+ news(m.n+', '+old+' kulübünden ayrılıp '+t.name+' takımının başına geçti. '+old+' yeni teknik direktörü: '+nw+'.');
+ mail('Yönetim Kurulu',t.name+' sana hoş geldin diyor','Hoş geldin '+m.n+'. Sözleşmen '+o.y+' yıl. Kulübün sezon hedefi: '+o.exp+'. Transfer bütçemiz '+fm(t.bud)+'.','board',{tab:'ozet'});
+ save();
+}
+function mgPanel(){
+ const m=mgInit(),d=G.d||0;let of=(G.mgoff||[]).filter(o=>o.by>=d&&G.week===0);const can=G.week===0&&!seasonOver();
+ const tit=m.t||0,sn=Math.max(1,(G.hist||[]).filter(x=>x.pos!==undefined).length);
+ const card=o=>{const L=LGM[o.lid],sure=UI.mgc===o.id,diff=o.lid!==G.lid;
+  return `<div class="sp2of">${crest(o.n,38)}<div class="sp2i"><b>${o.n}</b><small>${L.name}${diff?' · <b>yeni lig</b>':''} · ${starsRaw(stRound(.5+4.5*o.cp/100))}</small><small>Sözleşme ${o.y} yıl · hedef: ${o.exp}</small><small>Transfer bütçesi ${fm(o.bud)} · mevcut TD ${o.cur}</small></div>
+  <div class="sp2a"><small class="${o.by-d<=5?'urgt':''}">${Math.max(0,o.by-d)} gün kaldı</small></div>
+  <div class="sp2bt"><button class="btn sm" ${can?`data-act="mgacc" data-id="${o.id}"`:'disabled'}>${sure?'Emin misin? Evet':'Kabul'}</button><button class="btn alt sm" data-act="mgrej" data-id="${o.id}">Reddet</button></div></div>`};
+ return `<div class="panel"><h2>Teknik direktör</h2>
+ <div class="sp2br"><div><b style="font-size:17px">${m.n}</b> <button class="btn alt sm" data-act="mgname">Adı değiştir</button><div class="small mute" style="margin-top:4px">${starsRaw(mgStars(m.rep))} · itibar ${Math.round(m.rep)}/100</div><div class="mtr" style="margin-top:6px"><i style="width:${m.rep}%"></i></div></div>
+  <div class="sp2sum"><b>${U().name}</b><span class="small mute">${m.hist.length} kulüp · ${tit} şampiyonluk · ${sn-1<0?0:sn-1} sezon${m.last?' · son sezon: '+m.last.pos+'. ('+(m.last.d>=0?'+':'')+m.last.d+' itibar)':''}</span></div></div>
+ <h3 style="margin:14px 0 6px;font-size:15px">Gelen teklifler <span class="small mute">(${of.length})</span></h3>
+ ${of.length?`<div class="sp2l">${of.map(card).join('')}</div>`:'<p class="small mute" style="margin:0">Şu an teklif yok. Sezon sonunda itibarına ve sonuçlarına göre kulüpler seni arar; teklifler yeni sezon başlamadan önce geçerlidir.</p>'}
+ <p class="small mute" style="margin:10px 0 0">Beklentinin üstünde bitirmek, şampiyonluk ve Avrupa başarıları itibarını yükseltir; itibar arttıkça daha büyük kulüpler arar. Kabul edersen yeni kulübün kadrosu, bütçesi ve tesisleriyle başlarsın.</p></div>`}
+const _kuMG=kulupView;kulupView=function(){return mgPanel()+_kuMG()};
+const _nsMG=newSeason;newSeason=function(){let ev=null;try{ev=mgSeasonEval()}catch(e){console.error('mgEval',e)}const r=_nsMG.apply(this,arguments);try{mgGen(ev)}catch(e){console.error('mgGen',e)}return r};
 </script>
 </body>
 </html>
