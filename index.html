@@ -9021,6 +9021,30 @@ h2 .fl {
 .lpl.svx::after{content:'';position:absolute;left:50%;top:50%;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;border:3px solid #ffd23a;box-shadow:0 0 14px 4px rgba(255,210,58,.8);animation:svxp .6s ease-out 3;pointer-events:none}
 .lpl.svx b{background:#ffd23a!important;color:#111!important}
 @keyframes svxp{0%{transform:scale(.6);opacity:1}100%{transform:scale(2.4);opacity:0}}
+</style><style>
+.facgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin-bottom:14px}
+.facgrid .fac{margin:0;display:flex;flex-direction:column;gap:10px}
+.fac .fh{align-items:flex-start}
+.fac .fti{display:flex;gap:10px;align-items:center;min-width:0}
+.fac .fti h2{font-size:16px}
+.fac .fic{font-size:26px;width:44px;height:44px;flex:none;display:grid;place-items:center;border-radius:12px;background:var(--soft)}
+.fac .lvb{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--pitch2);color:#fff;white-space:nowrap}
+.fac .pips{display:flex;gap:5px}.fac .pips i{flex:1;height:7px;border-radius:4px}
+.fac .fm{display:flex;flex-direction:column;gap:6px}
+.fac .fmr{display:flex;align-items:baseline;gap:8px;font-size:13.5px;padding:6px 10px;border-radius:8px;background:var(--soft)}
+.fac .fmr span{color:var(--mute);flex:1}.fac .fmr b{font-weight:700}.fac .fmr em{font-style:normal;font-weight:600;color:var(--pitch2)}
+.fac .fbt{display:flex;align-items:center;gap:10px;margin-top:auto;flex-wrap:wrap}
+.fac.sug{border-color:#d9a400;box-shadow:0 0 0 1px #d9a400 inset}.fac .sugt{color:#b78600;font-weight:700}
+.facsum .fsh{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-end}
+.facsum .fsb{display:flex;gap:22px;flex-wrap:wrap}.facsum .fsb div{display:flex;flex-direction:column}.facsum .fsb b{font-size:20px}
+.facsum .tbar{height:8px;border-radius:4px;background:var(--line);margin:12px 0;overflow:hidden}.facsum .tbar i{display:block;height:100%;background:var(--pitch2);border-radius:4px}
+.facsum .fsg{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+@media (max-width:600px){.facgrid{grid-template-columns:1fr}}
+</style><style>
+.bgt b{display:block}.bgt .bd{display:block;font-style:normal;font-size:11.5px;font-weight:700;min-height:14px}.bd.up{color:var(--pitch2)}.bd.dn{color:var(--card-r)}
+.wbar{margin:2px 0 10px}.wbar .wbh{display:flex;justify-content:space-between;margin-bottom:4px}
+.wbar .wbt{height:9px;border-radius:5px;background:var(--line);overflow:hidden}.wbar .wbt i{display:block;height:100%;width:0;background:var(--pitch2);border-radius:5px;transition:width .15s}
+.wbar .wbt i.o{background:#d98f00}.wbar .wbt i.r{background:var(--card-r)}
 </style></head>
 <body>
 <noscript><h1>Teknik Direktör 27 Lite</h1><p>Tarayıcıda ücretsiz oynanan futbol menajerlik oyunu: 24 ülkede 34 lig, 564 kulüp, gerçek oyuncular, Avrupa kupaları, transfer, gözlemci sistemi ve çok oyunculu lig. Oynamak için JavaScript gerekir.</p></noscript>
@@ -11649,13 +11673,41 @@ function trimModal() {
 }
 function budgetInner() {
     const t = U(), bill = billNow(), room = Math.max(0, G.wb - bill), mn = -Math.floor(room * 2 * 10) / 10, mx = Math.floor(t.bud * 10) / 10, v = clamp(UI.bsv || 0, mn, mx);
-    return `<div class="bgt"><div><small>Transfer bütçesi</small><b id="bpt">${fm(t.bud - v)}</b></div><div><small>Maaş bütçesi (yıllık)</small><b id="bpw">${fmW(G.wb + v / 2)}</b></div><div><small>Mevcut maaş gideri</small><b>${fmW(bill)}</b></div><div><small>Boş maaş payı</small><b>${fmW(room)}</b></div></div>
+    const pre = [['Boş payı transfere', mn], ['½ boş pay → transfer', Math.round(mn / 2 * 10) / 10], ['¼ transfer → maaş', Math.round(mx / 4 * 10) / 10], ['½ transfer → maaş', Math.round(mx / 2 * 10) / 10]].filter(([, x]) => Math.abs(x) >= .1);
+    return `<div class="bgt"><div><small>Transfer bütçesi</small><b id="bpt">${fm(t.bud - v)}</b><em id="bptd" class="bd"></em></div><div><small>Maaş bütçesi (yıllık)</small><b id="bpw">${fmW(G.wb + v / 2)}</b><em id="bpwd" class="bd"></em></div><div><small>Mevcut maaş gideri</small><b>${fmW(bill)}</b></div><div><small>Boş maaş payı</small><b id="bpr">${fmW(room + v / 2)}</b></div></div>
+ <div class="wbar"><div class="wbh small"><span>Maaş bütçesi kullanımı</span><b id="wbp"></b></div><div class="wbt"><i id="wbf"></i></div></div>
  <input type="range" class="bslide" id="bslider" min="${mn}" max="${mx}" step="0.1" value="${v}">
  <div class="row" style="justify-content:space-between"><span class="small mute">← Maaştan transfere</span><span class="small mute">Transferden maaşa →</span></div>
+ <div class="row bpre" style="margin-top:10px;gap:6px;flex-wrap:wrap">${pre.map(([n, x]) => `<button class="btn alt sm" data-act="bspre" data-v="${x}">${n}</button>`).join('')}</div>
  <div class="row" style="margin-top:12px"><button class="btn" data-act="applybud">Uygula</button><button class="btn alt" data-act="bsreset">Sıfırla</button></div>`;
 }
+function bgtLive() {
+    const t = U(), v = UI.bsv || 0, bill = billNow(), wb = G.wb + v / 2, q = id => document.getElementById(id);
+    if (!q('bpt'))
+        return;
+    q('bpt').textContent = fm(t.bud - v);
+    q('bpw').textContent = fmW(wb);
+    if (q('bpr'))
+        q('bpr').textContent = fmW(Math.max(0, wb - bill));
+    const d1 = q('bptd'), d2 = q('bpwd');
+    if (d1)
+        d1.textContent = v ? (-v > 0 ? '+' : '−') + fm(Math.abs(v)).replace('-', '') : '';
+    if (d2)
+        d2.textContent = v ? (v > 0 ? '+' : '−') + fmW(Math.abs(v) / 2).replace('-', '') : '';
+    if (d1)
+        d1.className = 'bd ' + (-v > 0 ? 'up' : 'dn');
+    if (d2)
+        d2.className = 'bd ' + (v > 0 ? 'up' : 'dn');
+    const pc = wb > 0 ? clamp(bill / wb * 100, 0, 100) : 100, f = q('wbf');
+    if (f) {
+        f.style.width = pc.toFixed(1) + '%';
+        f.className = pc > 95 ? 'r' : pc > 85 ? 'o' : '';
+    }
+    if (q('wbp'))
+        q('wbp').textContent = '%' + Math.round(pc) + ' dolu';
+}
 function budgetPanel() {
-    return `<div class="panel bpan"><h2>Maaş ve transfer bütçesi</h2><p class="small mute" style="margin:0 0 10px">Kaydırıcıyla bütçeni maaş ve transfer arasında paylaştır. 2 milyon € transfer bütçesi = 1 milyon € yıllık maaş bütçesi. Maaş bütçesi mevcut gideriniz altına indirilemez.</p>${budgetInner()}</div>`;
+    return `<div class="panel bpan"><h2>Maaş ve transfer bütçesi</h2><p class="small mute" style="margin:0 0 10px">Bütçeni maaş ve transfer arasında paylaştır. 2 € transfer = 1 € yıllık maaş. Maaş bütçesi mevcut giderin altına inemez.</p>${budgetInner()}</div>`;
 }
 function budgetModal() {
     return ov(`<h2>Bütçe ayarla</h2><p class="small mute">Transfer bütçesini maaş bütçesine veya kullanılmayan maaş bütçesini transfer bütçesine aktarabilirsin. Oran: 2 milyon € transfer bütçesi = 1 milyon € yıllık maaş bütçesi.</p>${budgetInner()}`);
@@ -11993,14 +12045,14 @@ const minPrice = e => +(askPrice(e) * (.86 + .08 * h01(e.key + 'm' + G.season)))
 const wageCap = p => { const m = interp(WTG, p.ovr) * clamp(calF(G.lid, U().name), .8, 1.5) * (p.age >= 31 ? .9 : p.age <= 20 ? .8 : 1); return Math.max(.12, Math.min(m, .1 * (G.wb || 100))); };
 const lowCap = p => { if (p.ovr > 72)
     return Infinity; const g = (p.pot || p.ovr) - p.ovr >= 8 || p.age <= 20 ? 2 : 1; return Math.max(.12, interp(WTG, p.ovr) * 1.6 * g); };
-function demands(e) { const p = e.p, mine = wageFor(p, WLG, WUC) * Math.pow(clamp(p.vm || 1, .8, 1.3), .7), cw = p.wg || mine; let w = e.free ? clamp(Math.max(cw, mine) * 1.3, mine * 1.2, mine * 2.1) : clamp(cw * 1.05, mine * .8, mine * 1.5) * (.95 + .15 * h01(e.key + 'w')); if (e.free && !e.pre)
+function demands(e) { const p = e.p, mine = wageFor(p, WLG, WUC) * Math.pow(clamp(p.vm || 1, .8, 1.3), .7), cw = p.wg || mine; let w = e.free ? clamp(Math.max(cw * .92, mine * 1.05), mine, mine * 1.9) * (.96 + .1 * h01(e.key + 'w')) : clamp(cw * 1.08, mine * .85, mine * 1.5) * (.95 + .15 * h01(e.key + 'w')); if (e.free && !e.pre)
     w *= clamp(1 - .03 * Math.max(0, (p.fw || 0) - 1), .65, 1); {
     const a = f5avg(p);
     if (a !== null && a >= 7.3)
         w *= 1.08;
 } if (mo(p) < 40)
     w *= .94; if (p.age <= 21)
-    w = Math.min(w, youthCap(p) * (e.free ? 1.5 : 1.15)); w = Math.min(w, lowCap(p), wageCap(p)); const b = w * (e.free ? 1.8 : .4) * (.8 + .4 * h01(e.key + 'b')); return { w: +w.toFixed(2), b: +b.toFixed(2) }; }
+    w = Math.min(w, youthCap(p) * (e.free ? 1.5 : 1.15)); w = Math.min(w, lowCap(p), Math.max(wageCap(p), .22 * (G.wb || 100))); const b = w * (e.free ? 1.8 : .4) * (.8 + .4 * h01(e.key + 'b')); return { w: +w.toFixed(2), b: +b.toFixed(2) }; }
 function loanTerms(e) { const v = val(e.p, e.lg); return { fee: Math.max(.05, +(v * (e.rk < 11 ? .08 : .04)).toFixed(2)), ws: e.rk < 11 ? 100 : e.rk < 16 ? 75 : 50, opt: +(askPrice(e) * 1.05).toFixed(2) }; }
 function negOf(e) { G.neg = G.neg || {}; let n = G.neg[e.key]; if (!n || n.wk !== winKey())
     n = G.neg[e.key] = { n: 0, off: 0, wk: winKey() }; return n; }
@@ -13116,6 +13168,13 @@ const FAC = {
     pitch: { n: 'Saha bakımı', d: 'Evinde oynadığın maçlarda sakatlık riskini azaltır ve paslaşmayı iyileştirir.', eff: l => 'Ev sahibi sakatlık riski -%' + (7 * (l - 1)) + ' · pas isabeti +%' + (.4 * (l - 1)).toFixed(1) },
     stad: { n: 'Stadyum', d: 'Kapasiteyi ve maç günü gelirini artırır. Her sezon sonu ek gelir sağlar.', eff: l => 'Sezon sonu ek gelir +%' + (l * 4 - 4) + ' (kulüp gelirinin)' },
     med: { n: 'Sağlık merkezi', d: 'Sakatlıkların süresini kısaltır.', eff: l => 'Sakatlık süresi -%' + (9 * (l - 1)) }
+};
+const FACX = {
+    train: { ic: '🏋️', d: 'Gelişimi hızlandırır, yaşlanmayı yavaşlatır.', m: [['Gelişim hızı', l => 'x' + [.92, 1, 1.08, 1.16, 1.25][l - 1].toFixed(2)], ['Özel program', l => (l + 1) + ' hak']] },
+    acad: { ic: '🎓', d: 'Sezon sonu gelen genç aday sayısı ve kalitesi.', m: [['Aday potansiyeli', l => '+' + ((l - 1) * 2) + ''], ['93+ cevher şansı', l => '%' + (.7 + .3 * l).toFixed(1)], ['Ek aday', l => l >= 4 ? '+1' : '—']] },
+    pitch: { ic: '🌱', d: 'Evinde sakatlığı azaltır, pası iyileştirir.', m: [['Sakatlık riski', l => '-%' + (7 * (l - 1))], ['Pas isabeti', l => '+%' + (.4 * (l - 1)).toFixed(1)]] },
+    stad: { ic: '🏟️', d: 'Maç günü ve sezon sonu gelirini artırır.', m: [['Sezon sonu gelir', l => '+%' + (l * 4 - 4)]] },
+    med: { ic: '🩺', d: 'Sakatlık sürelerini kısaltır.', m: [['Sakatlık süresi', l => '-%' + (9 * (l - 1))]] }
 };
 const facInit = base => { const l = clamp(Math.round((base - 58) / 8), 1, 4); return { train: l, acad: l, pitch: l, med: l, stad: l, up: {} }; };
 function facCost(k, l) { const pt = payTarget(G.lid, U().name) || 30; return Math.max(2, Math.round(pt * [.04, .07, .12, .19][l - 1] * ({ train: 1, acad: 1, pitch: .55, med: .7, stad: 1.4 }[k]))); }
@@ -14347,13 +14406,17 @@ function kulupView() {
     const f = G.fac, t = U();
     f.stad = f.stad || 1;
     const slots = f.train + 1, prog = t.pl.filter(p => p.ind);
+    const rem = ['train', 'acad', 'pitch', 'med', 'stad'].filter(k => f[k] < 5 && f.up[k] !== G.season), tot = ['train', 'acad', 'pitch', 'med', 'stad'].reduce((a, k) => a + f[k], 0);
+    const ok = rem.filter(k => t.bud >= facCost(k, f[k])).sort((a, b) => f[a] - f[b] || facCost(a, f[a]) - facCost(b, f[b]));
+    const sug = ok[0], allc = ok.reduce((a, k) => a + facCost(k, f[k]), 0);
+    const why = { train: 'oyuncuların gelişimini hızlandırır', acad: 'altyapıdan daha iyi adaylar getirir', pitch: 'evindeki sakatlıkları azaltır', med: 'sakatlık sürelerini kısaltır', stad: 'her sezon ek gelir sağlar' };
     const card = k => {
-        const F = FAC[k], l = f[k], done = f.up[k] === G.season, c = l < 5 ? facCost(k, l) : 0;
-        return `<div class="panel fac"><div class="fh"><h2 style="margin:0">${F.n}</h2><span class="pips" role="img" aria-label="Seviye ${l} / 5">${[1, 2, 3, 4, 5].map(i => `<i class="${i <= l ? 'on' : ''}"></i>`).join('')}</span></div><p class="small mute" style="margin:6px 0">${F.d}</p><div class="small">Şu an: <b>${F.eff(l)}</b></div>${l < 5 ? `<div class="small">Sonraki seviye: <b>${F.eff(l + 1)}</b></div><div class="row" style="margin-top:10px;align-items:center;gap:10px"><button class="btn" data-act="facup" data-k="${k}" ${done || t.bud < c ? 'disabled' : ''}>Geliştir (${fm(c)})</button>${done ? '<span class="small mute">Bu sezon geliştirildi</span>' : t.bud < c ? '<span class="small mute">Bütçe yetersiz</span>' : ''}</div>` : '<div class="small" style="margin-top:8px"><b>En üst seviye</b></div>'}</div>`;
+        const F = FAC[k], X = FACX[k], l = f[k], done = f.up[k] === G.season, c = l < 5 ? facCost(k, l) : 0, no = done || t.bud < c;
+        return `<div class="panel fac${k === sug ? ' sug' : ''}"><div class="fh"><div class="fti"><span class="fic">${X.ic}</span><div><h2 style="margin:0">${F.n}</h2><div class="small mute">${X.d}</div></div></div><span class="lvb">Sv ${l}/5</span></div><div class="pips" role="img" aria-label="Seviye ${l} / 5">${[1, 2, 3, 4, 5].map(i => `<i class="${i <= l ? 'on' : ''}"></i>`).join('')}</div><div class="fm">${X.m.map(([n, fn]) => `<div class="fmr"><span>${n}</span><b>${fn(l)}</b>${l < 5 && fn(l + 1) !== fn(l) ? `<em>→ ${fn(l + 1)}</em>` : ''}</div>`).join('')}</div>${l < 5 ? `<div class="fbt"><button class="btn" data-act="facup" data-k="${k}" ${no ? 'disabled' : ''}>Geliştir · ${fm(c)}</button>${done ? '<span class="small mute">Bu sezon yapıldı</span>' : t.bud < c ? '<span class="small mute">Bütçe yetersiz</span>' : k === sug ? '<span class="small sugt">Önerilen</span>' : ''}</div>` : '<div class="fbt"><span class="small"><b>✔ En üst seviye</b></span></div>'}</div>`;
     };
+    const sum = `<div class="panel facsum"><div class="fsh"><div><h2 style="margin:0">Kulüp tesisleri</h2><div class="small mute">Her tesis sezonda bir kez geliştirilir.</div></div><div class="fsb"><div><span class="small mute">Bütçe</span><b>${fm(t.bud)}</b></div><div><span class="small mute">Tesis puanı</span><b>${tot}/25</b></div><div><span class="small mute">Bu sezon kalan</span><b>${rem.length}</b></div></div></div><div class="tbar"><i style="width:${tot * 4}%"></i></div>${sug ? `<div class="fsg small">💡 <b>Öneri:</b> ${FAC[sug].n} — ${why[sug]} (${fm(facCost(sug, f[sug]))}).${ok.length > 1 ? ` <button class="btn alt sm" data-act="facall">Bütçe yettiği kadar hepsini geliştir (${fm(allc)})</button>` : ''}</div>` : '<div class="fsg small mute">' + (rem.length ? 'Kalan geliştirmeler için bütçe yetersiz.' : 'Bu sezon yapılabilecek geliştirme kalmadı.') + '</div>'}</div>`;
     const yg = t.pl.filter(p => p.age <= 23).sort((a, b) => b.pot - a.pot).slice(0, 14);
-    return budgetPanel() + `<div class="panel"><h2>Kulüp tesisleri</h2><p class="small mute" style="margin:0">Tesisleri geliştirdikçe oyuncuların gelişimi hızlanır, regenler daha yetenekli gelir, sakatlıklar azalır. Her tesis sezonda bir kez geliştirilebilir. Bütçen: <b>${fm(t.bud)}</b></p></div>
- <div class="fgrid">${['train', 'acad', 'pitch', 'med', 'stad'].map(card).join('')}</div>
+    return budgetPanel() + sum + `<div class="facgrid">${['train', 'acad', 'pitch', 'med', 'stad'].map(card).join('')}</div>
  ${staffPanel()}
  <div class="panel"><h2>Genç oyuncu gelişimi <span class="small mute">(özel program: ${prog.length}/${slots})</span></h2><p class="small mute" style="margin:0 0 8px">Gelişim çarpanı oyuncunun huyunu, antrenman tesisini ve özel programı birleştirir. Özel programdaki oyuncular daha hızlı gelişir. Hak sayısı antrenman tesisinin seviyesine bağlıdır.</p>
  ${yg.length ? `<div class="tw"><table><thead><tr><th>Oyuncu</th><th>Poz</th><th class="n">Yaş</th><th class="n">Mevcut</th><th class="n">Pot.</th><th>Huy</th><th class="n">Çarpan</th><th></th></tr></thead><tbody>${yg.map(p => `<tr data-act="open" data-id="${p.id}"><td>${p.n} ${ptags(p)}</td><td>${pbadge(p.pos)}</td><td class="n">${p.age}</td><td class="n">${ovrF(p)}</td><td class="n">${potChip(p)}</td><td>${huyChip(p)}</td><td class="n">x${devMul(p, t).toFixed(2)}</td><td>${p.age <= 26 ? `<button class="btn alt sm" data-act="prog" data-id="${p.id}">${p.ind ? 'Programı bitir' : 'Program ver'}</button>` : ''}</td></tr>`).join('')}</tbody></table></div>` : '<p class="mute small">Kadroda 23 yaş altı oyuncu yok.</p>'}</div>
@@ -18593,6 +18656,7 @@ function wageModal() {
     const need = (d.w + d.b / 3) * .92 * wf * (m.pre ? 1 : RCM[rcm].m) * PRM[prm].m, mt = meterOf(((+m.v) + (+m.b || 0) / 3) / need);
     const sub = m.pre ? ' · ön sözleşme, sezon sonunda bedelsiz' : m.fee ? ' · transfer bedeli ' + fm(m.fee) : ' · bedelsiz';
     return ov(`${tmHead(p, e, sub + (m.so ? ' · satıcıya %' + m.so + ' pay' : ''))}
+ <p class="small mute" style="margin:6px 0 0">Kulübünde aldığı maaş: <b>${fmW(p.wg || 0)}</b> · senin liginde benzer oyuncunun piyasa maaşı: <b>${fmW(wageFor(p, WLG, WUC))}</b>. İstek bu ikisine ve lig seviyene göre belirlenir.</p>
  <div class="tmg"><div><small>Maaş beklentisi (tahmin)</small><b style="font-size:14px">${estW(d.w, p.n)}</b></div><div><small>Maaş bütçesi kalan</small><b>${fmW(room)}</b></div><div><small>Menajer (tahmini)</small><b>${fm(agentFee(m.fee || 0, d.w))}</b></div></div>
  <div class="tmbid" data-dw="${d.w}" data-db="${d.b}" data-age="${p.age}" data-fee="${m.fee || 0}" data-pre="${m.pre ? 1 : 0}">
   <div class="row"><label class="small mute">Yıllık maaş (milyon €)<br><input class="num" id="wgv" type="number" min="0" step="0.05" value="${m.v}"></label><label class="small mute">İmza primi (milyon €)<br><input class="num" id="sbv" type="number" min="0" step="0.05" value="${m.b || 0}"></label><label class="small mute">Süre<br><select id="yrs">${[1, 2, 3, 4, 5].map(yy => `<option value="${yy}" ${y === yy ? 'selected' : ''}>${yy} yıl</option>`).join('')}</select></label></div>
@@ -19895,6 +19959,10 @@ document.addEventListener('click', e => {
             UI.bsv = 0;
             R();
             break;
+        case 'bspre':
+            UI.bsv = +d.v;
+            R();
+            break;
         case 'trimsel': {
             const md = document.querySelector('.md'), box = document.querySelector('.md .tw'), st = md ? md.scrollTop : 0, s2 = box ? box.scrollTop : 0;
             const s = new Set(UI.trim || []), id = +d.id;
@@ -20262,6 +20330,32 @@ document.addEventListener('click', e => {
             save();
             R();
             toast(FAC[k].n + ' seviye ' + (l + 1) + ' oldu.');
+            break;
+        }
+        case 'facall': {
+            const f = G.fac, t = U();
+            let n = 0, tc = 0;
+            ['train', 'acad', 'pitch', 'med', 'stad'].sort((x, y) => f[x] - f[y]).forEach(k => {
+                const l = f[k];
+                if (l >= 5 || f.up[k] === G.season)
+                    return;
+                const c = facCost(k, l);
+                if (t.bud < c)
+                    return;
+                t.bud = +(t.bud - c).toFixed(2);
+                f[k] = l + 1;
+                f.up[k] = G.season;
+                n++;
+                tc += c;
+                news(FAC[k].n + ' geliştirildi: seviye ' + (l + 1) + ' (' + fm(c) + ').');
+            });
+            if (n) {
+                save();
+                R();
+                toast(n + ' tesis geliştirildi (' + fm(tc) + ').');
+            }
+            else
+                toast('Geliştirilebilecek tesis yok.');
             break;
         }
         case 'prog': {
@@ -20646,7 +20740,7 @@ document.addEventListener('input', e => { const id = e.target.id; if (id === 'of
     return;
 } });
 document.addEventListener('input', e => { if (e.target.id !== 'bslider')
-    return; const v = +e.target.value; UI.bsv = v; const t = U(); document.getElementById('bpt').textContent = fm(t.bud - v); document.getElementById('bpw').textContent = fmW(G.wb + v / 2); });
+    return; UI.bsv = +e.target.value; bgtLive(); });
 document.addEventListener('change', e => {
     if (e.target.id === 'logoin') {
         importLogos([...e.target.files]);
@@ -22951,6 +23045,11 @@ lvRaf = function (ts) { _lvRaf0(ts); try {
     lvFx(ts);
 }
 catch (e) { } };
+const _R0bgt = R;
+R = function () { const r = _R0bgt.apply(this, arguments); try {
+    bgtLive();
+}
+catch (e) { } return r; };
 const _lvApply0 = lvApply;
 lvApply = function (st, sd) {
     let info = null;
