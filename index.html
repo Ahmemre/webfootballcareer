@@ -9045,6 +9045,84 @@ h2 .fl {
 .wbar{margin:2px 0 10px}.wbar .wbh{display:flex;justify-content:space-between;margin-bottom:4px}
 .wbar .wbt{height:9px;border-radius:5px;background:var(--line);overflow:hidden}.wbar .wbt i{display:block;height:100%;width:0;background:var(--pitch2);border-radius:5px;transition:width .15s}
 .wbar .wbt i.o{background:#d98f00}.wbar .wbt i.r{background:var(--card-r)}
+</style><style>
+header.top.kit{background:var(--kbg,linear-gradient(120deg,var(--pitch),var(--pitch2)))!important;--s0:rgba(8,14,18,.46)}
+header.top.kit::after{background:linear-gradient(90deg,var(--ka,#d4af37),var(--kb,#d4af37))!important;height:4px!important}
+header.top.kit .tc{background:var(--s0);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);padding:10px 20px 10px 12px;border-radius:18px;border:1px solid rgba(255,255,255,.12);text-shadow:0 1px 2px rgba(0,0,0,.4)}
+header.top.kit .meta span{background:rgba(255,255,255,.16)}
+header.top.kit .kpi{background:var(--s0);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:9px 16px 10px;min-width:128px}
+header.top.kit .kpi span{display:block;font-size:11px;letter-spacing:.09em;text-transform:uppercase;opacity:.78;font-weight:700}
+header.top.kit .kpi b{display:block;font:700 30px/1.05 'Barlow Condensed',Impact,sans-serif;letter-spacing:.01em;margin-top:2px;font-variant-numeric:tabular-nums}
+header.top.kit .kpi b small{font-size:16px;opacity:.72;font-weight:600}
+header.top.kit .kbar{height:5px;border-radius:3px;background:rgba(255,255,255,.2);margin-top:6px;overflow:hidden}
+header.top.kit .kbar i{display:block;height:100%;background:#7fe39a;border-radius:3px}
+header.top.kit .kbar i.o{background:#ffc247}header.top.kit .kbar i.r{background:#ff6b5e}
+header.top.kit .icb,header.top.kit .btn.alt{background:rgba(8,14,18,.42);border-color:rgba(255,255,255,.2);color:#fff;backdrop-filter:blur(6px)}
+.kitpv{height:96px;border-radius:14px;margin:12px 0;display:flex;align-items:center;padding:0 14px;border:1px solid var(--line)}
+.kitpvt{display:flex;gap:12px;align-items:center;background:rgba(8,14,18,.46);color:#fff;padding:8px 18px 8px 10px;border-radius:14px;font:700 24px 'Barlow Condensed',sans-serif}
+.kitrow{display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap}.kitrow label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--mute)}
+.kitrow input[type=color]{width:64px;height:42px;padding:2px;border-radius:10px;border:1px solid var(--line);background:var(--card,#fff)}
+@media (max-width:700px){header.top.kit .kpi b{font-size:24px}header.top.kit .kpi{min-width:0;padding:7px 12px}header.top.kit .tc{padding:8px 14px 8px 10px}}
+</style><style>
+.trhero{padding:18px 20px!important}
+.trh1{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:14px}
+.trst{display:inline-flex;align-items:center;gap:8px;font:700 13px 'Barlow Condensed',sans-serif;letter-spacing:.12em;padding:5px 12px;border-radius:999px}
+.trst i{width:9px;height:9px;border-radius:50%;background:currentColor;box-shadow:0 0 0 4px color-mix(in srgb,currentColor 25%,transparent)}
+.trst.on{color:#0c7a3d;background:rgba(12,122,61,.12)}.trst.off{color:var(--card-r,#c0392b);background:rgba(192,57,43,.12)}
+.trlab{font-size:15px;margin-top:8px;font-weight:600}
+.trbar{flex:1;min-width:180px;max-width:360px;height:10px;border-radius:6px;background:var(--line);overflow:hidden}.trbar i{display:block;height:100%;background:linear-gradient(90deg,var(--pitch2),#d4af37);border-radius:6px}
+.trks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}@media (min-width:1100px){.trks{grid-template-columns:repeat(6,1fr)}.trk{flex-direction:column;align-items:flex-start;gap:8px}}
+.trk{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:14px;background:var(--soft);border:1px solid var(--line)}
+.trk .tri{font-size:26px;width:46px;height:46px;display:grid;place-items:center;border-radius:12px;background:var(--card,#fff);flex:none}
+.trk small{display:block;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.trk b{display:block;font:700 26px/1.1 'Barlow Condensed',sans-serif;font-variant-numeric:tabular-nums}
+.trk em{display:block;font-style:normal;font-size:12px;color:var(--mute)}
+.trk.r{border-color:var(--card-r,#c0392b)}.trk.r b{color:var(--card-r,#c0392b)}.trk.y{border-color:#d9a400}.trk.y b{color:#b78600}
+.trv>h2:first-child{font-size:24px}
+.trv .seg{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px}
+.trv .seg button{font-size:15px!important;font-weight:700;padding:11px 20px!important;border-radius:999px!important;min-height:44px}
+.trv .row select,.trv .row input.num{font-size:15px!important;min-height:44px;padding:8px 14px!important;border-radius:12px!important}
+.trv .row input.num{width:min(100%,260px)!important;flex:1 1 220px;padding-left:40px!important;background:var(--card,#fff) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a98a3' stroke-width='2.4' stroke-linecap='round'><circle cx='11' cy='11' r='7'/><path d='m20 20-4-4'/></svg>") no-repeat 12px center/18px}
+.trv .row .btn.alt{font-size:14.5px;min-height:44px;padding:8px 16px!important;border-radius:12px}
+.trv .tw{border:1px solid var(--line);border-radius:14px;overflow:auto;max-height:none}
+.trv table{font-size:15.5px}
+.trv th{font-size:12px;letter-spacing:.08em;padding:12px 12px!important;position:sticky;top:0;background:var(--soft,#f3f6f4);z-index:1}
+.trv td{padding:15px 12px!important;vertical-align:middle}
+.trv tbody tr{transition:background .12s,box-shadow .12s;cursor:pointer}
+.trv tbody tr:hover{background:color-mix(in srgb,var(--pitch2) 9%,transparent);box-shadow:inset 4px 0 0 var(--pitch2)}
+.trv td:first-child{font-weight:600;font-size:16.5px}
+.trv td .crest{--s:28px!important}
+.trv .star{font-size:22px;padding:4px 8px;margin-right:4px}
+.trv .btn.sm{font-size:14px;padding:9px 14px;border-radius:10px;font-weight:700}
+.trv .tmg>div b{font-size:24px}
+@media (max-width:700px){.trv td:first-child,.trv th:first-child{white-space:normal!important;min-width:140px;max-width:46vw;position:sticky;left:0;background:var(--card,#fff);z-index:2;box-shadow:2px 0 0 var(--line)}.trv td{white-space:nowrap}.trv td:first-child{font-size:15px}.trv .btn.sm{padding:8px 10px;font-size:13px}.trhero{padding:14px!important}.trks{grid-template-columns:1fr 1fr}.trk{padding:10px}.trk .tri{width:38px;height:38px;font-size:21px}.trk b{font-size:22px}.trv table{font-size:14.5px}.trv td{padding:13px 9px!important}.trv .seg button{padding:10px 14px!important;font-size:14px!important}}
+</style><style>
+.md.tmw{max-width:640px!important}
+.tmw .tmg{grid-template-columns:repeat(2,1fr);gap:10px}
+.tmw .tmg div{padding:12px 14px;border-radius:14px}
+.tmw .tmg small{font-size:11.5px}
+.tmw .tmg b{font-size:26px}
+.tmw .tmg b.est{font-size:20px}
+.tmw .tmrow .tmb{font-size:13px;padding:6px 14px}
+.tmw .tmbid.ofx{padding:18px;border-radius:18px}
+.ofbig{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:4px 0 6px}
+.ofbig b{font:700 44px/1 'Barlow Condensed',sans-serif;font-variant-numeric:tabular-nums}
+.ofbig span{font-size:14px;color:var(--mute)}.ofbig span b{font:700 15px 'Inter',sans-serif;color:var(--ink,inherit)}
+.ofsc{position:relative;display:flex;justify-content:space-between;font-size:11px;color:var(--mute);margin-top:2px;height:16px}
+.ofsc .mk{position:absolute;transform:translateX(-50%);font-weight:700;color:var(--pitch2)}
+.ofchips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.ofchips .btn{padding:10px 16px;font-size:14.5px;border-radius:12px;min-height:44px}
+.ofin{gap:14px;align-items:flex-end}
+.ofin .num,.ofin select{font-size:18px!important;min-height:48px;border-radius:12px!important}
+.oftot{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px dashed var(--line)}
+.oftot span{font-size:13px;color:var(--mute);font-weight:600}.oftot b{font:700 30px 'Barlow Condensed',sans-serif}.oftot em{font-style:normal;font-size:12px;color:var(--mute)}
+.ofroom{font-size:13.5px;margin-top:6px}.ofroom .ok{color:var(--pitch2);font-weight:600}.ofroom .no{color:var(--card-r,#c0392b);font-weight:700}.ofroom .wn{color:#b78600;font-weight:600}
+.tmw .pat i{width:36px!important;height:9px!important}
+.tmact{display:flex;gap:10px;position:sticky;bottom:-22px;background:var(--card,#fff);padding:14px 0 22px;margin-top:10px;border-top:1px solid var(--line);z-index:5}
+.tmact .btn{flex:1;min-height:52px;font-size:17px;border-radius:14px}
+.tmact .btn:first-child{flex:2}
+.tmw .tmbid .row .num{min-height:48px}
+.tmw .tmbid .btn.alt.sm{min-height:42px;font-size:14px}
 </style></head>
 <body>
 <noscript><h1>Teknik Direktör 27 Lite</h1><p>Tarayıcıda ücretsiz oynanan futbol menajerlik oyunu: 24 ülkede 34 lig, 564 kulüp, gerçek oyuncular, Avrupa kupaları, transfer, gözlemci sistemi ve çok oyunculu lig. Oynamak için JavaScript gerekir.</p></noscript>
@@ -10527,7 +10605,7 @@ function wageFor(p, lid, club) {
     let w = wageBase(p) * calF(lid, club) * WSC * clamp(1.3 + (85 - p.ovr) / 20 * .35, 1.25, 1.65);
     if (p.age <= 21)
         w = Math.min(w, youthCap(p));
-    return Math.max(.12, +w.toFixed(2));
+    return Math.min(WMAX, Math.max(.12, +w.toFixed(2)));
 }
 function agentFee(fee, w) { return +(fee * .04 + w * (fee ? .3 : .6)).toFixed(2); }
 const wageFactor = (p, y) => p.age <= 25 ? 1 - (y - 3) * .03 : 1 + (y - 3) * .01;
@@ -11509,15 +11587,125 @@ function menuModal() {
     return `<div class="ov" data-act="closebg"><div class="md" role="dialog" aria-modal="true"><button class="close" data-act="close" aria-label="Kapat">×</button><h2>Menü</h2>
  <div class="msec">Oyun</div><div class="mgrp">${row('save', '<path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/>', 'Oyunu kaydet', 'Tarayıcıya kaydeder')}${row('budm', '<circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5c0-1 1-1.5 2.5-1.5s2.5.6 2.5 1.7c0 2.3-5 1.1-5 3.6 0 1.1 1.1 1.7 2.5 1.7s2.5-.6 2.5-1.6"/>', 'Bütçe ayarla', 'Transfer ve maaş bütçesi')}${row('setm', '<path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>', 'Lig ayarları', 'Gözlem, zorluk, sakatlık, bütçe')}</div>
  <div class="msec">Online</div><div class="mgrp">${row('mpm', '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.500 0 18M12 3c-3 3.500-3 14.500 0 18"/>', 'Çok oyunculu', 'Lig kur veya koda katıl')}</div>
- <div class="msec">Görünüm ve uygulama</div><div class="mgrp">${row('theme', '<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.600 5.600l1.400 1.400M17 17l1.400 1.400M18.400 5.600 17 7M7 17l-1.400 1.400"/>', 'Tema', 'Şu an: ' + THN[themeGet()])}${row('pwa', '<path d="M12 3v12M7 10l5 5 5-5M5 20h14"/>', 'Uygulamayı yükle', 'Ana ekrana ekle, tam ekran oyna')}<label class="mnr" style="cursor:pointer">${I('<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 8"/>')}<span><b>Logo / yazı tipi yükle</b><small>PNG, ZIP, TTF, OTF, WOFF</small></span><i class="chev">›</i><input type="file" id="logoin" multiple accept="image/*,.zip,.ttf,.otf,.woff,.woff2" hidden></label></div>
+ <div class="msec">Görünüm ve uygulama</div><div class="mgrp">${row('kit', '<circle cx="8" cy="12" r="5"/><circle cx="16" cy="12" r="5"/>', 'Kulüp renkleri', 'Başlık renklerini ve oranını özelleştir')}${row('theme', '<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.600 5.600l1.400 1.400M17 17l1.400 1.400M18.400 5.600 17 7M7 17l-1.400 1.400"/>', 'Tema', 'Şu an: ' + THN[themeGet()])}${row('pwa', '<path d="M12 3v12M7 10l5 5 5-5M5 20h14"/>', 'Uygulamayı yükle', 'Ana ekrana ekle, tam ekran oyna')}<label class="mnr" style="cursor:pointer">${I('<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 8"/>')}<span><b>Logo / yazı tipi yükle</b><small>PNG, ZIP, TTF, OTF, WOFF</small></span><i class="chev">›</i><input type="file" id="logoin" multiple accept="image/*,.zip,.ttf,.otf,.woff,.woff2" hidden></label></div>
  <div class="mgrp" style="margin-top:14px">${row('newgame', '<path d="M3 11l9-8 9 8M5 10v10h14V10"/>', 'Ana menüye dön', 'Kaydedilmemiş ilerleme kaybolur', 'mwarn')}</div>
  <p class="small mute" style="margin:12px 0 0">Kulüp logosu için dosya adı kulüp adıyla aynı olmalı (örn. Arsenal.png). Kupa logoları: UCL.png, UEL.png, UECL.png.</p></div></div>`;
 }
 const ICO = { bell: '<svg viewBox="0 0 24 24"><path d="M6 9a6 6 0 0 1 12 0c0 6 2.5 7.5 2.5 7.5h-17S6 15 6 9z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>', save: '<svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/></svg>' };
+
+const TCC = {};
+function hex2rgb(h) { h = (h || '#000').replace('#', ''); if (h.length === 3) h = h.split('').map(x => x + x).join(''); const n = parseInt(h, 16) || 0; return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
+function rgb2hex(r, g, b) { return '#' + [r, g, b].map(x => clamp(Math.round(x), 0, 255).toString(16).padStart(2, '0')).join(''); }
+function kitFallback(name) {
+    const c = KC[name];
+    let h = 0;
+    for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
+    if (c) {
+        let a = c[0], b = c[1];
+        if (a.toLowerCase() === '#fff' || a.toLowerCase() === '#ffffff') { const t = a; a = b; b = t; }
+        if (b.toLowerCase() === '#fff' || b.toLowerCase() === '#ffffff') b = rgb2hex(...hex2rgb(a).map(x => x * .55));
+        return { a, b, p: 55, m: 'split' };
+    }
+    return { a: `hsl(${h % 360} 48% 30%)`, b: `hsl(${(h + 28) % 360} 52% 20%)`, p: 60, m: 'grad' };
+}
+function kitAuto(name, force) {
+    const lg = findLogo(name);
+    if (!lg || (TCC[name] !== undefined && !force)) return;
+    TCC[name] = null;
+    const im = new Image();
+    im.onload = () => {
+        try {
+            const W = 56, cv = document.createElement('canvas');
+            cv.width = cv.height = W;
+            const cx = cv.getContext('2d', { willReadFrequently: true });
+            cx.drawImage(im, 0, 0, W, W);
+            const d = cx.getImageData(0, 0, W, W).data, bins = {};
+            for (let i = 0; i < d.length; i += 4) {
+                if (d[i + 3] < 140) continue;
+                const r = d[i], g = d[i + 1], b = d[i + 2], mx = Math.max(r, g, b), mn = Math.min(r, g, b), v = mx / 255, sa = mx ? (mx - mn) / mx : 0;
+                let k;
+                if (v < .2) k = 'k'; else if (sa < .18) k = v > .8 ? 'w' : 'g'; else {
+                    let h = 0, df = mx - mn;
+                    if (mx === r) h = ((g - b) / df + 6) % 6; else if (mx === g) h = (b - r) / df + 2; else h = (r - g) / df + 4;
+                    k = 'h' + Math.floor(h * 60 / 20);
+                }
+                const q = bins[k] || (bins[k] = { n: 0, r: 0, g: 0, b: 0 });
+                q.n++; q.r += r; q.g += g; q.b += b;
+            }
+            const arr = Object.entries(bins).map(([k, q]) => ({ k, n: q.n * (k === 'w' ? .35 : k === 'g' ? .4 : k === 'k' ? .7 : 1), c: [q.r / q.n, q.g / q.n, q.b / q.n] })).sort((x, y) => y.n - x.n);
+            const tot = arr.reduce((a, q) => a + q.n, 0);
+            if (arr.length && tot > 40) {
+                const A = arr[0];
+                let B = arr.find(q => q !== A && q.n > tot * .07 && (q.k[0] !== 'h' || A.k[0] !== 'h' || Math.abs((+q.k.slice(1)) - (+A.k.slice(1))) % 18 > 1 && Math.min(Math.abs((+q.k.slice(1)) - (+A.k.slice(1))), 18 - Math.abs((+q.k.slice(1)) - (+A.k.slice(1)))) > 1));
+                const sat = c => { const m = (c[0] + c[1] + c[2]) / 3; return c.map(x => clamp(m + (x - m) * 1.18, 0, 255)); };
+                const ca = A.k[0] === 'h' ? sat(A.c) : A.c;
+                let cb, p = 62;
+                if (B) { cb = B.k[0] === 'h' ? sat(B.c) : B.c; p = clamp(Math.round(A.n / (A.n + B.n) * 100), 30, 72); }
+                else cb = ca.map(x => x * .5);
+                TCC[name] = { a: rgb2hex(...ca), b: rgb2hex(...cb), p, m: 'split' };
+                if (G && U().name === name && !(UI.modal && UI.modal.t === 'kit')) R();
+                else if (UI.modal && UI.modal.t === 'kit') kitApply();
+            }
+        } catch (e) { }
+    };
+    im.src = lg;
+}
+function kitOf(name) {
+    const c = G && G.tcol && G.tcol[name];
+    if (c) return c;
+    kitAuto(name);
+    return TCC[name] || kitFallback(name);
+}
+function kitBg(k) {
+    const p = clamp(+k.p || 50, 10, 90), a = k.a, b = k.b;
+    if (k.m === 'grad') return `linear-gradient(105deg,${a} 0%,${a} ${Math.max(0, p - 25)}%,${b} 100%)`;
+    if (k.m === 'stripe') return `linear-gradient(90deg,${a} 0,${a} ${p / 2}%,${b} ${p / 2}%,${b} ${100 - p / 2}%,${a} ${100 - p / 2}%,${a} 100%)`;
+    return `linear-gradient(104deg,${a} 0,${a} ${p - 1}%,${b} ${p + 1}%,${b} 100%)`;
+}
+function kitApply() {
+    const h = document.querySelector('header.top');
+    if (!h || !G) return;
+    const k = kitOf(U().name);
+    h.style.setProperty('--kbg', kitBg(k));
+    h.style.setProperty('--ka', k.a);
+    h.style.setProperty('--kb', k.b);
+    const pv = document.getElementById('kitpv');
+    if (pv) pv.style.background = kitBg(k);
+}
+function kitModal() {
+    const t = U(), k = kitOf(t.name), md = k.m || 'split';
+    return ov(`<h2>Kulüp renkleri</h2><p class="small mute">${t.name} için üst başlığın renklerini ve oranını ayarla. Renk oranları logodan otomatik alınır, istersen kendin değiştirebilirsin.</p>
+ <div id="kitpv" class="kitpv" style="background:${kitBg(k)}"><div class="kitpvt">${crest(t.name, 44)}<b>${t.name}</b></div></div>
+ <div class="kitrow"><label>1. renk<input type="color" id="kit-a" value="${/^#/.test(k.a) ? k.a : '#a50a2d'}"></label><label>2. renk<input type="color" id="kit-b" value="${/^#/.test(k.b) ? k.b : '#fcb716'}"></label><button class="btn alt sm" data-act="kitswap">⇄ Yer değiştir</button></div>
+ <label class="small mute" style="display:block;margin-top:12px">1. rengin payı: <b id="kit-pv">%${Math.round(k.p)}</b><input type="range" id="kit-p" min="10" max="90" step="1" value="${Math.round(k.p)}" class="bslide"></label>
+ <div class="row" style="margin-top:10px;gap:6px;flex-wrap:wrap">${[['split', 'İki parça'], ['stripe', 'Ortada 2. renk'], ['grad', 'Geçişli']].map(([v, l]) => `<button class="btn ${md === v ? '' : 'alt'} sm" data-act="kitmode" data-m="${v}">${l}</button>`).join('')}</div>
+ <div class="row" style="margin-top:14px;gap:8px;flex-wrap:wrap"><button class="btn alt sm" data-act="kitauto">Logodan otomatik al</button><button class="btn alt sm" data-act="kitreset">Varsayılana dön</button><button class="btn" data-act="close">Tamam</button></div>`);
+}
+function kitSet(patch) {
+    const n = U().name;
+    G.tcol = G.tcol || {};
+    G.tcol[n] = Object.assign({}, G.tcol[n] || kitOf(n), patch);
+    kitApply();
+}
+document.addEventListener('input', e => {
+    const id = e.target.id;
+    if (!G || !UI.modal || UI.modal.t !== 'kit') return;
+    if (id === 'kit-a') kitSet({ a: e.target.value });
+    else if (id === 'kit-b') kitSet({ b: e.target.value });
+    else if (id === 'kit-p') { kitSet({ p: +e.target.value }); const o = document.getElementById('kit-pv'); if (o) o.textContent = '%' + e.target.value; }
+});
+const _R0off = R;
+R = function () { const r = _R0off.apply(this, arguments); try {
+    if (UI.modal && UI.modal.t === 'offer')
+        offMeter();
+}
+catch (e) { } return r; };
+const _R0kit = R;
+R = function () { const r = _R0kit.apply(this, arguments); try { kitApply(); } catch (e) { } return r; };
 function head() {
     const t = U(), tot = G.fix.length, un = unreadN(), pend = (G.offers || []).length + (UI.scn || 0);
-    return `<header class="top"><div class="wrap hd"><div class="tc" style="gap:14px">${crest(t.name, 52)}<div><div class="club">${t.name}</div><div class="stl">${starsH(t.name)}</div><div class="meta"><span>${LGM[G.lid].name}</span><span>${G.season}/${String(G.season + 1).slice(2)}</span><span>${fmtD(G.d || 0)}</span><span>${seasonOver() ? 'Sezon bitti' : 'Hafta ' + (G.week + 1) + ' / ' + tot}</span></div></div></div>
- <div class="hr"><div class="kpi"><span>Transfer bütçesi</span><b id="budv">${fm(t.bud)}</b></div><div class="kpi"><span>Maaş</span><b>${fmW(billNow())} / ${fmW(G.wb)}</b></div>
+    return `<header class="top kit"><div class="wrap hd"><div class="tc" style="gap:14px">${crest(t.name, 52)}<div><div class="club">${t.name}</div><div class="stl">${starsH(t.name)}</div><div class="meta"><span>${LGM[G.lid].name}</span><span>${G.season}/${String(G.season + 1).slice(2)}</span><span>${fmtD(G.d || 0)}</span><span>${seasonOver() ? 'Sezon bitti' : 'Hafta ' + (G.week + 1) + ' / ' + tot}</span></div></div></div>
+ <div class="hr"><div class="kpi"><span>Transfer bütçesi</span><b id="budv">${fm(t.bud)}</b></div><div class="kpi"><span>Maaş</span><b>${fmW(billNow())}<small> / ${fmW(G.wb)}</small></b><div class="kbar"><i style="width:${clamp(G.wb ? billNow() / G.wb * 100 : 100, 0, 100).toFixed(0)}%" class="${billNow() / (G.wb || 1) > .95 ? 'r' : billNow() / (G.wb || 1) > .85 ? 'o' : ''}"></i></div></div>
  <button class="btn go" data-act="cont" ${seasonOver() ? 'disabled' : ''} title="1 gün ilerle (maç günüyse maça girer)">Devam ▸</button><button class="btn alt mo1" data-act="month" ${seasonOver() ? 'disabled' : ''} title="30 gün simüle et">1 ay sim et ▸▸</button><div class="hbtns"><button class="icb" data-act="theme" aria-label="Tema değiştir" title="Tema: ${THN[themeGet()]} (değiştirmek için dokun)">☾</button><button class="icb" data-act="bell" aria-label="Bildirimler${un ? ' (' + un + ' yeni)' : ''}" title="Bildirimler">${ICO.bell}${un ? `<em class="bdg">${un > 9 ? '9+' : un}</em>` : ''}</button><button class="icb" data-act="save" aria-label="Kaydet" title="Kaydet">${ICO.save}</button><button class="icb" data-act="menu" aria-label="Menü" title="Menü">⋯</button></div></div></div></header>
  <nav class="tabs"><div class="wrap" role="tablist"><i class="ind"></i>${[['ozet', 'Özet'], ['kadro', 'Kadro'], ['dizilis', 'Dizilim'], ['kulup', 'Kulüp'], ['lig', 'Lig'], ['avrupa', 'Avrupa'], ['transfer', 'Transfer'], ['takvim', 'Takvim'], ['ekstra', 'Ekstra']].map(([k, l]) => `<button role="tab" aria-selected="${UI.tab === k || (k === 'ekstra' && EXTRA.includes(UI.tab))}" data-act="${k === 'ekstra' ? 'exmenu' : 'tab'}" data-k="${k}"${k === 'ekstra' ? ` aria-haspopup="true" aria-expanded="${!!UI.exm}"` : ''}>${l}${k === 'ekstra' ? `<span class="chv${UI.exm ? ' up' : ''}">▾</span>` : ''}${k === 'transfer' && pend ? `<span class="tb">${pend}</span>` : ''}</button>`).join('')}</div>${UI.exm ? `<div class="exdd" role="menu" style="left:${Math.max(8, Math.min(UI.exm.x, innerWidth - 232))}px;top:${UI.exm.y}px">${[['bteam', '🎓', 'B Takım'], ['scout', '🌍', 'Kulüpler'], ['ulke', '📊', 'Ülke puanı'], ['arsiv', '🏆', 'Kupa dolabı ve başarımlar'], ['ekstra', '☰', 'Tüm Ekstra sayfası']].map(([k, ic, t]) => `<button role="menuitem" data-act="tab" data-k="${k}"${UI.tab === k ? ' class="on"' : ''}><span>${ic}</span>${t}</button>`).join('')}</div>` : ''}</nav>`;
 }
@@ -12016,7 +12204,7 @@ function clauseRaids() {
     });
 }
 const meterOf = r => r >= 1 ? ['Güçlü teklif', 'g', 100] : r >= .93 ? ['Makul teklif', 'y', 75] : r >= .85 ? ['Düşük teklif', 'o', 50] : ['Çok düşük', 'r', 25];
-const RCM = { 0: { n: 'Yok', m: 1.05 }, 2: { n: '2× değer', m: .96 }, 3: { n: '3× değer', m: .99 }, 5: { n: '5× değer', m: 1.02 } }, PRM = { 0: { n: 'Söz yok', m: 1 }, 2: { n: 'Düzenli forma (ilk 11)', m: .96 }, 1: { n: 'Kilit oyuncu (kesin ilk 11)', m: .92 } };
+const RCM = { 0: { n: 'Yok', m: 1.05 }, 2: { n: '2× değer', m: .96 }, 3: { n: '3× değer', m: .99 }, 5: { n: '5× değer', m: 1.02 } }, PRM = { 0: { n: 'Söz yok', m: 1 }, 2: { n: 'Düzenli forma (ilk 11)', m: .9 }, 1: { n: 'Kilit oyuncu / yıldız', m: .9 }, 3: { n: 'Yedek / rotasyon', m: 1.2 } };
 function askPrice(e) {
     if (e.free)
         return 0;
@@ -12045,14 +12233,58 @@ const minPrice = e => +(askPrice(e) * (.86 + .08 * h01(e.key + 'm' + G.season)))
 const wageCap = p => { const m = interp(WTG, p.ovr) * clamp(calF(G.lid, U().name), .8, 1.5) * (p.age >= 31 ? .9 : p.age <= 20 ? .8 : 1); return Math.max(.12, Math.min(m, .1 * (G.wb || 100))); };
 const lowCap = p => { if (p.ovr > 72)
     return Infinity; const g = (p.pot || p.ovr) - p.ovr >= 8 || p.age <= 20 ? 2 : 1; return Math.max(.12, interp(WTG, p.ovr) * 1.6 * g); };
-function demands(e) { const p = e.p, mine = wageFor(p, WLG, WUC) * Math.pow(clamp(p.vm || 1, .8, 1.3), .7), cw = p.wg || mine; let w = e.free ? clamp(Math.max(cw * .92, mine * 1.05), mine, mine * 1.9) * (.96 + .1 * h01(e.key + 'w')) : clamp(cw * 1.08, mine * .85, mine * 1.5) * (.95 + .15 * h01(e.key + 'w')); if (e.free && !e.pre)
-    w *= clamp(1 - .03 * Math.max(0, (p.fw || 0) - 1), .65, 1); {
-    const a = f5avg(p);
-    if (a !== null && a >= 7.3)
-        w *= 1.08;
-} if (mo(p) < 40)
-    w *= .94; if (p.age <= 21)
-    w = Math.min(w, youthCap(p) * (e.free ? 1.5 : 1.15)); w = Math.min(w, lowCap(p), Math.max(wageCap(p), .22 * (G.wb || 100))); const b = w * (e.free ? 1.8 : .4) * (.8 + .4 * h01(e.key + 'b')); return { w: +w.toFixed(2), b: +b.toFixed(2) }; }
+
+/* ---- maaş ölçeği: bantlar HAFTALIK € bin; oyun yıllık milyon € tutar (x52) ---- */
+const WBANDS = [[40, 1, 3], [50, 2, 6], [60, 5, 15], [65, 10, 28], [70, 18, 42], [75, 30, 60], [80, 60, 110], [85, 100, 180], [90, 250, 400], [99, 300, 400]];
+const WMAX = 31;
+const wkM = k => k * 52 / 1000;
+function wageBand(ovr) {
+    const B = WBANDS;
+    if (ovr <= B[0][0]) return [wkM(B[0][1]), wkM(B[0][2])];
+    for (let i = 1; i < B.length; i++) if (ovr <= B[i][0]) {
+        const a = B[i - 1], b = B[i], t = (ovr - a[0]) / (b[0] - a[0]);
+        return [wkM(a[1] + (b[1] - a[1]) * t), wkM(a[2] + (b[2] - a[2]) * t)];
+    }
+    return [wkM(B[B.length - 1][1]), wkM(B[B.length - 1][2])];
+}
+const wkTxt = m => { const k = m * 1000 / 52; return '€' + (k >= 1000 ? (k / 1000).toFixed(2) + 'M' : Math.round(k) + 'K') + '/hafta'; };
+function itibar() { try { return clamp(Math.round(repOf(U().name)), 1, 100); } catch (e) { return 60; } }
+function roleMul(age, pr) { const b = (PRM[pr] || PRM[0]).m; return b * (age <= 21 && (pr === 1 || pr === 2) && itibar() < 75 ? .8 : 1); }
+const REFMSG = 'İtibarınız ve kulüp seviyeniz kariyer hedeflerime uygun değil.';
+function joinDesire(e) {
+    const p = e.p, t = U(), o = t.pl.map(x => x.ovr).sort((a, b) => b - a).slice(0, 14), avg = o.reduce((a, b) => a + b, 0) / (o.length || 1), pl = e.lg !== undefined ? e.lg : p.lg;
+    const lg = (LWM[G.lid] || .6) - (LWM[pl] || .6);
+    const sc = (e.free ? 0 : (clubStr(G.lid, t.name) - clubStr(pl, e.club || p.club)) / 7) + (avg - p.ovr) / 5 + lg * 2 + (h01(e.key + 'ds') - .5) * 1.4 + (mo(p) < 40 ? .5 : 0);
+    const k = sc < -.9 ? 0 : sc < .25 ? 1 : sc < 1.3 ? 2 : 3;
+    return { k, sc, lbl: ['Pek istemiyor', 'Kararsız', 'İstekli', 'Çok istekli'][k], mul: [1.18, 1.07, 1, .91][k] };
+}
+function demands(e) {
+    const p = e.p, it = itibar(), nr = !!(G.set && G.set.noRef), jd = joinDesire(e), [lo, hi] = wageBand(p.ovr);
+    const mine = wageFor(p, WLG, WUC) * Math.pow(clamp(p.vm || 1, .8, 1.3), .5), cw = p.wg || mine;
+    let w = clamp(mine * .7 + Math.min(cw, hi * 1.2) * .3, lo * .45, hi * 1.05) * jd.mul;
+    /* yaş */
+    if (p.age <= 21) w *= p.ovr <= 70 ? .72 : .85;
+    else if (p.age >= 30) w *= clamp(1 - (p.age - 29) * .05, .75, 1);
+    /* kulüp itibarı / zenginlik */
+    if (it >= 80 && (G.wb || 0) >= 40) w *= 1.15;
+    else if (it < 55 || (G.wb || 0) < 12) w *= .93;
+    /* ikna tazminatı: itibar çok düşükse (sadece "her oyuncu gelsin" açıkken) */
+    const gap = p.ovr - it;
+    if (gap >= 10) w *= 1 + clamp(gap, 0, 55) * .018;
+    /* indirimler: sözleşmesi bitiyor / transfer listesi / mutsuz / serbest */
+    if (e.free || p.tl || mo(p) < 35 || (p.ct <= 1 && (G.d || 0) >= WW1)) w *= .8;
+    if (e.free && !e.pre) w *= clamp(1 - .03 * Math.max(0, (p.fw || 0) - 1), .65, 1);
+    {
+        const a = f5avg(p);
+        if (a !== null && a >= 7.3) w *= 1.04;
+    }
+    if (p.age <= 21) w = Math.min(w, youthCap(p) * (e.free ? 1.5 : 1.15));
+    w = Math.min(w, lowCap(p), gap >= 10 ? hi * 2.1 : hi * 1.15, WMAX);
+    w = Math.max(.02, w) * (.985 + .03 * h01(e.key + 'w'));
+    w = Math.min(w, WMAX);
+    const b = Math.min(w * (e.free ? 1.2 : .3) * (.8 + .4 * h01(e.key + 'b')), WMAX * .5);
+    return { w: +w.toFixed(2), b: +b.toFixed(2), k: jd.k, lbl: jd.lbl, cw: +cw.toFixed(2), y: p.age >= 33 ? 3 : p.age >= 30 ? 2 : 0, gap };
+}
 function loanTerms(e) { const v = val(e.p, e.lg); return { fee: Math.max(.05, +(v * (e.rk < 11 ? .08 : .04)).toFixed(2)), ws: e.rk < 11 ? 100 : e.rk < 16 ? 75 : 50, opt: +(askPrice(e) * 1.05).toFixed(2) }; }
 function negOf(e) { G.neg = G.neg || {}; let n = G.neg[e.key]; if (!n || n.wk !== winKey())
     n = G.neg[e.key] = { n: 0, off: 0, wk: winKey() }; return n; }
@@ -12067,8 +12299,7 @@ function winInfo() {
         return 'Transfer dönemi kapalı. Kış dönemi 1 Ocak\'ta açılır';
     return 'Transfer dönemi kapalı. Yaz dönemi yeni sezonda açılır';
 }
-function refuses(p) { if (G && G.set && G.set.noRef)
-    return false; const o = U().pl.map(x => x.ovr).sort((a, b) => b - a).slice(0, 14); const avg = o.reduce((a, b) => a + b, 0) / o.length; return p.ovr >= 76 && p.ovr > avg + 7; }
+function refuses(p) { if (G && G.set && G.set.noRef) return false; return p.ovr >= 72 && p.ovr - itibar() >= 10; }
 /* ---------- alım ---------- */
 function takeFrom(e) {
     if (e.ti !== undefined) {
@@ -12125,7 +12356,7 @@ function completeBuy(e, fee, w, b, y, so, x) {
     if (so)
         q.soc = { club: e.club, pct: so };
     q.rc = x && x.rc ? x.rc : 0;
-    q.pr = x && x.pr ? x.pr : 0;
+    q.pr = x && x.pr && x.pr !== 3 ? x.pr : 0;
     q.prn = 0;
     t.pl.push(q);
     UI.modal = null;
@@ -12170,7 +12401,7 @@ function tryOffer(id, v, so) {
     else if (v > U().bud)
         msg = 'Bütçen bu teklif için yetersiz.';
     else if (refuses(p))
-        msg = p.n + ' takımının seviyesini yetersiz buluyor ve gelmeyi reddetti.';
+        msg = p.n + ': "' + REFMSG + '"';
     else if (e.ti !== undefined && G.teams[e.ti].pl.filter(x => x.pos === p.pos).length <= MINP[p.pos])
         msg = e.club + ' bu mevkide yedeksiz kalmak istemiyor.';
     else {
@@ -12244,7 +12475,7 @@ function tryWage(id, w, b, y, rcm, pr) {
     b = Math.max(0, b || 0);
     rcm = rcm === undefined ? (m.rcm === undefined ? 3 : m.rcm) : rcm;
     pr = pr === undefined ? (m.pr || 0) : pr;
-    const need = (d.w + d.b / 3) * .92 * wf * (m.pre ? 1 : (RCM[rcm] || RCM[3]).m) * (PRM[pr] || PRM[0]).m, eff = w + b / 3, tot = m.fee + b + agentFee(m.fee, w);
+    const need = (d.w + d.b / 3) * .92 * wf * (m.pre ? 1 : (RCM[rcm] || RCM[3]).m) * roleMul(p.age, pr), eff = w + b / 3, tot = m.fee + b + agentFee(m.fee, w);
     if (!m.pre && !winOpen())
         msg = 'Transfer dönemi kapalı.';
     else if (m.pre && !preOk())
@@ -12255,6 +12486,8 @@ function tryWage(id, w, b, y, rcm, pr) {
         msg = 'Maaş bütçesini aşıyor. Kalan pay: ' + fmW(Math.max(0, G.wb - billNow())) + '.';
     else if (tot > U().bud)
         msg = 'Bütçen yetersiz (bonservis + imza primi + menajer: ' + fm(tot) + ').';
+    else if (d.y && y < d.y)
+        msg = p.n + ' tecrübeli bir oyuncu, en az ' + d.y + ' yıllık garanti sözleşme istiyor.';
     else if (w < d.w * .8 * wf)
         msg = p.n + ' bu maaşı çok düşük buldu. Yıllık maaşı en az ' + fmW(d.w * .8 * wf) + ' olmalı.';
     else if (eff >= need) {
@@ -12336,7 +12569,7 @@ function tryLoan(id, lf, ws, opt) {
     else if (billNow() + p.wg * ws / 100 > G.wb + 1e-9)
         msg = 'Maaş bütçesini aşıyor (' + fmW(p.wg * ws / 100) + ' pay ödeyeceksin, kalan: ' + fmW(Math.max(0, G.wb - billNow())) + ').';
     else if (refuses(p))
-        msg = p.n + ' takımının seviyesini yetersiz buluyor.';
+        msg = p.n + ': "' + REFMSG + '"';
     else if (!isLoanL(e))
         msg = e.club + ' bu oyuncuyu kiralık vermeyi düşünmüyor.';
     else if (e.ti !== undefined && G.teams[e.ti].pl.filter(x => x.pos === p.pos).length <= MINP[p.pos])
@@ -18466,6 +18699,23 @@ function transferView() {
  <div class="row" style="justify-content:space-between;margin-top:10px"><button class="btn alt" data-act="pg" data-d="-1" ${UI.pg > 0 ? '' : 'disabled'}>‹ Önceki</button><span class="small mute">Sayfa ${UI.pg + 1} / ${pages}</span><button class="btn alt" data-act="pg" data-d="1" ${UI.pg < pages - 1 ? '' : 'disabled'}>Sonraki ›</button></div>
  <p class="small mute">Güç, potansiyel ve fiyat beklentisini görmek için oyuncuyu <b>Gözlemle</b>: gözlemci seviyen <b>${Math.max(1, stl('scout'))}</b> olduğu için rapor ${scoutDays()} günde gelir (bekleyen her oyuncu +1 gün). Oyuncuya dokunarak özelliklerini inceleyebilirsin. Rapordan sonra teklif verebilirsin; kulübün gerçek fiyatını pazarlıkta öğrenirsin.</p></div>`;
 }
+
+function trHero() {
+    const t = U(), d = G.d || 0, open = winOpen(), pend = (G.offers || []).length, room = Math.max(0, G.wb - billNow());
+    let pc = 0, lab = winInfo(), a = 0, b = WSUM;
+    if (d >= WW1 && d < WW2) { a = WW1; b = WW2; }
+    else if (d >= WW2) { a = WW2; b = 365; }
+    else if (d >= WSUM && d < WW1) { a = WSUM; b = WW1; }
+    pc = open ? (d - a) / (b - a) * 100 : 0;
+    const k = (ic, l, v, sub, cls) => `<div class="trk ${cls || ''}"><span class="tri">${ic}</span><div><small>${l}</small><b>${v}</b>${sub ? `<em>${sub}</em>` : ''}</div></div>`;
+    return `<div class="panel trhero"><div class="trh1"><div><div class="trst ${open ? 'on' : 'off'}"><i></i>${open ? 'TRANSFER DÖNEMİ AÇIK' : 'TRANSFER DÖNEMİ KAPALI'}</div><div class="trlab">${lab}</div></div><div class="trbar" title="Transfer dönemi ilerlemesi"><i style="width:${clamp(pc, 0, 100).toFixed(0)}%"></i></div></div>
+ <div class="trks">${k('💰', 'Transfer bütçesi', fm(t.bud), 'harcanabilir', 'g')}${k('🧾', 'Maaş payı', fmW(room), 'kalan / ' + fmW(G.wb), room < G.wb * .06 ? 'r' : '')}${k('👥', 'Kadro', t.pl.length + '/' + SQMAX, 'oyuncu', '')}${k('⭐', 'İtibar', itibar() + '/100', itibar() >= 75 ? 'yıldızları ikna edebilirsin' : 'yıldızlar için yükselt', '')}${k('📨', 'Teklif', pend, pend ? 'seni bekliyor' : 'bekleyen yok', pend ? 'y' : '')}${k('👁️', 'Takip', (G.watch || []).length, 'oyuncu', '')}</div></div>`;
+}
+const _tv0 = transferView;
+transferView = function () {
+    const h = _tv0.apply(this, arguments);
+    return trHero() + h.replace(/<b style="color:var\(--(?:pitch2|card-r)\)">[^<]*<\/b>/, '').replace(/<div class="panel">/g, '<div class="panel trv">');
+};
 function prePanel() { const L = G.pre || []; return L.length ? `<div class="panel"><h2>Ön sözleşmeler</h2><ul class="list">${L.map(x => `<li><span class="nm">${x.n} <span class="small mute">${x.club} · ${fmW(x.w)}/yıl, ${x.y} yıl</span></span>${chip(x.ovr)}</li>`).join('')}</ul><p class="small mute">Bu oyuncular sezon bitince bedelsiz olarak kadroya katılır.</p></div>` : ''; }
 function sellView(seg, banner) {
     const t = U(), open = winOpen();
@@ -18501,21 +18751,24 @@ function offerModal() {
     const bid = +m.v || +(v0).toFixed(2), so = m.so || 0, left = ng.off ? 0 : 4 - ng.n, tot = bid + agentFee(bid, dm.w) + dm.b;
     const pat = [0, 1, 2, 3].map(i => `<i class="${i < left ? 'on' : ''}"></i>`).join('');
     return ov(`${tmHead(p, e, ' · ' + tc(e.club, 18) + ' · sözleşme ' + p.ct + ' yıl')}
- <div class="tmg"><div><small>Piyasa değeri</small><b>${fm(v0)}</b></div><div><small>Kulüp beklentisi (tahmin)</small><b style="font-size:14px">${estR(sr0.ask || ask, p.n)}</b></div><div><small>Bütçen</small><b>${fm(t.bud)}</b></div><div><small>Rakip talip</small><b>${su.length ? su.length + ' kulüp' : 'Yok'}</b></div></div>
+ <div class="tmg"><div><small>Piyasa değeri</small><b>${fm(v0)}</b></div><div><small>Kulüp beklentisi (tahmin)</small><b class="est">${estR(sr0.ask || ask, p.n)}</b></div><div><small>Bütçen</small><b>${fm(t.bud)}</b></div><div><small>Rakip talip</small><b>${su.length ? su.length + ' kulüp' : 'Yok'}</b></div></div>
  <div class="tmrow"><span class="tmb ${mood.c}">${mood.t}</span><span class="small mute">${mood.d}</span></div>
- <div class="tmbid" data-val="${v0}" data-dw="${dm.w}" data-db="${dm.b}">
+ <div class="tmbid ofx" data-val="${v0}" data-dw="${dm.w}" data-db="${dm.b}" data-ask="${sr0.ask || 0}">
   <div class="tmh3">Teklifin</div>
-  <div class="row"><label class="small mute">Bonservis (milyon €)<br><input class="num" id="offv" type="number" min="0" step="0.1" value="${bid}"></label>
+  <div class="ofbig"><b id="offbig">${fm(bid)}</b><span id="offpc">piyasa değerinin <b>%${Math.round(bid / v0 * 100)}</b>'i</span></div>
+  <input type="range" class="bslide" id="offr" min="${(v0 * .4).toFixed(1)}" max="${(v0 * 2.4).toFixed(1)}" step="0.1" value="${bid}">
+  <div class="ofsc"><span>%40</span><span class="mk" style="left:${((1 - .4) / 2 * 100).toFixed(1)}%">piyasa</span><span>%240</span></div>
+  <div class="ofchips">${[['Değerin %90\'ı', .9], ['Piyasa değeri', 1], ['+%15', 1.15], ['+%30', 1.3], ['+%50', 1.5]].map(([l, f]) => `<button class="btn alt" data-act="setoff" data-v="${(v0 * f).toFixed(2)}">${l}</button>`).join('')}</div>
+  <div class="row ofin"><label class="small mute">Bonservis (milyon €)<br><input class="num" id="offv" type="number" min="0" step="0.1" value="${bid}"></label>
   <label class="small mute">Sonraki satıştan pay<br><select id="offso">${[0, 10, 15, 20, 25, 30].map(x => optH(x, x ? '%' + x : 'Yok', so)).join('')}</select></label></div>
-  <div class="row" style="margin:10px 0"><button class="btn alt sm" data-act="setoff" data-v="${(v0 * .9).toFixed(2)}">Değerin %90'ı</button><button class="btn alt sm" data-act="setoff" data-v="${v0.toFixed(2)}">Piyasa değeri</button><button class="btn alt sm" data-act="setoff" data-v="${(v0 * 1.15).toFixed(2)}">+%15</button><button class="btn alt sm" data-act="setoff" data-v="${(v0 * 1.3).toFixed(2)}">+%30</button></div>
-  <div class="small" id="offm">Teklifin piyasa değerinin <b>%${Math.round(bid / v0 * 100)}</b>'i</div>
-  <div class="small" style="margin-top:6px">Toplam maliyet: <b id="offtot">${fm(tot)}</b> <span class="mute">(menajer + imza primi dahil)</span></div>
+  <div class="oftot"><span>Toplam maliyet</span><b id="offtot">${fm(tot)}</b><em>menajer + imza primi dahil</em></div>
+  <div class="ofroom" id="offroom"></div>
  </div>
  <div class="tmrow" style="margin-top:10px"><span class="small mute">Kulübün sabrı</span><span class="pat">${pat}</span><span class="small mute" style="margin-left:auto">${left ? 'Çok düşük teklif sabrı hızla tüketir' : 'Görüşme kapandı'}</span></div>
  ${rc ? `<div class="tmc rc" style="margin-top:8px"><div><div class="tmh3">Serbest kalma maddesi</div><div class="tmbig">${fm(rc)}</div><div class="small mute">Ödersen kulüp engelleyemez.</div></div><button class="btn sm" data-act="payclause" data-id="${p.id}" ${rc > t.bud ? 'disabled' : ''}>Bedeli öde</button></div>` : ''}
  ${ng.log && ng.log.length ? `<div class="tmlog"><b class="small">Görüşme geçmişi</b>${ng.log.map(l => `<div class="small"><span>${fm(l.v)}${l.so ? ' + %' + l.so + ' pay' : ''}</span><span class="mute">${l.r}</span></div>`).join('')}</div>` : ''}
  ${m.msg ? `<p class="tmmsg">${m.msg}</p>` : ''}
- <div class="row" style="align-items:center"><button class="btn" data-act="submitoffer" data-id="${p.id}" ${left ? '' : 'disabled'}>Teklifi gönder</button><button class="btn alt" data-act="close">Vazgeç</button></div>`, 'tmw');
+ <div class="tmact"><button class="btn" data-act="submitoffer" data-id="${p.id}" ${left ? '' : 'disabled'}>Teklifi gönder</button><button class="btn alt" data-act="close">Vazgeç</button></div>`, 'tmw');
 }
 function loanModal() {
     const m = UI.modal, e = findEntry(m.id);
@@ -18653,14 +18906,14 @@ function wageModal() {
         return '';
     const p = e.p, d = demands(m.pre ? Object.assign({}, e, { free: 1 }) : e);
     const room = Math.max(0, G.wb - billNow()), v0 = val(p, e.lg), rcm = m.rcm === undefined ? 3 : m.rcm, prm = m.pr || 0, y = m.y || 3, wf = wageFactor(p, y);
-    const need = (d.w + d.b / 3) * .92 * wf * (m.pre ? 1 : RCM[rcm].m) * PRM[prm].m, mt = meterOf(((+m.v) + (+m.b || 0) / 3) / need);
+    const need = (d.w + d.b / 3) * .92 * wf * (m.pre ? 1 : RCM[rcm].m) * roleMul(p.age, prm), mt = meterOf(((+m.v) + (+m.b || 0) / 3) / need);
     const sub = m.pre ? ' · ön sözleşme, sezon sonunda bedelsiz' : m.fee ? ' · transfer bedeli ' + fm(m.fee) : ' · bedelsiz';
     return ov(`${tmHead(p, e, sub + (m.so ? ' · satıcıya %' + m.so + ' pay' : ''))}
- <p class="small mute" style="margin:6px 0 0">Kulübünde aldığı maaş: <b>${fmW(p.wg || 0)}</b> · senin liginde benzer oyuncunun piyasa maaşı: <b>${fmW(wageFor(p, WLG, WUC))}</b>. İstek bu ikisine ve lig seviyene göre belirlenir.</p>
+ <p class="small" style="margin:6px 0 0">İsteği: <b>${d.lbl}</b> · İstediği maaş: <b>${fmW(d.w)}/yıl</b> <span class="mute">(≈ ${wkTxt(d.w)})</span><br><span class="mute">Kulübünde aldığı ${fmW(p.wg || 0)}${p.wg ? ", " + (d.w >= p.wg ? "+" : "-") + "%" + Math.abs(Math.round((d.w / p.wg - 1) * 100)) : ""} · İtibarın <b>${itibar()}</b> · Oyuncu ${p.ovr}${d.gap >= 10 ? ' · <b style="color:var(--card-r)">ikna tazminatı dahil (+%' + Math.round(Math.min(d.gap, 55) * 1.8) + ')</b>' : ''}${d.y ? ' · en az <b>' + d.y + ' yıl</b> garanti ister' : ''}</span></p>
  <div class="tmg"><div><small>Maaş beklentisi (tahmin)</small><b style="font-size:14px">${estW(d.w, p.n)}</b></div><div><small>Maaş bütçesi kalan</small><b>${fmW(room)}</b></div><div><small>Menajer (tahmini)</small><b>${fm(agentFee(m.fee || 0, d.w))}</b></div></div>
  <div class="tmbid" data-dw="${d.w}" data-db="${d.b}" data-age="${p.age}" data-fee="${m.fee || 0}" data-pre="${m.pre ? 1 : 0}">
   <div class="row"><label class="small mute">Yıllık maaş (milyon €)<br><input class="num" id="wgv" type="number" min="0" step="0.05" value="${m.v}"></label><label class="small mute">İmza primi (milyon €)<br><input class="num" id="sbv" type="number" min="0" step="0.05" value="${m.b || 0}"></label><label class="small mute">Süre<br><select id="yrs">${[1, 2, 3, 4, 5].map(yy => `<option value="${yy}" ${y === yy ? 'selected' : ''}>${yy} yıl</option>`).join('')}</select></label></div>
-  ${m.pre ? '' : `<div class="row" style="margin-top:8px"><label class="small mute">Serbest kalma maddesi<br><select id="rcv">${[0, 2, 3, 5].map(k => `<option value="${k}" ${rcm === k ? 'selected' : ''}>${k ? RCM[k].n + ' (' + fm(v0 * k) + ')' : 'Yok'}</option>`).join('')}</select></label><label class="small mute">Rol sözü<br><select id="prv">${[0, 2, 1].map(k => `<option value="${k}" ${prm === k ? 'selected' : ''}>${PRM[k].n}</option>`).join('')}</select></label></div>`}
+  ${m.pre ? '' : `<div class="row" style="margin-top:8px"><label class="small mute">Serbest kalma maddesi<br><select id="rcv">${[0, 2, 3, 5].map(k => `<option value="${k}" ${rcm === k ? 'selected' : ''}>${k ? RCM[k].n + ' (' + fm(v0 * k) + ')' : 'Yok'}</option>`).join('')}</select></label><label class="small mute">Rol sözü<br><select id="prv">${[0, 2, 1, 3].map(k => `<option value="${k}" ${prm === k ? 'selected' : ''}>${PRM[k].n}</option>`).join('')}</select></label></div>`}
   <div class="row" style="margin:8px 0"><button class="btn alt sm" data-act="setwb" data-w="${(d.w * .95).toFixed(2)}" data-b="0">Maaşı biraz artır</button><button class="btn alt sm" data-act="setwb" data-w="${(d.w * .85).toFixed(2)}" data-b="${(d.w * .5).toFixed(2)}">Düşük maaş + imza primi</button></div>
   <div class="small" style="margin-top:6px">Tahmini toplam: <b id="wgtot">${fm((m.fee || 0) + (+m.b || 0) + agentFee(m.fee || 0, +m.v))}</b> <span class="mute">(bonservis + imza primi + menajer)</span> · Yıllık maaş yükü <b id="wgw">${fmW(+m.v)}</b></div>
  </div>
@@ -18808,6 +19061,8 @@ function modalView() {
         return playerModal(m.id);
     if (m.t === 'loan')
         return loanModal();
+    if (m.t === 'kit')
+        return kitModal();
     if (m.t === 'counter')
         return counterModal();
     if (m.t === 'slot')
@@ -19950,6 +20205,32 @@ document.addEventListener('click', e => {
             startMis(d.k);
             R();
             break;
+        case 'kit':
+            UI.modal = { t: 'kit' };
+            R();
+            break;
+        case 'kitswap': {
+            const k = kitOf(U().name);
+            kitSet({ a: k.b, b: k.a, p: 100 - k.p });
+            R();
+            break;
+        }
+        case 'kitmode':
+            kitSet({ m: d.m });
+            R();
+            break;
+        case 'kitauto':
+            if (G.tcol)
+                delete G.tcol[U().name];
+            delete TCC[U().name];
+            kitAuto(U().name, true);
+            R();
+            break;
+        case 'kitreset':
+            if (G.tcol)
+                delete G.tcol[U().name];
+            R();
+            break;
         case 'budm':
             UI.bsv = 0;
             UI.modal = { t: 'bud' };
@@ -20633,7 +20914,7 @@ document.addEventListener('click', e => {
                 break;
             }
             if (refuses(e.p)) {
-                toast(e.p.n + ' takımının seviyesini yetersiz buluyor ve gelmeyi reddetti.');
+                toast(e.p.n + ': "' + REFMSG + '"');
                 break;
             }
             const dm = demands(e);
@@ -20698,13 +20979,28 @@ function offMeter() {
     const bx = document.querySelector('.tmbid'), vi = document.getElementById('offv');
     if (!bx || !vi || !bx.dataset.val)
         return;
-    const v = parseFloat(vi.value) || 0, v0 = +bx.dataset.val, dw = +bx.dataset.dw, db = +bx.dataset.db;
-    const el = document.getElementById('offm');
-    if (el)
-        el.innerHTML = 'Teklifin piyasa değerinin <b>%' + Math.round(v / v0 * 100) + "</b>'i";
-    const tt = document.getElementById('offtot');
-    if (tt)
-        tt.textContent = fm(v + agentFee(v, dw) + db);
+    const v = parseFloat(vi.value) || 0, v0 = +bx.dataset.val, dw = +bx.dataset.dw, db = +bx.dataset.db, ak = +bx.dataset.ask || 0;
+    const q = x => document.getElementById(x), pc = Math.round(v / v0 * 100);
+    if (q('offm'))
+        q('offm').innerHTML = 'Teklifin piyasa değerinin <b>%' + pc + "</b>'i";
+    if (q('offbig'))
+        q('offbig').textContent = fm(v);
+    if (q('offpc'))
+        q('offpc').innerHTML = "piyasa değerinin <b>%" + pc + "</b>'i";
+    const rg = q('offr');
+    if (rg && document.activeElement !== rg)
+        rg.value = v;
+    const tot = v + agentFee(v, dw) + db;
+    if (q('offtot'))
+        q('offtot').textContent = fm(tot);
+    const r = q('offroom');
+    if (r) {
+        const bud = U().bud, ok = tot <= bud;
+        let h = ok ? `<span class="ok">Bütçeden sonra kalan: <b>${fm(bud - tot)}</b></span>` : `<span class="no">Bütçeni <b>${fm(tot - bud)}</b> aşıyor</span>`;
+        if (ak)
+            h += ' · ' + (v >= ak * 1.02 ? '<span class="ok">tahmine göre yeterli görünüyor</span>' : v >= ak * .85 ? '<span class="wn">tahmine yakın, pazarlık olabilir</span>' : '<span class="no">tahminin altında</span>');
+        r.innerHTML = h;
+    }
 }
 function wgMeter() {
     const bx = document.querySelector('.tmbid'), wi = document.getElementById('wgv');
@@ -20712,7 +21008,7 @@ function wgMeter() {
         return;
     const g = x => document.getElementById(x), w = parseFloat(wi.value) || 0, b = parseFloat(g('sbv').value) || 0, y = +g('yrs').value || 3, age = +bx.dataset.age, dw = +bx.dataset.dw, db = +bx.dataset.db, fee = +bx.dataset.fee, pre = bx.dataset.pre === '1';
     const wf = age <= 25 ? 1 - (y - 3) * .03 : 1 + (y - 3) * .01, rc = g('rcv') ? +g('rcv').value : 3, pr = g('prv') ? +g('prv').value : 0;
-    const need = (dw + db / 3) * .92 * wf * (pre ? 1 : (RCM[rc] || RCM[3]).m) * (PRM[pr] || PRM[0]).m, L = meterOf((w + b / 3) / need);
+    const need = (dw + db / 3) * .92 * wf * (pre ? 1 : (RCM[rc] || RCM[3]).m) * roleMul(age, pr), L = meterOf((w + b / 3) / need);
     const el = g('wgm');
     if (el) {
         el.className = 'tmm ' + L[1];
