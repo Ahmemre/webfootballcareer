@@ -9123,6 +9123,41 @@ header.top.kit .icb,header.top.kit .btn.alt{background:rgba(8,14,18,.42);border-
 .tmact .btn:first-child{flex:2}
 .tmw .tmbid .row .num{min-height:48px}
 .tmw .tmbid .btn.alt.sm{min-height:42px;font-size:14px}
+</style><style>
+.askrow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.askc{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.askc small{display:block;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.askc b{display:block;font:700 22px/1.1 'Barlow Condensed',sans-serif}.askc em{display:block;font-style:normal;font-size:11.5px;color:var(--mute)}
+.askh{color:var(--pitch2);font-weight:700;cursor:pointer;text-decoration:underline;font-size:12px;margin-left:4px}
+@media (max-width:560px){.askrow{grid-template-columns:1fr 1fr}.askc:last-child{grid-column:1/-1}}
+</style><style>
+nav.tabs.kitn{background:var(--kbg)!important;border-bottom:0!important;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+nav.tabs.kitn button{color:rgba(255,255,255,.88)!important;text-shadow:0 1px 3px rgba(0,0,0,.55);border-bottom-color:transparent}
+nav.tabs.kitn button:hover{color:#fff!important}
+nav.tabs.kitn button[aria-selected="true"]{color:#fff!important;background:rgba(8,14,18,.5);border-radius:10px 10px 0 0;border-bottom-color:#fff}
+nav.tabs.kitn .ind{background:#fff!important}
+html:not([data-comp]) nav.tabs.kitn.kitl button{color:rgba(20,20,20,.88)!important;text-shadow:none}
+html:not([data-comp]) nav.tabs.kitn.kitl button:hover{color:#000!important}
+html:not([data-comp]) nav.tabs.kitn.kitl button[aria-selected="true"]{color:#000!important;background:rgba(0,0,0,.14);border-bottom-color:#000}
+html:not([data-comp]) nav.tabs.kitn.kitl .ind{background:#000!important}
+html.kitpg:not([data-comp]) nav.tabs.kitn{border-bottom:3px solid rgba(255,255,255,.55)!important}
+html.kitpg:not([data-comp]):has(header.top){background:var(--kpg)!important;background-attachment:fixed!important;min-height:100%}
+html.kitpg:not([data-comp]):has(header.top) body{background:transparent!important}
+html.kitpg.kitlt:not([data-comp]):has(header.top){--panel:color-mix(in srgb,var(--kpt) 13%,#fff)}
+html:not([data-comp]) header.top.kit.kitl{--s0:rgba(255,255,255,.42);color:#1a1205}
+html:not([data-comp]) header.top.kit.kitl .tc,html:not([data-comp]) header.top.kit.kitl .kpi{color:#1a1205;text-shadow:none;border-color:rgba(0,0,0,.12)}
+html:not([data-comp]) header.top.kit.kitl .meta span{background:rgba(0,0,0,.12);color:#1a1205}
+html:not([data-comp]) header.top.kit.kitl .icb,html:not([data-comp]) header.top.kit.kitl .btn.alt{background:rgba(255,255,255,.45);border-color:rgba(0,0,0,.18);color:#1a1205}
+html:not([data-comp]) header.top.kit.kitl .kbar{background:rgba(0,0,0,.18)}
+header.top.kit.kitoff{background:linear-gradient(120deg,var(--pitch),var(--pitch2))!important}
+.kitwh{margin-top:12px}
+</style><style>
+html[data-comp="cl"] header.top.kit,html[data-comp="cl"] nav.tabs.kitn{background:radial-gradient(700px 300px at 88% -20%,rgba(120,170,255,.55),transparent 70%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170'%3E%3Cg fill='white' fill-opacity='.08'%3E%3Cpath d='M20 8l3.2 9.8h10.3l-8.3 6 3.2 9.8-8.4-6-8.4 6 3.2-9.8-8.3-6h10.3z'/%3E%3Cpath transform='translate(95 85)' d='M20 8l3.2 9.8h10.3l-8.3 6 3.2 9.8-8.4-6-8.4 6 3.2-9.8-8.3-6h10.3z'/%3E%3C/g%3E%3C/svg%3E"),linear-gradient(100deg,#030a2a 0%,#0a2275 55%,#1b49d6 100%)!important}
+html[data-comp="cl"] header.top.kit::after{background:linear-gradient(90deg,#8fd3ff,#ffffff,#8fd3ff)!important}
+html[data-comp="el"] header.top.kit,html[data-comp="el"] nav.tabs.kitn{background:radial-gradient(700px 300px at 88% -20%,rgba(255,179,71,.5),transparent 70%),repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 24px,transparent 24px 48px),linear-gradient(100deg,#1a0f06,#7a3a08 60%,#f47b20)!important}
+html[data-comp="el"] header.top.kit::after{background:linear-gradient(90deg,#ffb347,#fff,#ffb347)!important}
+html[data-comp="ecl"] header.top.kit,html[data-comp="ecl"] nav.tabs.kitn{background:radial-gradient(700px 300px at 88% -20%,rgba(126,242,182,.45),transparent 70%),linear-gradient(100deg,#03150d,#0a4a2e 60%,#19b36b)!important}
+html[data-comp="ecl"] header.top.kit::after{background:linear-gradient(90deg,#7ef2b6,#fff,#7ef2b6)!important}
 </style></head>
 <body>
 <noscript><h1>Teknik Direktör 27 Lite</h1><p>Tarayıcıda ücretsiz oynanan futbol menajerlik oyunu: 24 ülkede 34 lig, 564 kulüp, gerçek oyuncular, Avrupa kupaları, transfer, gözlemci sistemi ve çok oyunculu lig. Oynamak için JavaScript gerekir.</p></noscript>
@@ -11596,15 +11631,25 @@ const ICO = { bell: '<svg viewBox="0 0 24 24"><path d="M6 9a6 6 0 0 1 12 0c0 6 2
 const TCC = {};
 function hex2rgb(h) { h = (h || '#000').replace('#', ''); if (h.length === 3) h = h.split('').map(x => x + x).join(''); const n = parseInt(h, 16) || 0; return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
 function rgb2hex(r, g, b) { return '#' + [r, g, b].map(x => clamp(Math.round(x), 0, 255).toString(16).padStart(2, '0')).join(''); }
+const KC2 = {
+ 'Barcelona': ['#a50044', '#004d98'], 'Galatasaray': ['#fcb716', '#a50a2d'], 'Fenerbahçe': ['#fcd116', '#0a2a6b'], 'Beşiktaş': ['#161616', '#e6e6e6'], 'Trabzonspor': ['#7a1f3d', '#4aa3df'],
+ 'Başakşehir': ['#f26b3a', '#0a2a5b'], 'Alanyaspor': ['#eb7814', '#2e9b3f'], 'Kasımpaşa': ['#0a2a6b', '#e8e8e8'], 'Konyaspor': ['#0a7a3d', '#e8e8e8'], 'Samsunspor': ['#d71920', '#e8e8e8'],
+ 'Rizespor': ['#0a7a3d', '#1a3a8f'], 'Gaziantep FK': ['#d71920', '#161616'], 'Eyüpspor': ['#5b2a86', '#fcd116'], 'Göztepe': ['#fcd116', '#d71920'], 'Kocaelispor': ['#0a7a3d', '#161616'],
+ 'Amedspor': ['#d71920', '#0a7a3d'], 'Gençlerbirliği': ['#d71920', '#161616'], 'Erzurumspor': ['#0a5aa8', '#e8e8e8'], 'Çorum FK': ['#d71920', '#161616'],
+ 'Real Madrid': ['#f2f2f2', '#1a3a8f'], 'Atlético Madrid': ['#cb3524', '#1a3a8f'], 'Sevilla': ['#d71920', '#e8e8e8'], 'Valencia': ['#f08a00', '#161616'], 'Villarreal': ['#fcd116', '#0a4a9c'], 'Real Sociedad': ['#0a5aa8', '#e8e8e8'], 'Athletic Bilbao': ['#d71920', '#e8e8e8'], 'Real Betis': ['#0a7a3d', '#e8e8e8'],
+ 'Inter': ['#0a3a7a', '#161616'], 'Milan': ['#d71920', '#161616'], 'Juventus': ['#161616', '#e8e8e8'], 'Atalanta': ['#1a3a8f', '#161616'], 'Fiorentina': ['#5b2a86', '#e8e8e8'], 'Bologna': ['#a4122b', '#0a2a6b'],
+ 'Aston Villa': ['#670e36', '#95bfe5'], 'West Ham': ['#7a263a', '#1bb1e7'], 'Everton': ['#003399', '#e8e8e8'], 'Brighton': ['#0057b8', '#e8e8e8'], 'Wolves': ['#f08a00', '#161616'], 'Newcastle United': ['#161616', '#e8e8e8'],
+ 'PSG': ['#004170', '#da291c'], 'Lyon': ['#1a3a8f', '#d71920'], 'Bayern Münih': ['#dc052d', '#0a2a6b'], 'Dortmund': ['#fde100', '#161616'], 'Bayer Leverkusen': ['#e32221', '#161616'], 'Ajax': ['#d2122e', '#e8e8e8']
+};
 function kitFallback(name) {
-    const c = KC[name];
+    const c = KC2[name] || KC[name];
     let h = 0;
     for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
     if (c) {
         let a = c[0], b = c[1];
         if (a.toLowerCase() === '#fff' || a.toLowerCase() === '#ffffff') { const t = a; a = b; b = t; }
         if (b.toLowerCase() === '#fff' || b.toLowerCase() === '#ffffff') b = rgb2hex(...hex2rgb(a).map(x => x * .55));
-        return { a, b, p: 55, m: 'split' };
+        return { a, b, p: 55, m: 'tb' };
     }
     return { a: `hsl(${h % 360} 48% 30%)`, b: `hsl(${(h + 28) % 360} 52% 20%)`, p: 60, m: 'grad' };
 }
@@ -11653,11 +11698,13 @@ function kitAuto(name, force) {
 function kitOf(name) {
     const c = G && G.tcol && G.tcol[name];
     if (c) return c;
+    if (KC2[name]) return kitFallback(name);
     kitAuto(name);
     return TCC[name] || kitFallback(name);
 }
 function kitBg(k) {
     const p = clamp(+k.p || 50, 10, 90), a = k.a, b = k.b;
+    if (k.m === 'tb') return `linear-gradient(180deg,${a} 0,${a} ${p}%,${b} ${p}%,${b} 100%)`;
     if (k.m === 'grad') return `linear-gradient(105deg,${a} 0%,${a} ${Math.max(0, p - 25)}%,${b} 100%)`;
     if (k.m === 'stripe') return `linear-gradient(90deg,${a} 0,${a} ${p / 2}%,${b} ${p / 2}%,${b} ${100 - p / 2}%,${a} ${100 - p / 2}%,${a} 100%)`;
     return `linear-gradient(104deg,${a} 0,${a} ${p - 1}%,${b} ${p + 1}%,${b} 100%)`;
@@ -11666,19 +11713,42 @@ function kitApply() {
     const h = document.querySelector('header.top');
     if (!h || !G) return;
     const k = kitOf(U().name);
-    h.style.setProperty('--kbg', kitBg(k));
-    h.style.setProperty('--ka', k.a);
-    h.style.setProperty('--kb', k.b);
+    const nv = document.querySelector('nav.tabs');
+    const tb = k.m === 'tb';
+    const de = document.documentElement;
+    const cmp = !!de.getAttribute('data-comp');
+    h.classList.toggle('kit', !cmp);
+    if (cmp) { if (nv) nv.classList.remove('kitn'); return; }
+    de.classList.toggle('kitpg', k.g !== false);
+    const th = de.getAttribute('data-theme'), dk = th === 'dark' || (th !== 'light' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+    de.classList.toggle('kitlt', k.g !== false && !dk && /^#/.test(k.b));
+    de.style.setProperty('--kpt', /^#/.test(k.b) ? k.b : '#888');
+    de.style.setProperty('--kpg', tb ? k.b : kitBg(Object.assign({}, k, { m: k.m === 'grad' ? 'grad' : 'tb' })));
+    const lum = c => { const m = /^#?([0-9a-f]{6})$/i.exec(c || ''); if (!m) return 0; const n = parseInt(m[1], 16); return (0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) / 255; };
+    [h, nv].forEach(x => {
+        if (!x)
+            return;
+        x.style.setProperty('--kbg', tb ? k.a : kitBg(k));
+        x.style.setProperty('--ka', k.a);
+        x.style.setProperty('--kb', k.b);
+    });
+    h.classList.toggle('kitoff', k.h === false);
+    if (nv)
+        nv.classList.toggle('kitn', k.t !== false);
+    if (nv)
+        nv.classList.toggle('kitl', tb ? lum(k.a) > 0.6 : false);
+    h.classList.toggle('kitl', tb ? lum(k.a) > 0.6 : false);
     const pv = document.getElementById('kitpv');
     if (pv) pv.style.background = kitBg(k);
 }
 function kitModal() {
     const t = U(), k = kitOf(t.name), md = k.m || 'split';
-    return ov(`<h2>Kulüp renkleri</h2><p class="small mute">${t.name} için üst başlığın renklerini ve oranını ayarla. Renk oranları logodan otomatik alınır, istersen kendin değiştirebilirsin.</p>
+    return ov(`<h2>Kulüp renkleri</h2><p class="small mute">${t.name} için üst başlığın ve menü çubuğunun renklerini ve oranını ayarla. Renk oranları logodan otomatik alınır, istersen kendin değiştirebilirsin.</p>
  <div id="kitpv" class="kitpv" style="background:${kitBg(k)}"><div class="kitpvt">${crest(t.name, 44)}<b>${t.name}</b></div></div>
  <div class="kitrow"><label>1. renk<input type="color" id="kit-a" value="${/^#/.test(k.a) ? k.a : '#a50a2d'}"></label><label>2. renk<input type="color" id="kit-b" value="${/^#/.test(k.b) ? k.b : '#fcb716'}"></label><button class="btn alt sm" data-act="kitswap">⇄ Yer değiştir</button></div>
  <label class="small mute" style="display:block;margin-top:12px">1. rengin payı: <b id="kit-pv">%${Math.round(k.p)}</b><input type="range" id="kit-p" min="10" max="90" step="1" value="${Math.round(k.p)}" class="bslide"></label>
- <div class="row" style="margin-top:10px;gap:6px;flex-wrap:wrap">${[['split', 'İki parça'], ['stripe', 'Ortada 2. renk'], ['grad', 'Geçişli']].map(([v, l]) => `<button class="btn ${md === v ? '' : 'alt'} sm" data-act="kitmode" data-m="${v}">${l}</button>`).join('')}</div>
+ <div class="kitwh small mute">Renkleri uygula:</div><div class="row" style="gap:6px;flex-wrap:wrap;margin-top:6px"><button class="btn ${k.h === false ? 'alt' : ''} sm" data-act="kittgl" data-k="h">${k.h === false ? '☐' : '☑'} Üst başlık</button><button class="btn ${k.g === false ? 'alt' : ''} sm" data-act="kittgl" data-k="g">${k.g === false ? '☐' : '☑'} Sayfa arka planı</button><button class="btn ${k.t === false ? 'alt' : ''} sm" data-act="kittgl" data-k="t">${k.t === false ? '☐' : '☑'} Menü çubuğu (Özet, Kadro…)</button></div>
+ <div class="row" style="margin-top:12px;gap:6px;flex-wrap:wrap">${[['split', 'İki parça'], ['stripe', 'Ortada 2. renk'], ['grad', 'Geçişli'], ['tb', 'Üst / Alt']].map(([v, l]) => `<button class="btn ${md === v ? '' : 'alt'} sm" data-act="kitmode" data-m="${v}">${l}</button>`).join('')}</div>
  <div class="row" style="margin-top:14px;gap:8px;flex-wrap:wrap"><button class="btn alt sm" data-act="kitauto">Logodan otomatik al</button><button class="btn alt sm" data-act="kitreset">Varsayılana dön</button><button class="btn" data-act="close">Tamam</button></div>`);
 }
 function kitSet(patch) {
@@ -18912,9 +18982,10 @@ function wageModal() {
  <p class="small" style="margin:6px 0 0">İsteği: <b>${d.lbl}</b> · İstediği maaş: <b>${fmW(d.w)}/yıl</b> <span class="mute">(≈ ${wkTxt(d.w)})</span><br><span class="mute">Kulübünde aldığı ${fmW(p.wg || 0)}${p.wg ? ", " + (d.w >= p.wg ? "+" : "-") + "%" + Math.abs(Math.round((d.w / p.wg - 1) * 100)) : ""} · İtibarın <b>${itibar()}</b> · Oyuncu ${p.ovr}${d.gap >= 10 ? ' · <b style="color:var(--card-r)">ikna tazminatı dahil (+%' + Math.round(Math.min(d.gap, 55) * 1.8) + ')</b>' : ''}${d.y ? ' · en az <b>' + d.y + ' yıl</b> garanti ister' : ''}</span></p>
  <div class="tmg"><div><small>Maaş beklentisi (tahmin)</small><b style="font-size:14px">${estW(d.w, p.n)}</b></div><div><small>Maaş bütçesi kalan</small><b>${fmW(room)}</b></div><div><small>Menajer (tahmini)</small><b>${fm(agentFee(m.fee || 0, d.w))}</b></div></div>
  <div class="tmbid" data-dw="${d.w}" data-db="${d.b}" data-age="${p.age}" data-fee="${m.fee || 0}" data-pre="${m.pre ? 1 : 0}">
-  <div class="row"><label class="small mute">Yıllık maaş (milyon €)<br><input class="num" id="wgv" type="number" min="0" step="0.05" value="${m.v}"></label><label class="small mute">İmza primi (milyon €)<br><input class="num" id="sbv" type="number" min="0" step="0.05" value="${m.b || 0}"></label><label class="small mute">Süre<br><select id="yrs">${[1, 2, 3, 4, 5].map(yy => `<option value="${yy}" ${y === yy ? 'selected' : ''}>${yy} yıl</option>`).join('')}</select></label></div>
+  <div class="askrow"><div class="askc"><small>Oyuncunun istediği maaş</small><b>${fmW(d.w)}</b><em>≈ ${wkTxt(d.w)}</em></div><div class="askc"><small>İstediği imza primi</small><b>${fm(d.b)}</b><em>bir kez ödenir</em></div><div class="askc"><small>Sözleşme süresi</small><b>${d.y ? 'en az ' + d.y + ' yıl' : 'esnek'}</b><em>${p.age <= 25 ? 'uzun sürelere sıcak' : p.age >= 30 ? 'kısa süreyi sever' : 'fark etmez'}</em></div></div>
+  <div class="row"><label class="small mute">Yıllık maaş (milyon €) <a class="askh" data-act="setwg" data-w="${d.w}" data-b="${d.b}">istediği: ${d.w}</a><br><input class="num" id="wgv" type="number" min="0" step="0.05" value="${m.v}" placeholder="${d.w}"></label><label class="small mute">İmza primi (milyon €) <a class="askh" data-act="setwg" data-w="${d.w}" data-b="${d.b}">istediği: ${d.b}</a><br><input class="num" id="sbv" type="number" min="0" step="0.05" value="${m.b || 0}" placeholder="${d.b}"></label><label class="small mute">Süre<br><select id="yrs">${[1, 2, 3, 4, 5].map(yy => `<option value="${yy}" ${y === yy ? 'selected' : ''}>${yy} yıl</option>`).join('')}</select></label></div>
   ${m.pre ? '' : `<div class="row" style="margin-top:8px"><label class="small mute">Serbest kalma maddesi<br><select id="rcv">${[0, 2, 3, 5].map(k => `<option value="${k}" ${rcm === k ? 'selected' : ''}>${k ? RCM[k].n + ' (' + fm(v0 * k) + ')' : 'Yok'}</option>`).join('')}</select></label><label class="small mute">Rol sözü<br><select id="prv">${[0, 2, 1, 3].map(k => `<option value="${k}" ${prm === k ? 'selected' : ''}>${PRM[k].n}</option>`).join('')}</select></label></div>`}
-  <div class="row" style="margin:8px 0"><button class="btn alt sm" data-act="setwb" data-w="${(d.w * .95).toFixed(2)}" data-b="0">Maaşı biraz artır</button><button class="btn alt sm" data-act="setwb" data-w="${(d.w * .85).toFixed(2)}" data-b="${(d.w * .5).toFixed(2)}">Düşük maaş + imza primi</button></div>
+  <div class="row" style="margin:8px 0"><button class="btn sm" data-act="setwg" data-w="${d.w}" data-b="${d.b}">Oyuncunun istediğini gir</button><button class="btn alt sm" data-act="setwg" data-w="${(d.w * .95).toFixed(2)}" data-b="0">Maaşı biraz artır</button><button class="btn alt sm" data-act="setwg" data-w="${(d.w * .85).toFixed(2)}" data-b="${(d.w * .5).toFixed(2)}">Düşük maaş + imza primi</button></div>
   <div class="small" style="margin-top:6px">Tahmini toplam: <b id="wgtot">${fm((m.fee || 0) + (+m.b || 0) + agentFee(m.fee || 0, +m.v))}</b> <span class="mute">(bonservis + imza primi + menajer)</span> · Yıllık maaş yükü <b id="wgw">${fmW(+m.v)}</b></div>
  </div>
  <p class="small mute" style="margin:8px 0">İmza primi bütçeden bir kez ödenir. ${m.pre ? '' : 'Düşük serbest kalma bedeli oyuncuyu memnun eder ama başka kulüplerin onu alma ihtimalini artırır. Rol sözü verirsen maaş indirimi alırsın; ama oyuncuyu oynatmazsan morali düşer. '}Gençler uzun, yaşlılar kısa sözleşmeye sıcak bakar.</p>
@@ -18929,7 +19000,7 @@ function renewModal() {
     return ov(`<h2>Sözleşme yenile</h2><div class="mute">${p.n}, ${pbadges(p)} ${p.age} yaşında, şu an ${fmW(p.wg)}/yıl, ${p.ct} yıl kaldı</div>
  <div class="big"><div>${chip(p.ovr)}<small>Mevcut</small></div><div>${potChip(p)}<small>Potansiyel</small></div><div class="small" style="flex:1">İstediği maaş <b>${fmW(m.ask)}/yıl</b><br>İstediği imza primi <b>${fm(m.ab)}</b><br>Maaş bütçesi <b>${fmW(billNow())} / ${fmW(G.wb)}</b><br>Bu oyuncu için pay <b>${fmW(room)}</b></div></div>
  <div class="row"><label class="small mute">Yıllık maaş (milyon €)<br><input class="num" id="wgv" type="number" min="0" step="0.05" value="${m.v}"></label><label class="small mute">İmza primi (milyon €)<br><input class="num" id="sbv" type="number" min="0" step="0.05" value="${m.b || 0}"></label><label class="small mute">Süre<br><select id="yrs">${[1, 2, 3, 4, 5].map(y => `<option value="${y}" ${m.y === y ? 'selected' : ''}>${y} yıl</option>`).join('')}</select></label></div>
- <div class="row" style="margin:10px 0"><button class="btn alt" data-act="setwb" data-w="${m.ask}" data-b="${m.ab}">İstediği</button><button class="btn alt" data-act="setwb" data-w="${(m.ask * .9).toFixed(2)}" data-b="${(m.ab + m.ask * .35).toFixed(2)}">Düşük maaş + yüksek prim</button></div>
+ <div class="row" style="margin:10px 0"><button class="btn alt" data-act="setwg" data-w="${m.ask}" data-b="${m.ab}">İstediği</button><button class="btn alt" data-act="setwg" data-w="${(m.ask * .9).toFixed(2)}" data-b="${(m.ab + m.ask * .35).toFixed(2)}">Düşük maaş + yüksek prim</button></div>
  ${m.msg ? `<p style="margin:0 0 10px"><b>${m.msg}</b></p>` : ''}
  <button class="btn" data-act="submitrenew" data-id="${p.id}">Yenileme teklif et</button>`);
 }
@@ -20209,6 +20280,12 @@ document.addEventListener('click', e => {
             UI.modal = { t: 'kit' };
             R();
             break;
+        case 'kittgl': {
+            const k = kitOf(U().name);
+            kitSet({ [d.k]: k[d.k] === false });
+            R();
+            break;
+        }
         case 'kitswap': {
             const k = kitOf(U().name);
             kitSet({ a: k.b, b: k.a, p: 100 - k.p });
@@ -20796,7 +20873,7 @@ document.addEventListener('click', e => {
             tryLoan(+d.id, parseFloat(g('lfv').value), +g('wsv').value, parseFloat(g('optv').value) || 0);
             break;
         }
-        case 'setwb': {
+        case 'setwg': {
             const a = document.getElementById('wgv'), b = document.getElementById('sbv');
             if (a)
                 a.value = d.w;
