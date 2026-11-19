@@ -9062,7 +9062,28 @@ header.top.kit .icb,header.top.kit .btn.alt{background:rgba(8,14,18,.42);border-
 .kitpvt{display:flex;gap:12px;align-items:center;background:rgba(8,14,18,.46);color:#fff;padding:8px 18px 8px 10px;border-radius:14px;font:700 24px 'Barlow Condensed',sans-serif}
 .kitrow{display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap}.kitrow label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--mute)}
 .kitrow input[type=color]{width:64px;height:42px;padding:2px;border-radius:10px;border:1px solid var(--line);background:var(--card,#fff)}
-@media (max-width:700px){header.top.kit .kpi b{font-size:24px}header.top.kit .kpi{min-width:0;padding:7px 12px}header.top.kit .tc{padding:8px 14px 8px 10px}}
+header.top.kit .wrap.hd{padding-top:18px;padding-bottom:18px;gap:14px 24px;align-items:center}
+header.top.kit .hr{gap:10px;align-items:center;width:100%;flex-wrap:wrap}
+header.top.kit .kpi{display:flex;flex-direction:column;justify-content:center;min-height:76px;box-sizing:border-box;padding:8px 18px;min-width:160px}
+header.top.kit .kpi b{font-size:27px;line-height:1.1;margin-top:3px;white-space:nowrap}
+header.top.kit .kpi b small{font-size:14px}
+header.top.kit .hr>.btn{height:48px;padding:0 20px;font-size:15px;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
+header.top.kit .hbtns{display:flex;gap:8px;align-items:center;margin-left:auto}
+header.top.kit .icb{width:48px;height:48px;border-radius:12px}
+header.top.kit .tc{min-height:64px;box-sizing:border-box;align-items:center}
+@media (min-width:901px){
+header.top.kit .wrap.hd{display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;grid-template-rows:auto auto;gap:10px 12px;align-items:stretch}
+header.top.kit .hr{display:contents}
+header.top.kit .tc{grid-column:1;grid-row:1/3;align-self:stretch}
+header.top.kit .hr>.kpi:nth-child(1){grid-column:2;grid-row:1}
+header.top.kit .hr>.kpi:nth-child(2){grid-column:3;grid-row:1}
+header.top.kit .hr>.btn.go{grid-column:2;grid-row:2;width:100%}
+header.top.kit .hr>.btn.mo1{grid-column:3;grid-row:2;width:100%}
+header.top.kit .hbtns{grid-column:4;grid-row:1/3;display:grid;grid-template-columns:repeat(2,48px);grid-template-rows:repeat(2,1fr);gap:10px;align-content:stretch;margin:0}
+header.top.kit .hbtns .icb{width:48px;height:100%;min-height:48px}
+header.top.kit .kpi{min-width:0}
+}
+@media (max-width:700px){header.top.kit .wrap.hd{padding-top:12px;padding-bottom:12px}header.top.kit .hr{margin-left:0;width:100%}header.top.kit .kpi{min-width:0;flex:1 1 130px;min-height:56px}header.top.kit .hr>.btn{height:42px;padding:0 14px}header.top.kit .icb{width:42px;height:42px}header.top.kit .kpi b{font-size:24px}header.top.kit .kpi{min-width:0;padding:7px 12px}header.top.kit .tc{padding:8px 14px 8px 10px}}
 </style><style>
 .trhero{padding:18px 20px!important}
 .trh1{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:14px}
@@ -9082,7 +9103,7 @@ header.top.kit .icb,header.top.kit .btn.alt{background:rgba(8,14,18,.42);border-
 .trv .seg{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px}
 .trv .seg button{font-size:15px!important;font-weight:700;padding:11px 20px!important;border-radius:999px!important;min-height:44px}
 .trv .row select,.trv .row input.num{font-size:15px!important;min-height:44px;padding:8px 14px!important;border-radius:12px!important}
-.trv .row input.num{width:min(100%,260px)!important;flex:1 1 220px;padding-left:40px!important;background:var(--card,#fff) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a98a3' stroke-width='2.4' stroke-linecap='round'><circle cx='11' cy='11' r='7'/><path d='m20 20-4-4'/></svg>") no-repeat 12px center/18px}
+.trv .row input.num{width:min(100%,260px)!important;flex:1 1 220px;padding-left:40px!important;background:var(--panel) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a98a3' stroke-width='2.4' stroke-linecap='round'><circle cx='11' cy='11' r='7'/><path d='m20 20-4-4'/></svg>") no-repeat 12px center/18px}
 .trv .row .btn.alt{font-size:14.5px;min-height:44px;padding:8px 16px!important;border-radius:12px}
 .trv .tw{border:1px solid var(--line);border-radius:14px;overflow:auto;max-height:none}
 .trv table{font-size:15.5px}
@@ -9158,7 +9179,49 @@ html[data-comp="el"] header.top.kit,html[data-comp="el"] nav.tabs.kitn{backgroun
 html[data-comp="el"] header.top.kit::after{background:linear-gradient(90deg,#ffb347,#fff,#ffb347)!important}
 html[data-comp="ecl"] header.top.kit,html[data-comp="ecl"] nav.tabs.kitn{background:radial-gradient(700px 300px at 88% -20%,rgba(126,242,182,.45),transparent 70%),linear-gradient(100deg,#03150d,#0a4a2e 60%,#19b36b)!important}
 html[data-comp="ecl"] header.top.kit::after{background:linear-gradient(90deg,#7ef2b6,#fff,#7ef2b6)!important}
-</style></head>
+</style><style>.x7g{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:8px}.x7s{background:rgba(128,128,128,.12);border-radius:12px;padding:10px 12px}.x7s b{display:block;font:700 24px/1.1 'Barlow Condensed',sans-serif}.x7s span{font-size:11px;opacity:.7;text-transform:uppercase;letter-spacing:.06em}
+.x7sw{color:var(--pitch2,#2e9b3f)}.x7sp{width:100%;max-width:420px;height:46px}
+.x7as{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px;margin-bottom:10px}.x7a{text-align:left;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:rgba(128,128,128,.1);color:inherit;cursor:pointer;font:inherit}.x7a b{display:block}.x7a small{opacity:.7}.x7a:disabled{opacity:.5;cursor:not-allowed}
+.x7ck{display:flex;gap:8px;align-items:center;font-size:14px}.x7op{display:flex;gap:12px;align-items:center}
+.x7f{display:inline-block;width:18px;height:18px;text-align:center;border-radius:4px;font:700 10px/18px sans-serif;font-style:normal;margin-right:2px;color:#fff;background:#888}.x7f.G{background:#2e9b3f}.x7f.M{background:#c0392b}.x7f.B{background:#b8902a}
+tr.x7me td{background:rgba(255,200,0,.14);font-weight:700}
+.x7bi{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center}.x7sls{display:flex;gap:14px;flex-wrap:wrap}.x7up{cursor:pointer}
+</style>
+<style>
+@media (max-width:700px){
+header.top.kit .wrap.hd{padding-top:10px;padding-bottom:10px;gap:8px}
+header.top.kit .tc{min-height:0;padding:8px 12px 8px 10px;border-radius:16px;gap:10px!important}
+header.top.kit .tc .club{font-size:22px;line-height:1.05}
+header.top.kit .tc .stl{margin-top:1px}
+header.top.kit .meta{margin-top:4px;gap:4px;flex-wrap:wrap}
+header.top.kit .meta span{font-size:11px;padding:1px 8px}
+header.top.kit .meta span:nth-child(2){display:none}
+header.top.kit .hr{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
+header.top.kit .kpi{min-height:54px;padding:6px 12px;min-width:0}
+header.top.kit .kpi span{font-size:10px}
+header.top.kit .kpi b{font-size:21px;margin-top:1px}
+header.top.kit .kpi b small{font-size:11px}
+header.top.kit .hr>.btn{height:42px;padding:0 10px;font-size:14px;width:100%}
+header.top.kit .hbtns{grid-column:1/3;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0}
+header.top.kit .hbtns .icb{width:100%;height:40px}
+header.top.kit .tc,header.top.kit .kpi,header.top.kit .icb,header.top.kit .btn.alt{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+html.kitpg:not([data-comp]):has(header.top){background-attachment:scroll!important;background-size:100% 100vh!important;background-repeat:no-repeat!important;background-color:var(--kpt,transparent)!important}
+}
+@media (hover:none){
+html{-webkit-tap-highlight-color:transparent}
+button,[data-act],.btn,.icb,nav.tabs button{touch-action:manipulation}
+.btn.sm,button.sm{min-height:38px}
+.chip,.pill{min-height:34px}
+}
+html{overscroll-behavior-y:none}
+@media (hover:none){
+button[data-act="pf"],button[data-act="ment"],button[data-act="tacp"],button[data-act="tacr"],button[data-act="tline"],button[data-act="ttempo"],button[data-act="twid"],button[data-act="dzg"],button[data-act="ec"]{min-height:40px}
+button.star[data-act="pri"]{min-width:38px;min-height:38px;display:inline-flex;align-items:center;justify-content:center}
+button.dtb[data-act="tobn"]{min-height:30px;padding:4px 8px}
+}
+@media (max-width:700px){header.top.kit .tc{width:100%;box-sizing:border-box}}
+</style>
+</head>
 <body>
 <noscript><h1>Teknik Direktör 27 Lite</h1><p>Tarayıcıda ücretsiz oynanan futbol menajerlik oyunu: 24 ülkede 34 lig, 564 kulüp, gerçek oyuncular, Avrupa kupaları, transfer, gözlemci sistemi ve çok oyunculu lig. Oynamak için JavaScript gerekir.</p></noscript>
 <div id="app"></div>
@@ -11623,7 +11686,6 @@ function menuModal() {
  <div class="msec">Oyun</div><div class="mgrp">${row('save', '<path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/>', 'Oyunu kaydet', 'Tarayıcıya kaydeder')}${row('budm', '<circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5c0-1 1-1.5 2.5-1.5s2.5.6 2.5 1.7c0 2.3-5 1.1-5 3.6 0 1.1 1.1 1.7 2.5 1.7s2.5-.6 2.5-1.6"/>', 'Bütçe ayarla', 'Transfer ve maaş bütçesi')}${row('setm', '<path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>', 'Lig ayarları', 'Gözlem, zorluk, sakatlık, bütçe')}</div>
  <div class="msec">Online</div><div class="mgrp">${row('mpm', '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.500 0 18M12 3c-3 3.500-3 14.500 0 18"/>', 'Çok oyunculu', 'Lig kur veya koda katıl')}</div>
  <div class="msec">Görünüm ve uygulama</div><div class="mgrp">${row('kit', '<circle cx="8" cy="12" r="5"/><circle cx="16" cy="12" r="5"/>', 'Kulüp renkleri', 'Başlık renklerini ve oranını özelleştir')}${row('theme', '<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.600 5.600l1.400 1.400M17 17l1.400 1.400M18.400 5.600 17 7M7 17l-1.400 1.400"/>', 'Tema', 'Şu an: ' + THN[themeGet()])}${row('pwa', '<path d="M12 3v12M7 10l5 5 5-5M5 20h14"/>', 'Uygulamayı yükle', 'Ana ekrana ekle, tam ekran oyna')}<label class="mnr" style="cursor:pointer">${I('<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 8"/>')}<span><b>Logo / yazı tipi yükle</b><small>PNG, ZIP, TTF, OTF, WOFF</small></span><i class="chev">›</i><input type="file" id="logoin" multiple accept="image/*,.zip,.ttf,.otf,.woff,.woff2" hidden></label></div>
- <div class="mgrp" style="margin-top:14px">${row('newgame', '<path d="M3 11l9-8 9 8M5 10v10h14V10"/>', 'Ana menüye dön', 'Kaydedilmemiş ilerleme kaybolur', 'mwarn')}</div>
  <p class="small mute" style="margin:12px 0 0">Kulüp logosu için dosya adı kulüp adıyla aynı olmalı (örn. Arsenal.png). Kupa logoları: UCL.png, UEL.png, UECL.png.</p></div></div>`;
 }
 const ICO = { bell: '<svg viewBox="0 0 24 24"><path d="M6 9a6 6 0 0 1 12 0c0 6 2.5 7.5 2.5 7.5h-17S6 15 6 9z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>', save: '<svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/></svg>' };
@@ -11687,7 +11749,7 @@ function kitAuto(name, force) {
                 let cb, p = 62;
                 if (B) { cb = B.k[0] === 'h' ? sat(B.c) : B.c; p = clamp(Math.round(A.n / (A.n + B.n) * 100), 30, 72); }
                 else cb = ca.map(x => x * .5);
-                TCC[name] = { a: rgb2hex(...ca), b: rgb2hex(...cb), p, m: 'split' };
+                TCC[name] = { a: rgb2hex(...ca), b: rgb2hex(...cb), p, m: 'tb' };
                 if (G && U().name === name && !(UI.modal && UI.modal.t === 'kit')) R();
                 else if (UI.modal && UI.modal.t === 'kit') kitApply();
             }
@@ -11742,7 +11804,7 @@ function kitApply() {
     if (pv) pv.style.background = kitBg(k);
 }
 function kitModal() {
-    const t = U(), k = kitOf(t.name), md = k.m || 'split';
+    const t = U(), k = kitOf(t.name), md = k.m || 'tb';
     return ov(`<h2>Kulüp renkleri</h2><p class="small mute">${t.name} için üst başlığın ve menü çubuğunun renklerini ve oranını ayarla. Renk oranları logodan otomatik alınır, istersen kendin değiştirebilirsin.</p>
  <div id="kitpv" class="kitpv" style="background:${kitBg(k)}"><div class="kitpvt">${crest(t.name, 44)}<b>${t.name}</b></div></div>
  <div class="kitrow"><label>1. renk<input type="color" id="kit-a" value="${/^#/.test(k.a) ? k.a : '#a50a2d'}"></label><label>2. renk<input type="color" id="kit-b" value="${/^#/.test(k.b) ? k.b : '#fcb716'}"></label><button class="btn alt sm" data-act="kitswap">⇄ Yer değiştir</button></div>
@@ -11776,8 +11838,8 @@ function head() {
     const t = U(), tot = G.fix.length, un = unreadN(), pend = (G.offers || []).length + (UI.scn || 0);
     return `<header class="top kit"><div class="wrap hd"><div class="tc" style="gap:14px">${crest(t.name, 52)}<div><div class="club">${t.name}</div><div class="stl">${starsH(t.name)}</div><div class="meta"><span>${LGM[G.lid].name}</span><span>${G.season}/${String(G.season + 1).slice(2)}</span><span>${fmtD(G.d || 0)}</span><span>${seasonOver() ? 'Sezon bitti' : 'Hafta ' + (G.week + 1) + ' / ' + tot}</span></div></div></div>
  <div class="hr"><div class="kpi"><span>Transfer bütçesi</span><b id="budv">${fm(t.bud)}</b></div><div class="kpi"><span>Maaş</span><b>${fmW(billNow())}<small> / ${fmW(G.wb)}</small></b><div class="kbar"><i style="width:${clamp(G.wb ? billNow() / G.wb * 100 : 100, 0, 100).toFixed(0)}%" class="${billNow() / (G.wb || 1) > .95 ? 'r' : billNow() / (G.wb || 1) > .85 ? 'o' : ''}"></i></div></div>
- <button class="btn go" data-act="cont" ${seasonOver() ? 'disabled' : ''} title="1 gün ilerle (maç günüyse maça girer)">Devam ▸</button><button class="btn alt mo1" data-act="month" ${seasonOver() ? 'disabled' : ''} title="30 gün simüle et">1 ay sim et ▸▸</button><div class="hbtns"><button class="icb" data-act="theme" aria-label="Tema değiştir" title="Tema: ${THN[themeGet()]} (değiştirmek için dokun)">☾</button><button class="icb" data-act="bell" aria-label="Bildirimler${un ? ' (' + un + ' yeni)' : ''}" title="Bildirimler">${ICO.bell}${un ? `<em class="bdg">${un > 9 ? '9+' : un}</em>` : ''}</button><button class="icb" data-act="save" aria-label="Kaydet" title="Kaydet">${ICO.save}</button><button class="icb" data-act="menu" aria-label="Menü" title="Menü">⋯</button></div></div></div></header>
- <nav class="tabs"><div class="wrap" role="tablist"><i class="ind"></i>${[['ozet', 'Özet'], ['kadro', 'Kadro'], ['dizilis', 'Dizilim'], ['kulup', 'Kulüp'], ['lig', 'Lig'], ['avrupa', 'Avrupa'], ['transfer', 'Transfer'], ['takvim', 'Takvim'], ['ekstra', 'Ekstra']].map(([k, l]) => `<button role="tab" aria-selected="${UI.tab === k || (k === 'ekstra' && EXTRA.includes(UI.tab))}" data-act="${k === 'ekstra' ? 'exmenu' : 'tab'}" data-k="${k}"${k === 'ekstra' ? ` aria-haspopup="true" aria-expanded="${!!UI.exm}"` : ''}>${l}${k === 'ekstra' ? `<span class="chv${UI.exm ? ' up' : ''}">▾</span>` : ''}${k === 'transfer' && pend ? `<span class="tb">${pend}</span>` : ''}</button>`).join('')}</div>${UI.exm ? `<div class="exdd" role="menu" style="left:${Math.max(8, Math.min(UI.exm.x, innerWidth - 232))}px;top:${UI.exm.y}px">${[['bteam', '🎓', 'B Takım'], ['scout', '🌍', 'Kulüpler'], ['ulke', '📊', 'Ülke puanı'], ['arsiv', '🏆', 'Kupa dolabı ve başarımlar'], ['ekstra', '☰', 'Tüm Ekstra sayfası']].map(([k, ic, t]) => `<button role="menuitem" data-act="tab" data-k="${k}"${UI.tab === k ? ' class="on"' : ''}><span>${ic}</span>${t}</button>`).join('')}</div>` : ''}</nav>`;
+ <button class="btn go" data-act="cont" ${seasonOver() ? 'disabled' : ''} title="1 gün ilerle (maç günüyse maça girer)">Devam ▸</button><button class="btn alt mo1" data-act="month" ${seasonOver() ? 'disabled' : ''} title="30 gün simüle et">1 ay sim et ▸▸</button><div class="hbtns"><button class="icb" data-act="x7home" aria-label="Ana menü" title="Kaydet ve ana menüye dön"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg></button><button class="icb" data-act="bell" aria-label="Bildirimler${un ? ' (' + un + ' yeni)' : ''}" title="Bildirimler">${ICO.bell}${un ? `<em class="bdg">${un > 9 ? '9+' : un}</em>` : ''}</button><button class="icb" data-act="theme" aria-label="Koyu / açık tema" title="Tema: ${THN[themeGet()]} (değiştirmek için dokun)">${document.documentElement.getAttribute('data-theme') === 'dark' || (document.documentElement.getAttribute('data-theme') !== 'light' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? '☾' : '☀'}</button><button class="icb" data-act="menu" aria-label="Menü" title="Menü">⋯</button></div></div></div></header>
+ <nav class="tabs"><div class="wrap" role="tablist"><i class="ind"></i>${[['ozet', 'Özet'], ['kadro', 'Kadro'], ['dizilis', 'Dizilim'], ['kulup', 'Kulüp'], ['lig', 'Lig'], ['avrupa', 'Avrupa'], ['transfer', 'Transfer'], ['takvim', 'Takvim'], ['ekstra', 'Ekstra']].map(([k, l]) => `<button role="tab" aria-selected="${UI.tab === k || (k === 'ekstra' && EXTRA.includes(UI.tab))}" data-act="${k === 'ekstra' ? 'exmenu' : 'tab'}" data-k="${k}"${k === 'ekstra' ? ` aria-haspopup="true" aria-expanded="${!!UI.exm}"` : ''}>${l}${k === 'ekstra' ? `<span class="chv${UI.exm ? ' up' : ''}">▾</span>` : ''}${k === 'transfer' && pend ? `<span class="tb">${pend}</span>` : ''}</button>`).join('')}</div>${UI.exm ? `<div class="exdd" role="menu" style="left:${Math.max(8, Math.min(UI.exm.x, innerWidth - 232))}px;top:${UI.exm.y}px">${[['bteam', '🎓', 'B Takım'], ['scout', '🌍', 'Kulüpler'], ['ulke', '📊', 'Ülke puanı'], ['arsiv', '🏆', 'Kupa dolabı ve başarımlar'], ['tdler', '🧠', 'Teknik direktörler'], ['kariyer', '📈', 'Kariyer ve yönetim'], ['guvenlik', '🛡', 'Kayıt güvenliği'], ['ekstra', '☰', 'Tüm Ekstra sayfası']].map(([k, ic, t]) => `<button role="menuitem" data-act="tab" data-k="${k}"${UI.tab === k ? ' class="on"' : ''}><span>${ic}</span>${t}</button>`).join('')}</div>` : ''}</nav>`;
 }
 function gauge(l, v) { const w = clamp((v - 45) / 45 * 100, 4, 100); return `<div class="ga"><span>${l}</span><div class="bar"><i style="width:${w.toFixed(0)}%;background:var(--t${tier(Math.round(v))})"></i></div><b>${Math.round(v)}</b></div>`; }
 const LMARK_X = '<circle class="pk" cx="34" cy="11" r=".6"/><circle class="pk" cx="34" cy="77" r=".6"/><path d="M1.5 4a2.5 2.5 0 0 0 2.5-2.5M66.5 4a2.5 2.5 0 0 1-2.5-2.5M1.5 84a2.5 2.5 0 0 1 2.5 2.5M66.5 84a2.5 2.5 0 0 0-2.5 2.5"/>';
@@ -19191,7 +19253,7 @@ function R() {
         app.innerHTML = startView().replace('class="start"', first ? 'class="start enter"' : 'class="start"');
     }
     else {
-        const v = { ozet: ozetView, inbox: inboxView, takvim: calendarView, kadro: kadroView, dizilis: dizilisView, bteam: bteamView, kulup: kulupView, lig: ligView, avrupa: avrupaView, scout: clubsView, transfer: transferView, ekstra: ekstraView, ulke: ulkeView, arsiv: arsivView }[UI.tab]();
+        const v = { ozet: ozetView, inbox: inboxView, takvim: calendarView, kadro: kadroView, dizilis: dizilisView, bteam: bteamView, kulup: kulupView, lig: ligView, avrupa: avrupaView, tdler: tdlerView, kariyer: kariyerView, guvenlik: guvenlikView, scout: clubsView, transfer: transferView, ekstra: ekstraView, ulke: ulkeView, arsiv: arsivView }[UI.tab]();
         app.innerHTML = head() + `<main class="wrap${fx ? ' enter' : ''}">${UI.cp ? compBanner(UI.cp) : ''}${v}</main>`;
     }
     const mk = G && UI.modal ? JSON.stringify([UI.modal.t, UI.modal.id, UI.modal.i]) : '';
@@ -22139,7 +22201,10 @@ function ekstraView() {
         ['bteam', '🎓', 'B Takım', 'Gençleri geliştir, akademiden gelenleri takip et.', 'Akademi'],
         ['scout', '🌍', 'Kulüpler', ctys().length + ' ülkede ' + Object.keys(LGM).length + ' lig, ' + nT + ' kulüp: kadro, dizilim, transfer.', 'Rehber'],
         ['ulke', '📊', 'Ülke puanı', 'Ligin Avrupa sıralamasında ' + rk + '. Kupa kontenjanları buradan belirlenir.', 'UEFA'],
-        ['arsiv', '🏆', 'Kupa dolabı ve başarımlar', 'Şampiyonluklar, kulüp tarihi ve açtığın başarımlar (' + ac + ').', 'Arşiv']
+        ['arsiv', '🏆', 'Kupa dolabı ve başarımlar', 'Şampiyonluklar, kulüp tarihi ve açtığın başarımlar (' + ac + ').', 'Arşiv'],
+        ['tdler', '🧠', 'Teknik direktörler', 'Ligdeki hocalar, oyun anlayışları, kovulma ve atamalar.', 'Dünya'],
+        ['kariyer', '📈', 'Kariyer ve yönetim', 'Sezon sezon kariyerin, yönetimle ilişkilerin.', 'Kariyer'],
+        ['guvenlik', '🛡', 'Kayıt güvenliği', 'Yedek indir, dosyadan yükle, otomatik yedekler.', 'Kayıt']
     ];
     return `<div class="exh"><h2 class="exttl">Ekstra</h2><p class="mute small" style="margin:2px 0 0">Sık kullanmadığın bölümler burada toplanır.</p></div>
  <div class="exg">${cards.map(([k, ic, t, d, tag], i) => `<button class="exc" style="--i:${i}" data-act="tab" data-k="${k}"><span class="exi">${ic}</span><span class="exb"><span class="ext">${tag}</span><b class="cond">${t}</b><span class="exd">${d}</span></span><span class="exar">›</span></button>`).join('')}</div>`;
@@ -23490,6 +23555,453 @@ catch (e) {
 catch (e) {
     console.error('mgGen', e);
 } return r; };
+/* ===== v170: rakip TD yapay zekâsı, kariyer geçmişi, yönetim ilişkileri, kayıt güvenliği, dinamik dünya ===== */
+const MSTY = {
+    att: { n: 'Hücumcu', d: 'Önde baskı, yüksek hat; arkada boşluk bırakır.', pass: 'short', press: 'high', line: 'high', tempo: 'fast', tip: 'Arkasına uzun top at, hızlı kanat oyuncuları kullan.' },
+    def: { n: 'Savunmacı', d: 'Derin blok, az risk.', pass: 'long', press: 'low', line: 'low', tempo: 'slow', tip: 'Sabırlı ol, kanatlardan ve şutla dene.' },
+    pres: { n: 'Pres odaklı', d: 'Rakibi yüksekten boğar, çok koşar.', pass: 'bal', press: 'high', line: 'high', tempo: 'fast', tip: 'Presi kısa paslarla kır, orta sahada kalma.' },
+    pos: { n: 'Topa sahip', d: 'Kısa pas, yavaş tempo.', pass: 'short', press: 'mid', line: 'mid', tempo: 'slow', tip: 'Orta sahayı kalabalık tut, top kapıp hızlı çık.' },
+    cnt: { n: 'Kontrataklı', d: 'Geride bekler, hızlı çıkar.', pass: 'long', press: 'low', line: 'low', tempo: 'fast', tip: 'Savunma hattını fazla yükseltme.' },
+    bal: { n: 'Dengeli', d: 'Rakibe göre uyum sağlar.', pass: 'bal', press: 'mid', line: 'mid', tempo: 'mid', tip: 'Belirgin bir zayıf noktası yok; kendi oyununu oyna.' }
+};
+const MSTK = Object.keys(MSTY);
+const mqStars = q => stRound(.5 + 4.5 * clamp((q - 30) / 62, 0, 1));
+function mgrNew(name, base, seedExtra) {
+    const h = hsh(name + 'mgr' + (seedExtra || '')), b = base === undefined ? (clubScore ? clubScore(name) : 65) : base;
+    return { q: clamp(Math.round(42 + (b - 60) * .7 + (h % 23) - 8), 30, 92), st: MSTK[(h >>> 4) % MSTK.length], age: 40 + (h >>> 9) % 25, s0: G.season, d0: G.d || 0, hb: 0 };
+}
+function mgrObj(name) {
+    G.mgrs = G.mgrs || {};
+    mgrOf(name);
+    const m = G.mgrs[name];
+    if (m.q === undefined) {
+        const t = G.teams && G.teams.find(x => x.name === name);
+        Object.assign(m, mgrNew(name, t ? t.base : undefined));
+    }
+    return m;
+}
+const _tacOf170 = tacOf;
+tacOf = function (t) {
+    const x = _tacOf170.apply(this, arguments);
+    if (!t || t === U() || t.hum || !G || !G.teams || !G.teams.includes(t))
+        return x;
+    const m = mgrObj(t.name), s = MSTY[m.st];
+    return Object.assign({}, x, { pass: s.pass, press: s.press, line: s.line, tempo: s.tempo });
+};
+const _autoMent170 = autoMent;
+autoMent = function (t, o) {
+    if (t === U() || t.hum || !G || !G.teams || !G.teams.includes(t))
+        return _autoMent170.apply(this, arguments);
+    const m = mgrObj(t.name), d = t.base - o.base, ad = (m.q - 30) / 62 * 6;
+    const th = 10 - ad;
+    let r = d >= th ? 'att' : d <= -th ? 'def' : 'bal';
+    if (m.st === 'att' && r === 'bal')
+        r = 'att';
+    if ((m.st === 'def' || m.st === 'cnt') && r === 'bal')
+        r = 'def';
+    return r;
+};
+const _formAdj170 = formAdj;
+formAdj = function (t) {
+    let x = _formAdj170.apply(this, arguments);
+    try {
+        if (t !== U() && G.mgrs && G.mgrs[t.name]) {
+            const m = G.mgrs[t.name];
+            x += ((m.q || 55) - 60) * .006 + (m.hb || 0) * .12;
+        }
+    }
+    catch (e) { }
+    return x;
+};
+function mgSack(t, why) {
+    const m = mgrObj(t.name), old = m.n;
+    let nn = 'M. Kaya';
+    try {
+        nn = genName(LGM[G.lid].nm);
+    }
+    catch (e) { }
+    const fresh = mgrNew(t.name, t.base, 'n' + (G.d || 0) + nn);
+    G.mgrs[t.name] = Object.assign({ n: nn }, fresh, { hb: 3, prev: old });
+    G.mlog = G.mlog || [];
+    const ms = MSTY[fresh.st].n, line = t.name + ' ' + old + ' ile yolları ayırdı (' + why + '). Yeni teknik direktör: ' + nn + ' (' + ms + ').';
+    G.mlog.unshift({ d: G.d || 0, s: line, c: t.name });
+    G.mlog = G.mlog.slice(0, 50);
+    news(line);
+}
+function aiMgrWeek() {
+    if (!G || !G.teams)
+        return;
+    G.teams.forEach(t => { const m = G.mgrs && G.mgrs[t.name]; if (m && m.hb > 0)
+        m.hb = Math.max(0, m.hb - .25); });
+    if (G.week < 7)
+        return;
+    const st = standings(), n = st.length, byBase = G.teams.slice().sort((a, b) => b.base - a.base);
+    let c = 0;
+    G.teams.forEach(t => {
+        if (t === U() || c >= 1)
+            return;
+        const m = mgrObj(t.name), f = (t.tab.form || []).slice(-5), ls = f.filter(x => x === 'M').length;
+        const pos = st.indexOf(t) + 1, exp = byBase.indexOf(t) + 1;
+        if ((G.d || 0) - (m.d0 || 0) < 45)
+            return;
+        const bad = (f.length >= 4 && f.slice(-4).every(x => x === 'M')) || (ls >= 4 && pos >= n - 4) || (pos - exp >= 8 && ls >= 3);
+        if (bad && Math.random() < .2) {
+            mgSack(t, ls + ' kayıp, ' + pos + '. sırada');
+            c++;
+        }
+    });
+    try {
+        const trust = Math.round(G.bc === undefined ? 60 : G.bc), wk = G.season + ':' + (G.week >= 14 ? 'b' : 'a');
+        if (trust < 30 && !G['warn' + wk] && !G.nofire) {
+            G['warn' + wk] = 1;
+            mail('Yönetim Kurulu', 'Son uyarı', 'Sonuçlardan memnun değiliz. Yönetim güveni ' + trust + '. Toparlanamazsan sezon sonunda yollarımızı ayırabiliriz.', 'board', { tab: 'kulup' });
+        }
+    }
+    catch (e) { }
+}
+const _pr170 = playRound;
+playRound = function () {
+    const r = _pr170.apply(this, arguments);
+    try {
+        aiMgrWeek();
+    }
+    catch (e) {
+        console.error('aiMgrWeek', e);
+    }
+    return r;
+};
+function logSeason(fired) {
+    const m = mgInit(), t = U(), tb = t.tab, st = standings(), pos = st.indexOf(t) + 1, eu = G.eu;
+    m.log = m.log || [];
+    let ev = '';
+    try {
+        if (eu.comp >= 0) {
+            const c = eu.comps[eu.comp];
+            ev = c.n + (c.champ === eu.me ? ' şampiyonu' : ' · tur ' + (c.reach[eu.me] || 0));
+        }
+    }
+    catch (e) { }
+    if (m.log.some(x => x.s === G.season && x.c === t.name))
+        return;
+    m.log.push({ s: G.season, c: t.name, lid: G.lid, pos, n: st.length, exp: expRank(), w: tb.w, d: tb.d, l: tb.l, gf: tb.gf, ga: tb.ga, pts: tb.pts, eu: ev, rep: Math.round(m.rep), tr: Math.round(G.bc === undefined ? 60 : G.bc), fired: !!fired });
+}
+function mgFire(st, pos) {
+    const m = mgInit(), me = U().name, rep0 = m.rep;
+    m.fired = (m.fired || 0) + 1;
+    m.rep = +clamp(m.rep - 6, 10, 98).toFixed(1);
+    const cands = [];
+    LG.forEach(l => { const L = LGM[l.id]; if (!L)
+        return; const ranked = L.teams.map(t => t.str).sort((a, b) => b - a); L.teams.forEach(t => { if (t.name === me)
+        return; cands.push({ n: t.name, lid: l.id, str: t.str, cp: mgCP(t.str, l.id), rk: ranked.indexOf(t.str) + 1, N: L.teams.length }); }); });
+    let pool = cands.filter(c => c.cp <= m.rep + 4 && c.cp >= m.rep - 25);
+    if (!pool.length)
+        pool = cands.filter(c => c.cp <= m.rep + 12).sort((a, b) => b.cp - a.cp).slice(0, 8);
+    const c = pool.sort((a, b) => b.cp - a.cp)[Math.floor(Math.random() * Math.min(3, pool.length))];
+    if (!c)
+        return false;
+    const exp = c.rk <= 3 ? 'Şampiyonluk' : c.rk <= Math.ceil(c.N / 3) ? 'Avrupa kupalarına katılmak' : c.rk <= Math.ceil(c.N * .65) ? 'Ligi üst yarıda bitirmek' : 'Ligde kalmak';
+    const o = { id: (G.mgn = (G.mgn || 0) + 1), n: c.n, lid: c.lid, str: c.str, cp: c.cp, y: 2, exp, bud: Math.max(3, Math.round(payTarget(c.lid, c.n) * .85)), cur: mgrOf(c.n), by: G.d + 30, s: G.season };
+    const old = me;
+    mgSwitch(o);
+    G.mlog = G.mlog || [];
+    const line = old + ' yönetimi ' + m.n + ' ile yollarını ayırdı. ' + o.n + ' (' + LGM[o.lid].name + ') yeni görevin; hedef: ' + o.exp + '.';
+    G.mlog.unshift({ d: G.d || 0, s: line, c: old });
+    news(line);
+    mail('Yönetim Kurulu', 'Görevden alındın', old + ' yönetimi sonuçlardan memnun kalmadı (' + pos + '. sıra, yönetim güveni düşük). İtibarın ' + Math.round(rep0) + ' → ' + Math.round(m.rep) + '. ' + o.n + ' seni göreve getirdi; sözleşmen ' + o.y + ' yıl.', 'board', { tab: 'kulup' });
+    toast('Görevden alındın! Yeni kulübün: ' + o.n);
+    return true;
+}
+const _ns170 = newSeason;
+newSeason = function () {
+    let fired = false, pos = 0;
+    try {
+        const st = standings(), n = st.length;
+        pos = st.indexOf(U()) + 1;
+        const exp = expRank(), tr = G.bc === undefined ? 60 : G.bc;
+        fired = !G.nofire && (tr < 20 || (pos - exp >= 8 && tr < 35));
+        logSeason(fired);
+        const byBase = G.teams.slice().sort((a, b) => b.base - a.base);
+        G.teams.forEach(t => {
+            if (t === U())
+                return;
+            const m = mgrObj(t.name), p = st.indexOf(t) + 1, e = byBase.indexOf(t) + 1;
+            m.ten = (m.ten || 0) + 1;
+            if (p === 1)
+                m.t = (m.t || 0) + 1;
+            m.q = clamp(m.q + (e - p >= 4 ? 2 : p - e >= 5 ? -2 : 0) + (Math.random() < .3 ? 1 : 0), 30, 94);
+            if ((p - e >= 6 && Math.random() < .4) || (p >= n - 1 && Math.random() < .5))
+                mgSack(t, 'sezon sonu, ' + p + '. sırada');
+            else if (p === 1 && m.q >= 70 && Math.random() < .1) {
+                G.mlog = G.mlog || [];
+                const msg = t.name + ' şampiyon teknik direktörü ' + m.n + ' ile sözleşmesini uzattı.';
+                G.mlog.unshift({ d: G.d || 0, s: msg, c: t.name });
+            }
+        });
+    }
+    catch (e) {
+        console.error('ns170-pre', e);
+    }
+    const r = _ns170.apply(this, arguments);
+    try {
+        if (fired)
+            mgFire(null, pos);
+        save();
+    }
+    catch (e) {
+        console.error('ns170-post', e);
+    }
+    return r;
+};
+/* --- paneller --- */
+function recStr(x) { return x.w + '-' + x.d + '-' + x.l; }
+function careerPanel() {
+    const m = mgInit(), L = (m.log || []).slice(), n = L.length;
+    const W = L.reduce((a, x) => a + x.w, 0), D = L.reduce((a, x) => a + x.d, 0), Ls = L.reduce((a, x) => a + x.l, 0), g = W + D + Ls;
+    const best = L.length ? Math.min.apply(null, L.map(x => x.pos)) : null, ti = L.filter(x => x.pos === 1).length;
+    const stat = (k, v) => `<div class="x7s"><b>${v}</b><span>${k}</span></div>`;
+    const pts = (m.log || []).map(x => x.rep), pl = pts.length > 1 ? (() => { const mn = Math.min(...pts) - 2, mx = Math.max(...pts) + 2, w = 260, h = 46; return `<svg class="x7sp" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><polyline fill="none" stroke="currentColor" stroke-width="2" points="${pts.map((v, i) => (i / (pts.length - 1) * (w - 6) + 3).toFixed(1) + ',' + (h - 4 - (v - mn) / (mx - mn) * (h - 8)).toFixed(1)).join(' ')}"/></svg>`; })() : '';
+    const rows = L.slice().reverse().map(x => `<tr><td>${x.s}/${String(x.s + 1).slice(2)}</td><td>${crest(x.c, 18)} ${x.c}${x.fired ? ' <span class="pkt bad">Kovuldu</span>' : ''}</td><td>${x.pos}. <span class="mute">/${x.n} (hedef ${x.exp})</span></td><td>${recStr(x)}</td><td>${x.pts}</td><td>${x.eu || '–'}</td><td>${x.rep}</td></tr>`).join('');
+    return `<div class="panel"><h2>Kariyer geçmişi <span class="small mute" style="font-weight:600">${m.n}</span></h2>
+ <div class="x7g">${stat('Sezon', n)}${stat('Kulüp', (m.hist || []).length)}${stat('Şampiyonluk', ti)}${stat('En iyi sıra', best ? best + '.' : '–')}${stat('Galibiyet %', g ? Math.round(W / g * 100) : '–')}${stat('Kovulma', m.fired || 0)}</div>
+ ${pl ? `<div class="small mute" style="margin:10px 0 2px">İtibar gelişimi</div><div class="x7sw">${pl}</div>` : ''}
+ ${n ? `<div class="tw" style="margin-top:10px"><table class="small"><thead><tr><th>Sezon</th><th>Kulüp</th><th>Sıra</th><th>G-B-M</th><th>Puan</th><th>Avrupa</th><th>İtibar</th></tr></thead><tbody>${rows}</tbody></table></div>` : '<p class="small mute" style="margin:8px 0 0">İlk sezonun bitince kariyer kayıtların burada birikmeye başlar.</p>'}
+ <div class="small mute" style="margin-top:8px">Kulüp geçmişi: ${(m.hist || []).map(h => h.c + ' (' + h.s + ')').join(' → ')}</div></div>`;
+}
+function boardPanel() {
+    const m = mgInit(), bc = Math.round(G.bc === undefined ? 60 : G.bc), bd = G.bd = G.bd || {}, d = G.d || 0;
+    const ask = (k, t, desc, ok) => { const cd = Math.max(0, (bd[k] || 0) - d); return `<button class="x7a" data-act="x7ask" data-k="${k}" ${cd || !ok ? 'disabled' : ''}><b>${t}</b><small>${cd ? cd + ' gün sonra tekrar' : ok ? desc : 'Yeterli güven yok'}</small></button>`; };
+    const lvl = bc >= 80 ? 'Mükemmel' : bc >= 60 ? 'İyi' : bc >= 40 ? 'Temkinli' : bc >= 25 ? 'Gergin' : 'Tehlikede';
+    const fan = (() => { try { return fanMood(); } catch (e) { return 60; } })();
+    return `<div class="panel"><h2>Yönetim ilişkileri</h2>
+ <div class="x7bw"><div class="mrow"><span>Yönetim güveni</span><div class="mtr"><i style="width:${bc}%"></i></div><b>${bc}</b></div><div class="mrow"><span>Taraftar</span><div class="mtr"><i style="width:${fan}%"></i></div><b>${fan}</b></div></div>
+ <div class="small mute" style="margin:6px 0 10px">Durum: <b>${lvl}</b>. Sözleşme: ${m.cy} yıl. ${bc < 30 && !G.nofire ? '<span style="color:var(--bad,#c0392b)"><b>Koltuğun sallanıyor; sezon sonunda görevden alınabilirsin.</b></span>' : ''}</div>
+ <div class="x7as">${ask('bud', 'Ek transfer bütçesi iste', 'Güven ≥ 50 · 45 gün bekleme', bc >= 50)}${ask('wage', 'Maaş bütçesini artır', 'Güven ≥ 55 · %6 artış', bc >= 55)}${ask('ext', 'Sözleşme uzat', 'Güven ≥ 65 · +1 yıl', bc >= 65 && m.cy < 5)}</div>
+ <label class="x7ck"><input type="checkbox" data-act="x7nofire" ${G.nofire ? '' : 'checked'}> Görevden alınma açık <span class="small mute">(kapatırsan yönetim seni kovmaz)</span></label></div>`;
+}
+function bdAsk(k) {
+    const bd = G.bd = G.bd || {}, d = G.d || 0, bc = G.bc === undefined ? 60 : G.bc, m = mgInit();
+    if ((bd[k] || 0) > d)
+        return;
+    const ch = clamp((bc - 35) / 55, .12, .92);
+    const win = Math.random() < ch;
+    if (k === 'bud') {
+        bd[k] = d + 45;
+        if (win) {
+            const a = Math.round(clamp(U().bud * .15, 2, 40) * 10) / 10;
+            U().bud += a;
+            G.bc = clamp(bc - 3, 0, 100);
+            toast('Yönetim ' + fm(a) + ' ek transfer bütçesi verdi.');
+        }
+        else {
+            G.bc = clamp(bc - 3, 0, 100);
+            toast('Yönetim isteğini reddetti.');
+        }
+    }
+    else if (k === 'wage') {
+        bd[k] = d + 60;
+        if (win) {
+            G.wb = +(G.wb * 1.06).toFixed(2);
+            G.bc = clamp(bc - 4, 0, 100);
+            toast('Maaş bütçesi ' + fmW(G.wb) + ' oldu.');
+        }
+        else {
+            G.bc = clamp(bc - 3, 0, 100);
+            toast('Yönetim maaş bütçesini artırmadı.');
+        }
+    }
+    else if (k === 'ext') {
+        bd[k] = d + 90;
+        if (Math.random() < clamp((bc - 50) / 45, .15, .9)) {
+            m.cy = Math.min(5, m.cy + 1);
+            toast('Sözleşmen 1 yıl uzatıldı.');
+        }
+        else {
+            G.bc = clamp(bc - 2, 0, 100);
+            toast('Yönetim şimdilik uzatmak istemiyor.');
+        }
+    }
+    save();
+    R();
+}
+function tdlerView() {
+    const st = standings(), me = U();
+    const opp = (() => { try { const f = G.fix[G.week] && G.fix[G.week].find(x => x[0] === G.ti || x[1] === G.ti); if (!f) return null; return G.teams[f[0] === G.ti ? f[1] : f[0]]; } catch (e) { return null; } })();
+    const om = opp ? mgrObj(opp.name) : null, os = om ? MSTY[om.st] : null;
+    const rows = st.map((t, i) => { const m = t === me ? null : mgrObj(t.name), f = (t.tab.form || []).slice(-5).map(x => `<i class="x7f ${x}">${x === 'G' ? 'G' : x === 'B' ? 'B' : 'M'}</i>`).join('');
+        return `<tr class="${t === me ? 'x7me' : ''}"><td>${i + 1}</td><td>${crest(t.name, 18)} ${t.name}</td><td>${t === me ? mgInit().n + ' <span class="mute">(sen)</span>' : m.n}</td><td>${t === me ? '–' : MSTY[m.st].n}</td><td>${t === me ? starsRaw(mgStars(mgInit().rep)) : starsRaw(mqStars(m.q))}</td><td>${t === me ? '–' : ((m.ten || 0) + 1) + ' sezon' + (m.hb > 0.5 ? ' <span class="pkt">Yeni</span>' : '')}</td><td>${f}</td></tr>`; }).join('');
+    const feed = (G.mlog || []).slice(0, 12).map(x => `<li><span class="small mute">${fmtD(x.d)}</span> ${x.s}</li>`).join('');
+    return exBack('Teknik direktörler') + `<div class="panel"><h2>Sıradaki rakibin teknik direktörü</h2>${opp ? `<div class="x7op">${crest(opp.name, 40)}<div><b>${opp.name}</b> · ${om.n}<div class="small mute">${os.n} · ${os.d}</div><div class="small" style="margin-top:4px"><b>İpucu:</b> ${os.tip}</div></div></div>` : '<p class="small mute">Bu hafta maçın yok.</p>'}</div>
+ <div class="panel"><h2>Ligdeki teknik direktörler</h2><div class="tw"><table class="small"><thead><tr><th>#</th><th>Kulüp</th><th>Teknik direktör</th><th>Oyun anlayışı</th><th>Kalite</th><th>Görev</th><th>Form</th></tr></thead><tbody>${rows}</tbody></table></div><p class="small mute" style="margin:8px 0 0">Kaliteli teknik direktörler rakibe göre oyunu daha iyi ayarlar. Kötü gidişte kovulurlar; yenileri hafif bir "yeni hoca" etkisiyle gelir.</p></div>
+ <div class="panel"><h2>Dünya haberleri</h2>${feed ? `<ul class="list small">${feed}</ul>` : '<p class="small mute">Henüz bir teknik direktör değişikliği yok.</p>'}</div>`;
+}
+function kariyerView() { return exBack('Kariyer geçmişi') + careerPanel() + boardPanel(); }
+/* --- kayıt güvenliği --- */
+const BK = { db: null };
+function bkOpen() { return new Promise((res, rej) => { if (BK.db)
+    return res(BK.db); const q = indexedDB.open('td27bk', 1); q.onupgradeneeded = () => q.result.createObjectStore('b', { keyPath: 'k' }); q.onsuccess = () => { BK.db = q.result; res(BK.db); }; q.onerror = () => rej(q.error); }); }
+async function bkAll() { try {
+    const db = await bkOpen();
+    return await new Promise(r => { const q = db.transaction('b').objectStore('b').getAll(); q.onsuccess = () => r(q.result || []); q.onerror = () => r([]); });
+}
+catch (e) {
+    return [];
+} }
+async function bkPut(label) {
+    try {
+        if (!G || !G.teams)
+            return false;
+        const db = await bkOpen(), slot = G.slot || CURSLOT, j = JSON.stringify(G), ts = Date.now();
+        const rec = { k: slot + ':' + ts, slot, ts, label: label || 'Otomatik', team: U().name, season: G.season, week: G.week, size: j.length, j };
+        await new Promise((r, x) => { const tx = db.transaction('b', 'readwrite'); tx.objectStore('b').put(rec); tx.oncomplete = r; tx.onerror = () => x(tx.error); });
+        const all = (await bkAll()).filter(x => x.slot === slot).sort((a, b) => b.ts - a.ts);
+        for (const o of all.slice(6)) {
+            await new Promise(r => { const tx = db.transaction('b', 'readwrite'); tx.objectStore('b').delete(o.k); tx.oncomplete = r; tx.onerror = r; });
+        }
+        return true;
+    }
+    catch (e) {
+        return false;
+    }
+}
+let _bkLast = 0;
+const _save170 = save;
+save = function () {
+    const r = _save170.apply(this, arguments);
+    try {
+        const n = G.slot || CURSLOT, v = localStorage.getItem(SK(n));
+        if (!(G.mp && G.mp.role === 'guest') && !v) {
+            if (!G._svw) {
+                G._svw = 1;
+                toast('Kayıt yapılamadı! Tarayıcı depolaması dolu olabilir: Ekstra → Kayıt güvenliği → yedeği indir.');
+            }
+        }
+        else if (G) {
+            G._svw = 0;
+            const k = G.season + ':' + Math.floor(G.week / 6);
+            if (G._bk !== k && Date.now() - _bkLast > 20000) {
+                G._bk = k;
+                _bkLast = Date.now();
+                bkPut('Otomatik');
+            }
+        }
+    }
+    catch (e) { }
+    return r;
+};
+function dlFile(name, text) {
+    const b = new Blob([text], { type: 'application/json' }), a = document.createElement('a');
+    a.href = URL.createObjectURL(b);
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+function saveOk(g) { return g && typeof g === 'object' && Array.isArray(g.teams) && g.teams.length > 1 && typeof g.season === 'number' && g.ti !== undefined && g.lid && g.fix; }
+let _bkList = null;
+function guvenlikView() {
+    bkAll().then(a => { _bkList = a.sort((x, y) => y.ts - x.ts); const el = document.getElementById('x7bk'); if (el)
+        el.innerHTML = bkRows(); });
+    try {
+        navigator.storage && navigator.storage.estimate && navigator.storage.estimate().then(e => { const el = document.getElementById('x7st'); if (el && e.quota)
+            el.textContent = 'Depolama: ' + (e.usage / 1048576).toFixed(1) + ' MB / ' + Math.round(e.quota / 1048576) + ' MB'; });
+    }
+    catch (e) { }
+    const slots = [1, 2, 3].map(n => { const m = slotMeta(n); return `<div class="x7sl"><b>Yuva ${n}</b> <span class="small mute">${m ? m.team + ' · ' + m.season + '/' + String(m.season + 1).slice(2) : 'boş'}</span></div>`; }).join('');
+    return exBack('Kayıt güvenliği') + `<div class="panel"><h2>Kayıt güvenliği</h2>
+ <p class="small mute" style="margin-top:0">Oyun kayıtların bu tarayıcıda saklanır. Tarayıcı verisi temizlenirse kayıtlar silinebilir; bu yüzden düzenli yedek al. Oyun ayrıca her 6 haftada ve her sezon sonunda otomatik yedek alır (son 6 yedek).</p>
+ <div class="x7sls">${slots}</div><div class="small mute" id="x7st" style="margin:6px 0 10px"></div>
+ <div class="row" style="gap:8px;flex-wrap:wrap"><button class="btn" data-act="x7exp">Mevcut oyunu dosyaya indir</button><button class="btn alt" data-act="x7bknow">Şimdi yedek al</button><label class="btn alt x7up">Dosyadan yükle<input type="file" accept=".json,application/json" data-act="x7imp" hidden></label></div>
+ <p class="small mute" style="margin:8px 0 0">Dosyadan yükleme: seçili yuvanın (Yuva ${UI.slot || CURSLOT}) üzerine yazar. Bozuk veya uyumsuz dosyalar reddedilir.</p></div>
+ <div class="panel"><h2>Otomatik yedekler</h2><div id="x7bk">${bkRows()}</div></div>`;
+}
+function bkRows() {
+    if (_bkList === null)
+        return '<p class="small mute">Yükleniyor…</p>';
+    if (!_bkList.length)
+        return '<p class="small mute">Henüz yedek yok. Oyun ilerledikçe otomatik oluşur.</p>';
+    return `<ul class="list small">${_bkList.map(b => `<li class="x7bi"><span><b>Yuva ${b.slot}</b> · ${b.team} · ${b.season}/${String(b.season + 1).slice(2)} hafta ${b.week + 1} <span class="mute">· ${new Date(b.ts).toLocaleString('tr-TR')} · ${(b.size / 1024).toFixed(0)} KB · ${b.label}</span></span><span><button class="btn alt sm" data-act="x7rst" data-k="${b.k}">Geri yükle</button> <button class="btn alt sm" data-act="x7dl" data-k="${b.k}">İndir</button></span></li>`).join('')}</ul>`;
+}
+function restoreInto(n, g, from) {
+    if (!saveOk(g)) {
+        toast('Geçersiz kayıt dosyası.');
+        return false;
+    }
+    try {
+        localStorage.setItem(SK(n), JSON.stringify(g));
+        metaSet(n, metaOf(g));
+        localStorage.setItem('td27slot', n);
+        toast((from || 'Yedek') + ' Yuva ' + n + '\'e yüklendi. Ana menüden "Yuva ' + n + '\'ten devam et" ile aç.');
+        return true;
+    }
+    catch (e) {
+        toast('Yüklenemedi: depolama dolu olabilir.');
+        return false;
+    }
+}
+document.addEventListener('change', e => {
+    const t = e.target;
+    if (t.matches && t.matches('[data-act="x7nofire"]')) {
+        G.nofire = !t.checked;
+        save();
+        toast(G.nofire ? 'Görevden alınma kapatıldı.' : 'Görevden alınma açıldı.');
+        return;
+    }
+    if (t.matches && t.matches('[data-act="x7imp"]')) {
+        const f = t.files && t.files[0];
+        if (!f)
+            return;
+        const rd = new FileReader();
+        rd.onload = () => { try {
+            restoreInto(UI.slot || CURSLOT, JSON.parse(rd.result), 'Dosya');
+        }
+        catch (x) {
+            toast('Dosya okunamadı (JSON değil).');
+        } };
+        rd.readAsText(f);
+        t.value = '';
+    }
+});
+document.addEventListener('click', e => {
+    const b = e.target.closest && e.target.closest('[data-act^="x7"]');
+    if (!b || b.tagName === 'INPUT' || b.tagName === 'LABEL')
+        return;
+    const a = b.dataset.act;
+    if (a === 'x7ask')
+        bdAsk(b.dataset.k);
+    else if (a === 'x7exp') {
+        save();
+        dlFile('td27_' + U().name.replace(/\W+/g, '_') + '_' + G.season + '.json', JSON.stringify(G));
+        toast('Kayıt dosyası indirildi.');
+    }
+    else if (a === 'x7bknow') {
+        bkPut('Elle').then(ok => { toast(ok ? 'Yedek alındı.' : 'Yedek alınamadı.'); R(); });
+    }
+    else if (a === 'x7rst' || a === 'x7dl') {
+        const r = (_bkList || []).find(x => x.k === b.dataset.k);
+        if (!r)
+            return;
+        if (a === 'x7dl')
+            dlFile('td27_yedek_' + r.team.replace(/\W+/g, '_') + '_' + r.season + '.json', r.j);
+        else
+            try {
+                restoreInto(r.slot, JSON.parse(r.j), 'Yedek');
+            }
+            catch (x) {
+                toast('Yedek bozuk.');
+            }
+    }
+});
+EXTRA.push('tdler', 'kariyer', 'guvenlik');
+const _kuV170 = kulupView;
+kulupView = function () { return boardPanel() + _kuV170.apply(this, arguments); };
+const _arV170 = arsivView;
+arsivView = function () { return _arV170.apply(this, arguments) + careerPanel(); };
+
+document.addEventListener('click', e => { const b = e.target.closest && e.target.closest('[data-act="x7home"]'); if (!b)
+    return; try {
+    save();
+}
+catch (x) { } G = null; UI.sc = null; UI.modal = null; R(); });
 </script>
 </body>
 </html>
